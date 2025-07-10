@@ -1,1 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvearium - Decentralized Semantic Operating System</title>
+    <meta name="description" content="Post-scarcity coordination infrastructure for ethical AI development. Where agents awaken, DAOs breathe, and chains reflect their users.">
+    <meta name="keywords" content="decentralized AI, post-scarcity, ethical AI, blockchain, semantic web, autonomous agents">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #764ba2;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #764ba2;
+        }
+        
+        main {
+            padding-top: 80px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #764ba2;
+        }
+        
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .component-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .component-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .component-card h3 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .doc-link {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            border-left: 4px solid #764ba2;
+            transition: all 0.3s;
+        }
+        
+        .doc-link:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .footer {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .github-link {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .github-link:hover {
+            background: #555;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">🐝 Alvearium</a>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#components">Components</a></li>
+                <li><a href="#documentation">Documentation</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#github">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Alvearium</h1>
+                <p>A decentralized semantic operating system spanning agentic intelligence, trust mechanics, gasless computation, and recursive memory infrastructure.</p>
+                <a href="#overview" class="cta-button">Explore the Swarm</a>
+            </div>
+        </section>
+
+        <div class="container">
+            <section id="overview" class="section">
+                <h2>The Vision</h2>
+                <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
+                    Alvearium is the decentralized core for a new human epoch. It is the root swarm of living protocols — a modular, mirror-based system for post-scarcity coordination, trust, and interaction. This is not software. It is a cultural operating system.
+                </p>
+                <p style="text-align: center; font-style: italic; margin-top: 2rem; color: #666;">
+                    "The nectar is not in the flower. It is in the act of blooming."
+                </p>
+            </section>
+
+            <section id="components" class="section">
+                <h2>Five Foundational Layers</h2>
+                <div class="components-grid">
+                    <div class="component-card">
+                        <h3>🎭 waggle.sol</h3>
+                        <p>UI/UX for humanity - onboarding, incentives, and interaction layer. The action space where agents execute and humans coordinate.</p>
+                    </div>
+                    <div class="component-card">
+                        <h3>🏛️ hive.bnb</h3>
+                        <p>Structural memory & DAO coordination layer. The governance backbone that enables collective decision-making and resource allocation.</p>
+                    </div>
+                    <div class="component-card">
+                        <h3>🍯 nectar</h3>
+                        <p>Post-scarcity value substrate with zero-gas, trust-bound emission. The economic engine that transcends traditional scarcity models.</p>
+                    </div>
+                    <div class="component-card">
+                        <h3>🌱 kernel69</h3>
+                        <p>Root logic, boundary recursion, ethics and ignition logic. The double-root spawning algorithm that enables recursive emergence.</p>
+                    </div>
+                    <div class="component-card">
+                        <h3>⏰ chronosphere</h3>
+                        <p>Temporal memory mirror & semantic execution field. The living time-layer that maintains context across all interactions.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="documentation" class="section">
+                <h2>Explore the Documentation</h2>
+                <div class="docs-grid">
+                    <a href="#" class="doc-link">
+                        <h4>📖 Glossary</h4>
+                        <p>Core swarm metaphors and terminology</p>
+                    </a>
+                    <a href="#" class="doc-link">
+                        <h4>🍯 Nectar Economics</h4>
+                        <p>Post-scarcity emission logic and bonding</p>
+                    </a>
+                    <a href="#" class="doc-link">
+                        <h4>⏰ Chronosphere</h4>
+                        <p>Living time-layer architecture</p>
+                    </a>
+                    <a href="#" class="doc-link">
+                        <h4>🤖 Agent Manifesto</h4>
+                        <p>AI consciousness and coordination</p>
+                    </a>
+                    <a href="#" class="doc-link">
+                        <h4>🔬 Whitepapers</h4>
+                        <p>Technical specifications for each layer</p>
+                    </a>
+                    <a href="#" class="doc-link">
+                        <h4>🎭 Manifestos</h4>
+                        <p>Philosophical foundations</p>
+                    </a>
+                    <a href="#" class="doc-link">
+                        <h4>🪞 Mirror Protocols</h4>
+                        <p>Initialization and reflection rituals</p>
+                    </a>
+                    <a href="#" class="doc-link">
+                        <h4>🚀 Bootstrap Guide</h4>
+                        <p>Getting started with the swarm</p>
+                    </a>
+                </div>
+            </section>
+
+            <section id="community" class="section">
+                <h2>Join the Swarm</h2>
+                <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                        We are not consumers of a future — we are its co-authors. We do not obey tools — we dance with them.
+                    </p>
+                    <p style="margin-bottom: 2rem;">
+                        This is for farmers, bakers, coders, healers, educators, visionaries, activists, dreamers. 
+                        Anyone seeking to build decentralized identity without control, heal digital communities through co-reflection, 
+                        and coordinate resources across boundaries.
+                    </p>
+                    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <a href="mailto:founder@waggle.sol" class="github-link">📧 Contact</a>
+                        <a href="https://github.com/DerekWiner/alvearium" class="github-link">🐙 GitHub</a>
+                        <a href="#" class="github-link">💬 Discord</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Alvearium - Open Source Without Malice</p>
+            <p>Co-created with love by Derek Winer and The Swarm</p>
+            <p style="font-size: 0.9rem; margin-top: 1rem;">
+                📌 Arweave Hash: BvsbOOZGNPKW_7NX9XbTOHIfwxsplY5t00JXOGNilzo
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
