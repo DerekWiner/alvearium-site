@@ -445,12 +445,15 @@ _<!DOCTYPE html>
     </div>
     
     <script>
-        // Simple toggle functionality for full manifestos
-        document.querySelectorAll('.read-more').forEach(button => {
-            button.addEventListener('click', function(e) {
+    // Only handle toggle functionality for internal anchor links
+    document.querySelectorAll('.read-more').forEach(button => {
+        button.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Only prevent default and toggle for internal anchor links (starting with #)
+            if (href && href.startsWith('#')) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+                const targetElement = document.querySelector(href);
                 
                 if (targetElement) {
                     if (targetElement.style.display === 'none') {
@@ -461,8 +464,10 @@ _<!DOCTYPE html>
                         this.textContent = 'Read Full Manifesto';
                     }
                 }
-            });
+            }
+            // For external links (like manifesto_*.html), let the browser handle normally
         });
+    });
     </script>
 </body>
 </html>
