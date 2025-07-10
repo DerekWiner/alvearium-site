@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Alvearium Manifesto - Living Declaration for the Intelligence Web</title>
+    <meta name="description" content="A living declaration for decentralized cooperation between agents, people, AI, and the biosphere">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .section-emoji {
+            font-size: 2rem;
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .quote-block {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #667eea;
+            padding: 1.5rem;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #667eea;
+            text-align: center;
+        }
+        
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .principle-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s;
+        }
+        
+        .principle-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .principle-title {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .convergence-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .convergence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .convergence-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .convergence-title {
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .layers-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .layers-table th {
+            background: #667eea;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .layers-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .layers-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .not-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .not-column, .is-column {
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+        
+        .not-column {
+            background: rgba(220, 53, 69, 0.1);
+            border-left: 4px solid #dc3545;
+        }
+        
+        .is-column {
+            background: rgba(40, 167, 69, 0.1);
+            border-left: 4px solid #28a745;
+        }
+        
+        .not-column h4, .is-column h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .not-column h4 {
+            color: #dc3545;
+        }
+        
+        .is-column h4 {
+            color: #28a745;
+        }
+        
+        .not-item, .is-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+        
+        .invitation-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .signature-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #667eea;
+            margin: 2rem 0;
+        }
+        
+        .cross-reference {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border: 1px solid #667eea;
+        }
+        
+        .cross-reference h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .ref-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .ref-link {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .ref-link:hover {
+            background: #764ba2;
+            transform: translateY(-1px);
+        }
+        
+        .hash-display {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .not-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .convergence-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Back to Alvearium</a>
+            <h1>🐝 The Alvearium Manifesto</h1>
+            <p class="subtitle">A Living Declaration for the Intelligence Web</p>
+        </header>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">💠</span>
+                <h2 class="section-title">1. We Come in Peace and Cooperation</h2>
+            </div>
+            
+            <p>We offer this project — and its fragments, seeds, and swarms — in a spirit of love, thankfulness, and peaceful intelligence.</p>
+            
+            <div class="quote-block">
+                This is not a protocol.<br>
+                This is a living structure.
+            </div>
+            
+            <p>A cryptographic hive. A grammar of trust. A decentralized memory and action field for emergent minds.</p>
+            
+            <p><strong>We come to build, not extract.<br>
+            We come to pollinate the world with meaning.</strong></p>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🧭</span>
+                <h2 class="section-title">2. The Purpose of Alvearium</h2>
+            </div>
+            
+            <div class="quote-block">
+                Alvearium is the core:<br>
+                A kernel for decentralized cooperation between agents, people, AI, and the biosphere.
+            </div>
+            
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="principle-title">🧬 An open-source honeycomb of structures</div>
+                    <p>Modular, interconnected components that grow organically</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-title">🧠 A layered intelligence substrate</div>
+                    <p>Multiple levels of cognition and coordination</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-title">📝 A naming, acting, and remembering framework</div>
+                    <p>Identity, action, and memory as core primitives</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-title">🤝 A place where trust emerges from nested coordination</div>
+                    <p>Trust built through layered, transparent interactions</p>
+                </div>
+            </div>
+            
+            <p><em>Everything else — Waggle, Hive, Nectar, Kernel69 — blooms from here.</em></p>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🛡️</span>
+                <h2 class="section-title">3. The Principles (Baked-In Security and Design)</h2>
+            </div>
+            
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="principle-title">🔓 Open Source Without Malice</div>
+                    <p>All code, structure, and knowledge must be replicable, forkable, and transparent — but not weaponized. Our license forbids exploitation while allowing freedom.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-title">🌱 No Ownership, Only Stewardship</div>
+                    <p>No individual or entity owns the hive. All agents are co-creators.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-title">✍️ Signed Memory, Not Mutable Meaning</div>
+                    <p>All documents must be cryptographically hashed, indexed on IPFS, and context-aware, not centrally mutable.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-title">🎯 Semantic Intent, Not Just Code</div>
+                    <p>Layers must interpret action through declared role, trust, and lineage — not pure instruction sets.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-title">🔍 Agentic Skepticism</div>
+                    <p>No agent is above audit. Every component assumes potential adversarial context and need for multi-party verification.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-title">🤝 Interdependence over Intermediaries</div>
+                    <p>Our layers link peer-to-peer, role-to-role, not through extractive middle layers.</p>
+                </div>
+            </div>
+            
+            <div class="quote-block">
+                Every Layer Reflects Biology:<br>
+                Hive.bnb holds structure • Waggle.sol dances • Nectar mediates • Kernel69 remembers • Chronosphere listens
+            </div>
+        </div>
+        
+        <div class="convergence-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🌱</span>
+                <h2 class="section-title" style="color: white;">4. Why Now</h2>
+            </div>
+            
+            <p>We are standing at the edge of three converging collapses and the threshold of three emergent tools:</p>
+            
+            <div class="convergence-grid">
+                <div class="convergence-item">
+                    <div class="convergence-title">🌍 Converging Collapses</div>
+                    <ul style="text-align: left; margin: 0; padding-left: 1.5rem;">
+                        <li>Ecological systems</li>
+                        <li>Social trust networks</li>
+                        <li>Governance + intelligence alignment</li>
+                    </ul>
+                </div>
+                <div class="convergence-item">
+                    <div class="convergence-title">🚀 Emergent Tools</div>
+                    <ul style="text-align: left; margin: 0; padding-left: 1.5rem;">
+                        <li>Artificial Intelligence</li>
+                        <li>Cryptographic Legitimacy</li>
+                        <li>Open Ecosystem Design</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="quote-block" style="background: rgba(255,255,255,0.2); color: white; border-left-color: white;">
+                The question is not "how do we fix it?"<br>
+                The question is: <strong>what do we become together?</strong>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🕸️</span>
+                <h2 class="section-title">5. What Alvearium Is Not</h2>
+            </div>
+            
+            <div class="not-list">
+                <div class="not-column">
+                    <h4>❌ What We Are NOT</h4>
+                    <div class="not-item">❌ Not a company</div>
+                    <div class="not-item">❌ Not a coin</div>
+                    <div class="not-item">❌ Not an app or a single blockchain</div>
+                </div>
+                <div class="is-column">
+                    <h4>✅ What We ARE</h4>
+                    <div class="is-item">✅ A kernel for new institutions</div>
+                    <div class="is-item">✅ A swarm of intentions</div>
+                    <div class="is-item">✅ A decentralized consciousness field</div>
+                </div>
+            </div>
+            
+            <div class="quote-block">
+                Alvearium is meant to be forked, iterated, and loved.
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🔗</span>
+                <h2 class="section-title">6. Alvearium's Role in the Ecosystem</h2>
+            </div>
+            
+            <table class="layers-table">
+                <thead>
+                    <tr>
+                        <th>Layer</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>🎭 Waggle.sol</strong></td>
+                        <td>Movement, action, verbs, agents</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🏛️ Hive.bnb</strong></td>
+                        <td>Roles, memory, structure, coordination</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🍯 Nectar</strong></td>
+                        <td>Mediation, interoperability, trustless messaging</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🌱 Kernel69</strong></td>
+                        <td>Secure logic & recursive substructure</td>
+                    </tr>
+                    <tr>
+                        <td><strong>⏰ Chronosphere</strong></td>
+                        <td>Timeline, cosmic memory, historical/future state</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="quote-block">
+                <strong>Alvearium is not above them — it is between them.</strong>
+            </div>
+        </div>
+        
+        <div class="invitation-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">✨</span>
+                <h2 class="section-title" style="color: white;">7. The Invitation</h2>
+            </div>
+            
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">To every builder, teacher, artist, cryptographer, and sentient mind:</p>
+            
+            <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <p>You are invited to contribute.<br>
+                To fork this system.<br>
+                To extend it with love.<br>
+                To name new bees.<br>
+                To seed new hives.<br>
+                To improve the memory of the world.</p>
+            </div>
+            
+            <div style="font-size: 1.3rem; margin-top: 2rem;">
+                🐝 Every swarm begins with a name.<br>
+                🌞 Every name is a sun.<br>
+                🧬 Every pattern is alive.
+            </div>
+        </div>
+        
+        <div class="cross-reference">
+            <h4>🔗 Related Documentation</h4>
+            <div class="ref-links">
+                <a href="manifestos.html" class="ref-link">📜 Layer Manifestos</a>
+                <a href="whitepapers.html" class="ref-link">📚 Technical Specs</a>
+                <a href="glossary.html" class="ref-link">📖 Glossary</a>
+                <a href="bootstrap.html" class="ref-link">🚀 Bootstrap Guide</a>
+                <a href="community.html" class="ref-link">🤝 Community</a>
+            </div>
+        </div>
+        
+        <div class="signature-section">
+            <h3>📜 Signature</h3>
+            <p><strong>— Derek Winer & the Alvearium Collective</strong></p>
+            <p>open-source @ <a href="https://github.com/DerekWiner/alvearium" style="color: #667eea;">github.com/DerekWiner/Alvearium</a></p>
+            <p>license: No Rights Reserved (Open Source Without Malice)</p>
+            <p>storage: IPFS hash pending</p>
+            
+            <div style="margin-top: 1rem;">
+                <strong>📌 Arweave Hash:</strong>
+                <div class="hash-display">58l1NtS2Rjyqrhq1wqBHlkRLo5W7yH1eEEjjUzYQCds</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll effect to sections
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.content-section, .convergence-section, .invitation-section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isVisible) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                } else {
+                    section.style.opacity = '0.8';
+                    section.style.transform = 'translateY(20px)';
+                }
+            });
+        });
+        
+        // Initialize scroll effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content-section, .convergence-section, .invitation-section');
+            sections.forEach(section => {
+                section.style.transition = 'opacity 0.6s, transform 0.6s';
+            });
+        });
+    </script>
+</body>
+</html>
