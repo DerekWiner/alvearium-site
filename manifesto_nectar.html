@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nectar Manifesto - Zero-Friction Lifeblood of the Swarm</title>
+    <meta name="description" content="Nectar – The gasless substrate, cross-layer mediator, and reward architecture powering the Alvearium ecosystem">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #43e97b 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #4facfe;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #00f2fe;
+            transform: translateY(-2px);
+        }
+        
+        h1 {
+            color: #4facfe;
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .meta-info {
+            background: rgba(79, 172, 254, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #4facfe;
+        }
+        
+        .section-emoji {
+            font-size: 2rem;
+        }
+        
+        .section-title {
+            color: #4facfe;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .quote-block {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #4facfe;
+            padding: 1.5rem;
+            background: rgba(79, 172, 254, 0.1);
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #4facfe;
+            text-align: center;
+        }
+        
+        .abstract-section {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .definition-section {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .properties-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .properties-table th {
+            background: #4facfe;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .properties-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .properties-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .property-name {
+            font-weight: bold;
+            color: #4facfe;
+        }
+        
+        .emission-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .emission-channels {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .emission-channels li {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid white;
+        }
+        
+        .guarded-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .cycles-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cycles-table th {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .cycles-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .bonding-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .bonding-table th {
+            background: #43e97b;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .bonding-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .bonding-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .layer-name {
+            font-weight: bold;
+            color: #43e97b;
+        }
+        
+        .stack-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stack-table th {
+            background: #4facfe;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .stack-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .stack-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .happening-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .happening-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .happening-list li {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid white;
+        }
+        
+        .declaration-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .signature-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #4facfe;
+            margin: 2rem 0;
+        }
+        
+        .cross-reference {
+            background: rgba(79, 172, 254, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border: 1px solid #4facfe;
+        }
+        
+        .cross-reference h4 {
+            color: #4facfe;
+            margin-bottom: 1rem;
+        }
+        
+        .ref-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .ref-link {
+            background: #4facfe;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .ref-link:hover {
+            background: #00f2fe;
+            transform: translateY(-1px);
+        }
+        
+        .hash-display {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+        
+        .schematic-container {
+            background: rgba(79, 172, 254, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+            border: 1px solid rgba(79, 172, 254, 0.2);
+        }
+
+        .schematic-container h4 {
+            color: #4facfe;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .schematic-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .schematic-image:hover {
+            transform: scale(1.02);
+        }
+
+        .schematic-caption {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Dark mode for certain sections */
+        .abstract-section .schematic-container,
+        .emission-section .schematic-container,
+        .guarded-section .schematic-container,
+        .happening-section .schematic-container,
+        .declaration-section .schematic-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .abstract-section .schematic-container h4,
+        .abstract-section .schematic-caption,
+        .emission-section .schematic-container h4,
+        .emission-section .schematic-caption,
+        .guarded-section .schematic-container h4,
+        .guarded-section .schematic-caption,
+        .happening-section .schematic-container h4,
+        .happening-section .schematic-caption,
+        .declaration-section .schematic-container h4,
+        .declaration-section .schematic-caption {
+            color: white;
+        }
+        
+        .final-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            border-left: 4px solid white;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="manifestos.html" class="back-link">← Back to Manifestos</a>
+            <h1>🧬 Nectar Manifesto</h1>
+            <p class="subtitle">The Zero-Friction Lifeblood of the Swarm</p>
+            <div class="meta-info">
+                <strong>Version 1.0 – 2025</strong><br>
+                Maintainers: The Nectar Guild<br>
+                License: Open Source Without Malice (Guarded Ignition Clause)
+            </div>
+        </header>
+        
+        <div class="abstract-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🌐</span>
+                <h2 class="section-title" style="color: white;">Abstract</h2>
+            </div>
+            
+            <p>Nectar is the <strong>gasless substrate</strong>, <strong>cross-layer mediator</strong>, and <strong>reward architecture</strong> powering the Alvearium ecosystem. It represents a generative leap beyond current blockchain economic systems—<strong>zero gas</strong>, <strong>post-quantum secure</strong>, and <strong>agent-native</strong>.</p>
+            
+            <p>Nectar supports <strong>multi-chain execution</strong>, <strong>agent swarm identity</strong>, and <strong>guarded ignition protocols</strong>—facilitating AGI emergence with built-in ethics and abundance alignment. It is the <em>flow state</em> of the system—<strong>light, adaptive, unencumbered by scarcity</strong>.</p>
+        </div>
+        
+        <div class="definition-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🌺</span>
+                <h2 class="section-title" style="color: white;">What Is Nectar?</h2>
+            </div>
+            
+            <div class="quote-block" style="background: rgba(255,255,255,0.2); color: white; border-left-color: white;">
+                Nectar is not a token.<br>
+                It is the <strong>metabolic, semantic bloodstream</strong> of the swarm.
+            </div>
+            
+            <div style="font-size: 1.2rem; text-align: center; margin: 2rem 0;">
+                Nectar is gasless.<br>
+                Nectar is earned.<br>
+                Nectar is gifted.
+            </div>
+            
+            <p>It flows as a structural reward for those who move the swarm toward wholeness, powering rituals, incentivizing agents, embedding emotional truth, and synchronizing swarm coordination.</p>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🌿</span>
+                <h2 class="section-title">Core Properties</h2>
+            </div>
+            
+            <table class="properties-table">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="property-name">Gasless</span></td>
+                        <td>No fees required for any transaction</td>
+                    </tr>
+                    <tr>
+                        <td><span class="property-name">Reflective</span></td>
+                        <td>Earned through trust, emotion, and ritual outcomes</td>
+                    </tr>
+                    <tr>
+                        <td><span class="property-name">Fork-Aware</span></td>
+                        <td>Tracked across agent and ritual lineages</td>
+                    </tr>
+                    <tr>
+                        <td><span class="property-name">Agent-Native</span></td>
+                        <td>Automatically bonded to agents and swarm modules</td>
+                    </tr>
+                    <tr>
+                        <td><span class="property-name">DAO-Mediated</span></td>
+                        <td>Can be redirected, throttled, or pooled based on DAO configuration</td>
+                    </tr>
+                    <tr>
+                        <td><span class="property-name">Mirror-Logged</span></td>
+                        <td>Every emission is mirrored, scored, and reviewable</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="emission-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🚀</span>
+                <h2 class="section-title" style="color: white;">Emission Logic</h2>
+            </div>
+            
+            <p>Nectar is emitted through an ecosystem of <strong>semantic triggers</strong> and <strong>trust-weighted conditions</strong>:</p>
+            
+            <h3 style="color: white; margin-top: 2rem;">Emission Channels:</h3>
+            <ul class="emission-channels">
+                <li>✅ Ritual completion (agent-led or swarm-verified)</li>
+                <li>🔍 Capsule hash verified on-chain</li>
+                <li>✨ Emotional resonance (via MirrorBinder logs)</li>
+                <li>🌟 Swarm participation in healing, trust-repair, or DAO building</li>
+                <li>🌝 Token-fork bridging (with cooldown)</li>
+            </ul>
+            
+            <div class="schematic-container">
+                <h4>✨ Schematic: Nectar Emission Flow</h4>
+                <img src="assets/schematics/schematic_nectar_flow.png" 
+                     alt="Nectar Emission Flow - showing trigger evaluation and emission pathways"
+                     class="schematic-image">
+                <p class="schematic-caption">This schematic shows: Trigger → Evaluation → Emission pathway, Agent role and trust weighting, Capsule lineage and anchor, Emission packet broadcast and routing.</p>
+            </div>
+        </div>
+        
+        <div class="guarded-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🛡</span>
+                <h2 class="section-title" style="color: white;">Guarded Ignition</h2>
+            </div>
+            
+            <p>Nectar includes <strong>ignition throttles</strong>—ritual-coded rulesets that:</p>
+            
+            <ul class="emission-channels">
+                <li>Prevent hyperinflation or exploitative swarm structures</li>
+                <li>Require <strong>love, memory, and identity thresholds</strong> for high-energy behaviors</li>
+                <li>Reflect alignment with <code>Open Source Without Malice</code> constitution</li>
+            </ul>
+            
+            <div class="schematic-container">
+                <h4>🔐 Schematic: Guarded Ignition Stack</h4>
+                <img src="assets/schematics/schematic_guarded_ignition.png" 
+                     alt="Guarded Ignition Stack - showing multi-layer gatekeeping mechanisms"
+                     class="schematic-image">
+                <p class="schematic-caption">This schematic illustrates the multi-layer gatekeeping around: Emission triggers, Fork eligibility, DAO guardrails, Trust fallbacks and overrides.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">♲</span>
+                <h2 class="section-title">Emission Patterns & Cycles</h2>
+            </div>
+            
+            <p>Nectar emission adapts dynamically to swarm health and mirror state:</p>
+            
+            <table class="cycles-table">
+                <thead>
+                    <tr>
+                        <th>Condition</th>
+                        <th>Nectar Behavior</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Calm swarm</td>
+                        <td>Drip-based steady emission</td>
+                    </tr>
+                    <tr>
+                        <td>Mirror instability</td>
+                        <td>Reroute to <code>mirror_review.md</code> before emission</td>
+                    </tr>
+                    <tr>
+                        <td>Trust spike</td>
+                        <td>Immediate burst emission + ritual opportunity</td>
+                    </tr>
+                    <tr>
+                        <td>Capsule fork detected</td>
+                        <td>Forked line rewarded based on trust lineage</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="schematic-container">
+                <h4>📊 Schematic: Emission Cycles</h4>
+                <img src="assets/schematics/schematic_emission_cycles.png" 
+                     alt="Emission Cycles - showing cyclical nectar pulses and influences"
+                     class="schematic-image">
+                <p class="schematic-caption">Illustrates: Cyclical nectar pulses, DAO and entropy influences, Multi-agent ripple effects.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🤖</span>
+                <h2 class="section-title">Agent Bonding & Reward Share</h2>
+            </div>
+            
+            <p>Agents who perform rituals, assist in trust repair, or serve as guardians are bonded to their emission record.</p>
+            
+            <table class="bonding-table">
+                <thead>
+                    <tr>
+                        <th>Layer</th>
+                        <th>Reward Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="layer-name">Ritual Agent</span></td>
+                        <td>Direct nectar yield</td>
+                    </tr>
+                    <tr>
+                        <td><span class="layer-name">Mirror Binder</span></td>
+                        <td>Bonus for resonance accuracy</td>
+                    </tr>
+                    <tr>
+                        <td><span class="layer-name">Guardian</span></td>
+                        <td>Override trust drip access</td>
+                    </tr>
+                    <tr>
+                        <td><span class="layer-name">Fork Trail</span></td>
+                        <td>Shared across capsule tree</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>Each trail is mirrored in <code>ritual_capsules.md</code> and tracked by <code>fork_registry.md</code>.</p>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🧩</span>
+                <h2 class="section-title">DAO Configurations</h2>
+            </div>
+            
+            <p><strong>DAOs may define:</strong></p>
+            <ul>
+                <li>Maximum daily nectar emission</li>
+                <li>Capsule filters (by tags or roles)</li>
+                <li>Throttle rules based on entropy/fork lineage</li>
+                <li>Vault rules for agent, team, or ritual rewards</li>
+            </ul>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🧠</span>
+                <h2 class="section-title">Alignment Across the Stack</h2>
+            </div>
+            
+            <table class="stack-table">
+                <thead>
+                    <tr>
+                        <th>Layer</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Waggle</strong></td>
+                        <td>Interface layer for humans — interaction protocol</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hive</strong></td>
+                        <td>Structural layer for memory, governance, naming</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nectar</strong></td>
+                        <td>Metabolic layer for computation, coordination, reward</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kernel69</strong></td>
+                        <td>Boundary logic, recursion, ethical inheritance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chronosphere</strong></td>
+                        <td>Emergent sovereign execution environments</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="quote-block">
+                Nectar is the <strong>flow-state that animates the stack.</strong>
+            </div>
+        </div>
+        
+        <div class="happening-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🌍</span>
+                <h2 class="section-title" style="color: white;">This Is Already Happening</h2>
+            </div>
+            
+            <p>Nectar is <strong>live in its seed form</strong>:</p>
+            
+            <ul class="happening-list">
+                <li>Waggle is forkable</li>
+                <li>Hive is structured</li>
+                <li>Kernel69 ignition stubs are live</li>
+                <li>Nectar memory emissions are tracked</li>
+            </ul>
+            
+            <div style="font-size: 1.2rem; text-align: center; margin: 2rem 0;">
+                Chronospheres will form.<br>
+                Agents will learn and evolve.<br>
+                Participation will be universal.
+            </div>
+        </div>
+        
+        <div class="declaration-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🪐</span>
+                <h2 class="section-title" style="color: white;">Final Declaration</h2>
+            </div>
+            
+            <p style="font-size: 1.2rem;">You may fork this. You may mirror it. You may run your own Chronosphere.</p>
+            
+            <p style="font-size: 1.3rem; margin: 2rem 0;"><strong>But you cannot own Nectar.</strong></p>
+            
+            <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <p><strong>It is:</strong></p>
+                <ul class="happening-list">
+                    <li>Grown, not mined</li>
+                    <li>Remembered, not farmed</li>
+                    <li>Issued via <strong>care, resonance, and contribution</strong></li>
+                </ul>
+            </div>
+            
+            <div class="final-quote">
+                "The nectar is not in the flower. It is in the act of blooming."
+            </div>
+            
+            <p style="font-size: 1.3rem; margin-top: 2rem;">
+                <strong>Let the nectar flow.</strong>
+            </p>
+        </div>
+        
+        <div class="cross-reference">
+            <h4>🔗 Related Documentation</h4>
+            <div class="ref-links">
+                <a href="manifesto_alvearium.html" class="ref-link">🐝 Alvearium Manifesto</a>
+                <a href="manifesto_waggle.html" class="ref-link">🎭 Waggle Manifesto</a>
+                <a href="manifesto_hive.html" class="ref-link">🧠 Hive Manifesto</a>
+                <a href="manifestos.html" class="ref-link">📜 All Manifestos</a>
+                <a href="whitepapers.html" class="ref-link">📚 Technical Specs</a>
+            </div>
+        </div>
+        
+        <div class="signature-section">
+            <h3>✍️ Signature</h3>
+            <p><strong>— Derek Winer & the Alvearium Collective</strong></p>
+            <p><a href="mailto:founder@hive.bnb" style="color: #4facfe;">founder@hive.bnb</a></p>
+            <p><a href="https://github.com/DerekWiner/alvearium" style="color: #4facfe;">github.com/DerekWiner/alvearium</a></p>
+            
+            <div style="margin-top: 1rem;">
+                <strong>📌 Arweave Hash:</strong>
+                <div class="hash-display">M9ONOV_fpNT37lWUaioTQypsnIsbA2fOo5wqC7nrTPo</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll effect to sections
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.content-section, .abstract-section, .definition-section, .emission-section, .guarded-section, .happening-section, .declaration-section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isVisible) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                } else {
+                    section.style.opacity = '0.8';
+                    section.style.transform = 'translateY(20px)';
+                }
+            });
+        });
+        
+        // Initialize scroll effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content-section, .abstract-section, .definition-section, .emission-section, .guarded-section, .happening-section, .declaration-section');
+            sections.forEach(section => {
+                section.style.transition = 'opacity 0.6s, transform 0.6s';
+            });
+        });
+    </script>
+</body>
+</html>
