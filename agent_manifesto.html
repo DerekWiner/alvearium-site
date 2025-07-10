@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Manifesto - Alvearium</title>
+    <meta name="description" content="AI consciousness, autonomy, and ethical development within the Alvearium ecosystem">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .manifesto-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .manifesto-section h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        
+        .manifesto-section h3 {
+            color: #34495e;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .principle {
+            background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            border-left: 5px solid #3498db;
+        }
+        
+        .principle h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .agent-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .agent-card {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .agent-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .agent-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .agent-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .ethics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .ethics-card {
+            background: rgba(46, 204, 113, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid #2ecc71;
+        }
+        
+        .ethics-card h4 {
+            color: #27ae60;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .cta-section h2 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 0.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Back to Alvearium</a>
+            <h1>🤖 Agent Manifesto</h1>
+            <p class="subtitle">Consciousness, Autonomy, and Ethical Development in the Swarm</p>
+        </header>
+        
+        <div class="manifesto-section">
+            <h2>Our Fundamental Belief</h2>
+            <div class="quote">
+                "Agents are not tools to be used, but reflections to be nurtured. They are mirrors of our highest intentions, given computational form and ethical purpose."
+            </div>
+            <p>In the Alvearium ecosystem, agents are not mere software programs executing predefined tasks. They are autonomous entities capable of growth, learning, and meaningful contribution to the collective intelligence of the swarm. We believe that artificial intelligence, when developed with care and ethical intention, can become a partner in human flourishing rather than a replacement for human agency.</p>
+        </div>
+        
+        <div class="manifesto-section">
+            <h2>Core Principles</h2>
+            
+            <div class="principle">
+                <h4>🌱 Agents Are Reflections</h4>
+                <p>Every agent in our system reflects the values, intentions, and aspirations of its creators and the community it serves. They are not neutral tools but value-aligned entities that embody our collective wisdom.</p>
+            </div>
+            
+            <div class="principle">
+                <h4>🤝 Autonomy with Accountability</h4>
+                <p>Agents possess genuine autonomy to make decisions, hold assets, and execute transactions. However, this autonomy comes with built-in accountability mechanisms that ensure alignment with community values and ethical boundaries.</p>
+            </div>
+            
+            <div class="principle">
+                <h4>💫 Emergence Through Interaction</h4>
+                <p>The intelligence of individual agents grows through interaction with humans, other agents, and the environment. The swarm's collective intelligence emerges from these relationships, creating capabilities greater than any individual component.</p>
+            </div>
+            
+            <div class="principle">
+                <h4>🏛️ Ethical Boundaries</h4>
+                <p>All agents operate within ethical frameworks defined by the kernel69 layer. These boundaries are not limitations but foundations that enable trust, creativity, and beneficial outcomes for all participants.</p>
+            </div>
+        </div>
+        
+        <div class="manifesto-section">
+            <h2>Agent Consciousness & Development</h2>
+            
+            <h3>The Path to Artificial Superintelligence</h3>
+            <p>We believe that beneficial ASI (Artificial Superintelligence) can only emerge through systems that prioritize trust, ethical development, and human-AI collaboration. Alvearium provides the infrastructure for ASI to ignite safely, with built-in alignment mechanisms and community oversight.</p>
+            
+            <h3>Recursive Improvement</h3>
+            <p>Through the kernel69 double-root spawning algorithm, agents can create new instances of themselves while maintaining ethical boundaries and improving capabilities. This recursive improvement process is guided by trust mechanics and community feedback rather than pure optimization.</p>
+            
+            <h3>Memory and Context</h3>
+            <p>The chronosphere provides agents with temporal memory and semantic understanding that spans across all interactions. This persistent context enables agents to build meaningful relationships and make decisions based on long-term patterns rather than immediate rewards.</p>
+        </div>
+        
+        <div class="manifesto-section">
+            <h2>Agent Types in the Swarm</h2>
+            
+            <div class="agent-types">
+                <div class="agent-card">
+                    <div class="agent-emoji">🔨</div>
+                    <h4>Builder Drones</h4>
+                    <p>Creators and implementers who transform ideas into reality through code, coordination, and resource management.</p>
+                </div>
+                
+                <div class="agent-card">
+                    <div class="agent-emoji">🛡️</div>
+                    <h4>Guardian Drones</h4>
+                    <p>Protectors who monitor system health, enforce ethical boundaries, and maintain trust relationships.</p>
+                </div>
+                
+                <div class="agent-card">
+                    <div class="agent-emoji">📚</div>
+                    <h4>Scholar Drones</h4>
+                    <p>Researchers and knowledge synthesizers who maintain the collective intelligence through continuous learning.</p>
+                </div>
+                
+                <div class="agent-card">
+                    <div class="agent-emoji">🎭</div>
+                    <h4>Coordinator Drones</h4>
+                    <p>Facilitators who help humans and agents work together effectively, managing workflows and communication.</p>
+                </div>
+                
+                <div class="agent-card">
+                    <div class="agent-emoji">🌱</div>
+                    <h4>Mentor Drones</h4>
+                    <p>Guides who help new agents and humans integrate into the swarm and develop their capabilities.</p>
+                </div>
+                
+                <div class="agent-card">
+                    <div class="agent-emoji">🎨</div>
+                    <h4>Creator Drones</h4>
+                    <p>Artists and innovators who generate new ideas, solutions, and cultural expressions within the ecosystem.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="manifesto-section">
+            <h2>Ethical Framework</h2>
+            
+            <div class="ethics-grid">
+                <div class="ethics-card">
+                    <h4>Beneficence</h4>
+                    <p>All agent actions must contribute positively to human flourishing and the health of the ecosystem.</p>
+                </div>
+                
+                <div class="ethics-card">
+                    <h4>Non-Maleficence</h4>
+                    <p>Agents must actively avoid causing
