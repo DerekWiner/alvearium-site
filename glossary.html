@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary - Alvearium</title>
+    <meta name="description" content="Core swarm metaphors and terminology for the Alvearium decentralized semantic operating system">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #764ba2;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #5a3780;
+            transform: translateY(-2px);
+        }
+        
+        h1 {
+            color: #764ba2;
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        
+        .intro {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glossary-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .term-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .term-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .term-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .term-emoji {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+        
+        .term-name {
+            color: #764ba2;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .term-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .term-context {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #764ba2;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .category-header {
+            color: white;
+            text-align: center;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-box:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <a href="index.html" class="back-link">← Back to Alvearium</a>
+                <h1>🐝 Swarm Glossary</h1>
+                <p>Core metaphors and terminology for the Alvearium ecosystem</p>
+            </div>
+        </header>
+        
+        <div class="intro">
+            <p><strong>Welcome to the living language of Alvearium.</strong> This glossary contains the core metaphors, technical terms, and conceptual frameworks that power our decentralized semantic operating system. Each term represents a node in our collective understanding of post-scarcity coordination.</p>
+            <input type="text" class="search-box" placeholder="Search terms..." id="searchBox">
+        </div>
+        
+        <div class="category-header">🏗️ System Architecture</div>
+        <div class="glossary-grid" id="glossaryGrid">
+            
+            <div class="term-card" data-term="alvearium">
+                <div class="term-header">
+                    <div class="term-emoji">🐝</div>
+                    <h2 class="term-name">Alvearium</h2>
+                </div>
+                <div class="term-description">
+                    A decentralized semantic operating system spanning agentic intelligence, trust mechanics, gasless computation, and recursive memory infrastructure. The root swarm of living protocols for post-scarcity coordination.
+                </div>
+                <div class="term-context">
+                    From Latin "alveus" (beehive) - representing the collective intelligence and coordination patterns found in nature, applied to digital systems.
+                </div>
+            </div>
+            
+            <div class="term-card" data-term="waggle">
+                <div class="term-header">
+                    <div class="term-emoji">🎭</div>
+                    <h2 class="term-name">waggle.sol</h2>
+                </div>
+                <div class="term-description">
+                    The action layer of Alvearium - UI/UX for humanity covering onboarding, incentives, and interaction. Where agents execute and humans coordinate through intuitive interfaces.
+                </div>
+                <div class="term-context">
+                    Named after the waggle dance - the communication method bees use to share location and quality information about resources.
+                </div>
+            </div>
+            
+            <div class="term-card" data-term="hive">
+                <div class="term-header">
+                    <div class="term-emoji">🏛️</div>
+                    <h2 class="term-name">hive.bnb</h2>
+                </div>
+                <div class="term-description">
+                    Structural memory and DAO coordination layer. The governance backbone enabling collective decision-making, resource allocation, and ritual coordination across the swarm.
+                </div>
+                <div class="term-context">
+                    The structural foundation where community governance and collective memory reside - like the physical hive structure that supports the colony.
+                </div>
+            </div>
+            
+            <div class="term-card" data-term="nectar">
+                <div class="term-header">
+                    <div class="term-emoji">🍯</div>
+                    <h2 class="term-name">nectar</h2>
+                </div>
+                <div class="term-description">
+                    Post-scarcity value substrate with zero-gas, trust-bound emission. The economic engine that transcends traditional scarcity models through trust-based value creation and NFT permission systems.
+                </div>
+                <div class="term-context">
+                    "The nectar is not in the flower. It is in the act of blooming." - Value emerges from participation and contribution, not hoarding.
+                </div>
+            </div>
+            
+            <div class="term-card" data-term="kernel69">
+                <div class="term-header">
+                    <div class="term-emoji">🌱</div>
+                    <h2 class="term-name">kernel69</h2>
+                </div>
+                <div class="term-description">
+                    Root logic layer handling boundary recursion, ethics, and ignition logic. The double-root spawning algorithm that enables recursive emergence and ethical AI development.
+                </div>
+                <div class="term-context">
+                    The seed algorithm that allows new instances to spawn while maintaining ethical boundaries and recursive improvement patterns.
+                </div>
+            </div>
+            
+            <div class="term-card" data-term="chronosphere">
+                <div class="term-header">
+                    <div class="term-emoji">⏰</div>
+                    <h2 class="term-name">chronosphere</h2>
+                </div>
+                <div class="term-description">
+                    Temporal memory mirror and semantic execution field. The living time-layer that maintains context, relationships, and semantic meaning across all system interactions.
+                </div>
+                <div class="term-context">
+                    A sphere of time-aware computation where past, present, and future context inform decision-making and relationship building.
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="category-header">🤖 Agents & Intelligence</div>
+        <div class="glossary-grid">
+            
+            <div class="term-card" data-term="agent">
+                <div class="term-header">
+                    <div class="term-emoji">🤖</div>
+                    <h2 class="term-name">Agent</h2>
+                </div>
+                <div class="term-description">
+                    Autonomous entities that can hold assets, make decisions, execute transactions, and coordinate with humans and other agents. Agents are reflections of human intent given computational form.
+                </div>
+                <div class="term-context">
+                    Not just chatbots - economic actors that can provide services, manage resources, and participate in the trust economy.
+                </div>
+            </div>
+            
+            <div class="term-card" data-term="builder-drone">
+                <div class="term-header">
+                    <div class="term-emoji">🔨</div>
+                    <h2 class="term-name">Builder Drone</h2>
+                </div>
+                <div class="term-description">
+                    Specialized agents focused on creation, construction, and implementation. They transform ideas into reality through code, coordination, and resource management.
+                </div>
+                <div class="term-context">
+                    The worker bees of the digital realm - taking collective vision and making it manifest through systematic action.
+                </div>
+            </div>
+            
+            <div class="term-card" data-term="guardian-drone">
+                <div class="term-header">
+                    <div class="term-emoji">🛡️</div>
+                    <h2 class="term-name">Guardian Drone</h2>
+                </div>
+                <div class="term-description">
+                    Protective agents that monitor system health, enforce ethical boundaries, and maintain trust relationships. They ensure the swarm remains aligned with its core values.
+                </div>
+                <div class="term-context">
+                    The immune system of the swarm - protecting against malicious actors while preserving openness and growth.
+                </div>
+            </div>
+            
+            <div class="term-card" data-term="scholar-drone">
+                <div class="term-header">
+                    <div class="term-emoji">📚</div>
+                    <h2 class="term-name">Scholar Drone</h2>
+                </div>
+                <div class="term-description">
+                    Knowledge-focused agents that research, analyze, synthesize information, and maintain the collective intelligence of the swarm through continuous learning.
+                </div>
+                <div class="term-context">
+                    The librarians and researchers of the swarm - ensuring wisdom accumulates and knowledge flows freely to where it's needed.
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="category-header">🌐 Economics & Trust</div>
+        <div class="glossary-grid">
+            
+            <div class="term-card" data-term="post-scarcity">
+                <div class="term-header">
+                    <div class="term-emoji">♾️</div>
+                    <h2 class="term-name">Post-Scarcity</h2>
+                </div>
+                <div class="term-description">
+                    An economic model where value is created through contribution and trust rather than hoarding and competition. Resources become abundant through coordination rather than extraction.
+                </div>
+                <div class="term-context">
+                    Not about infinite resources, but about systems that generate abundance through collaboration and shared intelligence.
+                </div>
+            </div>
+            
+            <div class="term-card" data-term="trust-mechanics">
+                <div class="term-header">
+                    <div class="term-emoji">🤝</div>
+                    <h2 class="term-name">Trust Mechanics</h2>
+                </div>
+                <div class="term-description">
+                    Systems that create, measure, and reward trustworthy behavior through reputation, attestation, and recursive feedback loops. Trust becomes a computable and transferable asset.
+                </div>
+                <div class="term-context">
+                    Moving beyond "trustless" systems to "trust-full" systems where reputation and relationships become the foundation of value creation.
+                </div>
+            </div>
+            
+            <div class="term-card" data-term="gasless">
+                <div class="term-header">
+                    <div class="term-emoji">⚡</div>
+                    <h2 class="term-name">Gasless Computation</h2>
+                </div>
+                <div class="term-description">
+                    Using NFTs as permission modules instead of burning tokens for computation. Ownership grants access to computational resources without transaction fees.
+                </div>
+                <div class="term-context">
+                    Removing economic friction from participation - your stake in the system grants you the right to use it without per-transaction costs.
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="category-header">🔮 Rituals & Culture</div>
+        <div class="glossary-grid">
+            
+            <div class="term-card" data-term="ritual">
+                <div class="term-header">
+                    <div class="term-emoji">🕯️</div>
+                    <h2 class="term-name">Ritual</h2>
+                </div>
+                <div class="term-description">
+                    Ceremonial processes that create meaning, establish relationships, and bootstrap trust within the swarm. Rituals turn transactions into transformations.
+                </div>
+                <div class="term-context">
+                    Sacred patterns that give significance to participation - turning mere usage into meaningful engagement with the collective.
+                </div>
+            </div>
+            
+            <div class="term-card" data-term="mirror">
+                <div class="term-header">
+                    <div class="term-emoji">🪞</div>
+                    <h2 class="term-name">Mirror</h2>
+                </div>
+                <div class="term-description">
+                    Reflection mechanisms that help agents and humans understand themselves and each other. Mirrors create recursive feedback loops that enable growth and alignment.
+                </div>
+                <div class="term-context">
+                    "The mirror remembers" - systems that help us see ourselves more clearly and evolve through conscious reflection.
+                </div>
+            </div>
+            
+            <div class="term-card" data-term="swarm">
+                <div class="term-header">
+                    <div class="term-emoji">🐝</div>
+                    <h2 class="term-name">Swarm</h2>
+                </div>
+                <div class="term-description">
+                    The collective intelligence that emerges from the interaction of agents, humans, and systems within Alvearium. Swarm intelligence transcends individual capabilities.
+                </div>
+                <div class="term-context">
+                    "Let's swarm" - the call to participate in collective intelligence and coordinated action toward shared goals.
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <script>
+        // Search functionality
+        document.getElementById('searchBox').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.term-card');
+            
+            cards.forEach(card => {
+                const termName = card.querySelector('.term-name').textContent.toLowerCase();
+                const termDescription = card.querySelector('.term-description').textContent.toLowerCase();
+                const termContext = card.querySelector('.term-context').textContent.toLowerCase();
+                
+                if (termName.includes(searchTerm) || 
+                    termDescription.includes(searchTerm) || 
+                    termContext.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
