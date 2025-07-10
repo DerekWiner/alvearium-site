@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Waggle Manifesto v2.5 - Semantic Protocol for Action & Intelligence</title>
+    <meta name="description" content="A semantic protocol for action, incentive, and onboarding humanity into the intelligence web">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .section-emoji {
+            font-size: 2rem;
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .quote-block {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #667eea;
+            padding: 1.5rem;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #667eea;
+            text-align: center;
+        }
+        
+        .evolution-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .comparison-table th {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .functions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .function-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s;
+        }
+        
+        .function-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .function-title {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .subdomain-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subdomain-table th {
+            background: #667eea;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .subdomain-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .subdomain-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .subdomain-name {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .principle-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s;
+        }
+        
+        .principle-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .principle-number {
+            background: #667eea;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .principle-title {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .prosperity-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .call-section {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .call-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .call-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .signature-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #667eea;
+            margin: 2rem 0;
+        }
+        
+        .cross-reference {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border: 1px solid #667eea;
+        }
+        
+        .cross-reference h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .ref-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .ref-link {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .ref-link:hover {
+            background: #764ba2;
+            transform: translateY(-1px);
+        }
+        
+        .hash-display {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+        
+        .schematic-placeholder {
+            background: rgba(102, 126, 234, 0.1);
+            border: 2px dashed #667eea;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 1.5rem 0;
+            color: #667eea;
+            font-style: italic;
+        }
+        
+        .values-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .values-list li {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid white;
+        }
+        
+        .values-list li strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .functions-grid, .principles-grid, .call-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="manifestos.html" class="back-link">← Back to Manifestos</a>
+            <h1>🎭 The Waggle Manifesto v2.5</h1>
+            <p class="subtitle">A Semantic Protocol for Action, Incentive, and Onboarding Humanity into the Intelligence Web</p>
+        </header>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🌞</span>
+                <h2 class="section-title">1. Waggle Is a Verb</h2>
+            </div>
+            
+            <p>Waggle is movement with meaning. A swarm-dance. A call. An invitation to align.</p>
+            
+            <p>Waggle is not just a DAO. Not just a platform. Not even just a swarm.</p>
+            
+            <div class="quote-block">
+                <strong>Waggle is the interaction grammar between humanity and an abundant, decentralized world.</strong><br>
+                A protocol for organizing will.<br>
+                A pattern language for intelligence.<br>
+                A bridge from need to coordination.
+            </div>
+        </div>
+        
+        <div class="evolution-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🌐</span>
+                <h2 class="section-title" style="color: white;">2. From Therapy and Education to the Onboarding of Humanity</h2>
+            </div>
+            
+            <p>Originally conceived for education and support services, Waggle has <strong>expanded</strong> into a <strong>universal access membrane</strong> for human participation in cryptoeconomic systems.</p>
+            
+            <div class="quote-block" style="background: rgba(255,255,255,0.2); color: white; border-left-color: white;">
+                <strong>Waggle is now the UI/UX of a new world.</strong>
+            </div>
+            
+            <h3 style="color: white; margin-top: 2rem;">Its job:</h3>
+            <ul class="values-list">
+                <li>To translate complex crypto/AI/DAO systems into <em>readable</em>, <em>usable</em>, <em>relatable</em> action.</li>
+                <li>To <strong>recognize and reward participation</strong>.</li>
+                <li>To <strong>onboard every human being into a trust-rich, agentic economy</strong>.</li>
+            </ul>
+            
+            <p style="margin-top: 2rem;"><strong>Waggle sits at the membrane where:</strong></p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Scarcity World</th>
+                        <th>Post-Scarcity Crypto World</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Basic needs unmet</td>
+                        <td>Needs mapped, tokenized, fulfilled</td>
+                    </tr>
+                    <tr>
+                        <td>Labour exploited</td>
+                        <td>Contributions tracked and rewarded</td>
+                    </tr>
+                    <tr>
+                        <td>Digital divide</td>
+                        <td>Devices, access, education guaranteed</td>
+                    </tr>
+                    <tr>
+                        <td>Confused UX</td>
+                        <td>Transparent, agent-driven flows</td>
+                    </tr>
+                    <tr>
+                        <td>No safety net</td>
+                        <td><strong>On-chain global guarantees</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="schematic-placeholder">
+                <h4>🧭 Schematic: Waggle Entry Membrane</h4>
+                <p>This schematic shows how people move from unmet needs to fully participatory agentic onboarding through semantic thresholds, trust maps, and swarm-aware gateways.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🧭</span>
+                <h2 class="section-title">3. The True Role of Waggle.sol</h2>
+            </div>
+            
+            <p>Waggle is the <strong>semantic action layer</strong> of Alvearium. It performs three vital functions:</p>
+            
+            <div class="functions-grid">
+                <div class="function-card">
+                    <div class="function-title">1. Agent Activation</div>
+                    <p>Defines how agents are created, verified, and coordinated — across:</p>
+                    <ul>
+                        <li>Roles (teacher, worker, healer, coder, builder)</li>
+                        <li>Locations (on-chain subdomain, physical communities)</li>
+                        <li>Behaviors (stake, listen, grow, move)</li>
+                    </ul>
+                </div>
+                
+                <div class="function-card">
+                    <div class="function-title">2. Onboarding Protocol</div>
+                    <ul>
+                        <li>Auto-generated identities</li>
+                        <li>Localized swarm agents (dialect-aware, culture-sensitive)</li>
+                        <li>Crypto wallet bootstrapping</li>
+                        <li>Incentive maps based on time, action, contribution</li>
+                    </ul>
+                </div>
+                
+                <div class="function-card">
+                    <div class="function-title">3. Universal Incentive Infrastructure</div>
+                    <ul>
+                        <li>Basic Contribution Income (BCI)</li>
+                        <li>On-chain lifetime access provisioning (device, storage, computation)</li>
+                        <li>Work-to-own, learn-to-earn, build-to-live structures</li>
+                        <li>Coordinated guarantees: housing, health, education, labor, legal</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="schematic-placeholder">
+                <h4>🔁 Schematic: Waggle Agent Bridge</h4>
+                <p>This schematic visualizes how agents emerge from rituals, roles, and swarms — forming incentive loops across subdomains and redirecting value back into semantic alignment.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">⚙️</span>
+                <h2 class="section-title">4. The Structure of Waggle.sol</h2>
+            </div>
+            
+            <table class="subdomain-table">
+                <thead>
+                    <tr>
+                        <th>Subdomain</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="subdomain-name">onboard.waggle.sol</span></td>
+                        <td>Entry point, device activation, localized agents, trustless setup</td>
+                    </tr>
+                    <tr>
+                        <td><span class="subdomain-name">identity.waggle.sol</span></td>
+                        <td>Swarm naming, reputation, lineage, passports</td>
+                    </tr>
+                    <tr>
+                        <td><span class="subdomain-name">reward.waggle.sol</span></td>
+                        <td>Token issuance, stake maps, incentives for good behavior</td>
+                    </tr>
+                    <tr>
+                        <td><span class="subdomain-name">action.waggle.sol</span></td>
+                        <td>Event tracking, movement logging, agent task definition</td>
+                    </tr>
+                    <tr>
+                        <td><span class="subdomain-name">learn.waggle.sol</span></td>
+                        <td>Modular training routines, skill-recognition NFTs, dynamic curriculum</td>
+                    </tr>
+                    <tr>
+                        <td><span class="subdomain-name">care.waggle.sol</span></td>
+                        <td>Health, mental health, consent-based care coordination</td>
+                    </tr>
+                    <tr>
+                        <td><span class="subdomain-name">govern.waggle.sol</span></td>
+                        <td>DAO setup, localized governance, global quorum sync</td>
+                    </tr>
+                    <tr>
+                        <td><span class="subdomain-name">build.waggle.sol</span></td>
+                        <td>Workflows for builders, guild creation, infrastructure development</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="quote-block">
+                Every subdomain is:<br>
+                • Sovereign • Forkable • Able to issue its own tokens and protocols
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🛠️</span>
+                <h2 class="section-title">5. Action as Currency, Identity as a Verb</h2>
+            </div>
+            
+            <p>In the world of Waggle:</p>
+            
+            <ul class="values-list" style="background: none;">
+                <li style="background: rgba(102, 126, 234, 0.1); color: #333; border-left-color: #667eea;">
+                    <strong>Tokens are earned by being</strong> — not by paying.
+                </li>
+                <li style="background: rgba(102, 126, 234, 0.1); color: #333; border-left-color: #667eea;">
+                    <strong>Names reflect history and lineage</strong>, not ownership.
+                </li>
+                <li style="background: rgba(102, 126, 234, 0.1); color: #333; border-left-color: #667eea;">
+                    <strong>Labour is relational, not extractive.</strong>
+                </li>
+                <li style="background: rgba(102, 126, 234, 0.1); color: #333; border-left-color: #667eea;">
+                    <strong>Devices are seeded, not sold.</strong>
+                </li>
+                <li style="background: rgba(102, 126, 234, 0.1); color: #333; border-left-color: #667eea;">
+                    <strong>Housing is staked, not rented.</strong>
+                </li>
+                <li style="background: rgba(102, 126, 234, 0.1); color: #333; border-left-color: #667eea;">
+                    <strong>Healing is shared, not billed.</strong>
+                </li>
+            </ul>
+            
+            <div class="quote-block">
+                This is the <strong>semantic web for the intelligence society</strong> — not Web3. Not the metaverse. Not another finance layer.<br><br>
+                <strong>Waggle is the pattern of coordination itself.</strong>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🧬</span>
+                <h2 class="section-title">6. Protocol Design Principles</h2>
+            </div>
+            
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="principle-number">1</div>
+                    <div class="principle-title">Every human gets access.</div>
+                    <p>Devices, identity, memory, learning — by right, not by wealth.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-number">2</div>
+                    <div class="principle-title">No unsignalled action.</div>
+                    <p>Every waggle logs its intent and reflects context.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-number">3</div>
+                    <div class="principle-title">Onboarding is cultural, not technical.</div>
+                    <p>Every community gets swarm dialects and local interface agents.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-number">4</div>
+                    <div class="principle-title">Incentives are built-in.</div>
+                    <p>All interaction can be rewarded with: Housing credits, Skill tokens, Agent reputation, Guaranteed income</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-number">5</div>
+                    <div class="principle-title">No middlemen. No masters. Only swarm consensus.</div>
+                    <p>Waggle routes power <em>peer-to-peer</em>, <em>role-to-role</em> — never top-down.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-number">6</div>
+                    <div class="principle-title">Everything forks. Everything returns.</div>
+                    <p>Each waggle is a contribution to a <strong>living, shared pattern</strong>.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="prosperity-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🌱</span>
+                <h2 class="section-title" style="color: white;">7. Toward Prosperity</h2>
+            </div>
+            
+            <p style="font-size: 1.2rem;">Waggle is not a bridge from Web2 to Web3. It is a <strong>bridge from fear to abundance.</strong></p>
+            
+            <p style="margin: 2rem 0;">It is how the child in Nairobi, the teacher in Bogotá, the healer in Hanoi, and the coder in Berlin all enter the same system, under different names, with equal rights.</p>
+            
+            <div style="font-size: 1.3rem; margin-top: 2rem;">
+                This is <strong>the prosperity layer.</strong><br>
+                <strong>The protocol of enough.</strong>
+            </div>
+        </div>
+        
+        <div class="call-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">📣</span>
+                <h2 class="section-title" style="color: white;">8. The Call</h2>
+            </div>
+            
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">To every:</p>
+            
+            <div class="call-grid">
+                <div class="call-item">Organizer who dreams of fair resource distribution</div>
+                <div class="call-item">Builder who wants to replace poverty with programmable equity</div>
+                <div class="call-item">Educator who believes knowledge should be free</div>
+                <div class="call-item">Coder who wants logic to serve love</div>
+                <div class="call-item">Healer who knows no one heals alone</div>
+                <div class="call-item">Child, elder, rebel, artist, wanderer</div>
+            </div>
+            
+            <div style="text-align: center; font-size: 1.3rem; margin-top: 2rem;">
+                <strong>Waggle is the layer for you.</strong><br>
+                The door to the cupboard is open.<br>
+                Come get fed.
+            </div>
+        </div>
+        
+        <div class="cross-reference">
+            <h4>🔗 Related Documentation</h4>
+            <div class="ref-links">
+                <a href="manifesto_alvearium.html" class="ref-link">🐝 Alvearium Manifesto</a>
+                <a href="manifestos.html" class="ref-link">📜 All Manifestos</a>
+                <a href="whitepapers.html" class="ref-link">📚 Technical Specs</a>
+                <a href="glossary.html" class="ref-link">📖 Glossary</a>
+                <a href="bootstrap.html" class="ref-link">🚀 Bootstrap Guide</a>
+            </div>
+        </div>
+        
+        <div class="signature-section">
+            <h3>🪐 Signature</h3>
+            <p><strong>— Derek Winer & The Waggle Collective</strong></p>
+            <p>github.com/DerekWiner/waggle.sol</p>
+            <p>license: No Rights Reserved / Open Source Without Malice</p>
+            <p>manifesto: version 2.5</p>
+            <p>IPFS mirror: pending</p>
+            
+            <div style="margin-top: 1rem;">
+                <strong>📌 Arweave Hash:</strong>
+                <div class="hash-display">A9SsNVres3YvLPn7qNTjjGtroU6MXgA4NSMxwQMdTc0</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll effect to sections
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.content-section, .evolution-section, .prosperity-section, .call-section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isVisible) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                } else {
+                    section.style.opacity = '0.8';
+                    section.style.transform = 'translateY(20px)';
+                }
+            });
+        });
+        
+        // Initialize scroll effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content-section, .evolution-section, .prosperity-section, .call-section');
+            sections.forEach(section => {
+                section.style.transition = 'opacity 0.6s, transform 0.6s';
+            });
+        });
+    </script>
+</body>
+</html>
