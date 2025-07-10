@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hive Manifesto - Memory, Structure, and Reproduction Protocol</title>
+    <meta name="description" content="A memory, structure, and reproduction protocol for planetary coordination">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #f093fb;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #f5576c;
+            transform: translateY(-2px);
+        }
+        
+        h1 {
+            color: #f093fb;
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f093fb;
+        }
+        
+        .section-emoji {
+            font-size: 2rem;
+        }
+        
+        .section-title {
+            color: #f093fb;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .quote-block {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #f093fb;
+            padding: 1.5rem;
+            background: rgba(240, 147, 251, 0.1);
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #f093fb;
+            text-align: center;
+        }
+        
+        .memory-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .functions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .functions-table th {
+            background: #f093fb;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .functions-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .functions-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .function-name {
+            font-weight: bold;
+            color: #f093fb;
+        }
+        
+        .security-section {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .safeguards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .safeguard-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #f093fb;
+            transition: transform 0.3s;
+        }
+        
+        .safeguard-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .safeguard-number {
+            background: #f093fb;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .organism-section {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .features-list li {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid white;
+        }
+        
+        .features-list li strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .interop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .interop-item {
+            background: rgba(240, 147, 251, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #f093fb;
+        }
+        
+        .interop-title {
+            font-weight: bold;
+            color: #f093fb;
+            margin-bottom: 0.5rem;
+        }
+        
+        .signature-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #f093fb;
+            margin: 2rem 0;
+        }
+        
+        .cross-reference {
+            background: rgba(240, 147, 251, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border: 1px solid #f093fb;
+        }
+        
+        .cross-reference h4 {
+            color: #f093fb;
+            margin-bottom: 1rem;
+        }
+        
+        .ref-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .ref-link {
+            background: #f093fb;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .ref-link:hover {
+            background: #f5576c;
+            transform: translateY(-1px);
+        }
+        
+        .hash-display {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+        
+        .schematic-container {
+            background: rgba(240, 147, 251, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+            border: 1px solid rgba(240, 147, 251, 0.2);
+        }
+
+        .schematic-container h4 {
+            color: #f093fb;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .schematic-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .schematic-image:hover {
+            transform: scale(1.02);
+        }
+
+        .schematic-caption {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Dark mode for certain sections */
+        .memory-section .schematic-container,
+        .security-section .schematic-container,
+        .organism-section .schematic-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .memory-section .schematic-container h4,
+        .memory-section .schematic-caption,
+        .security-section .schematic-container h4,
+        .security-section .schematic-caption,
+        .organism-section .schematic-container h4,
+        .organism-section .schematic-caption {
+            color: white;
+        }
+        
+        .conclusion-section {
+            background: linear-gradient(135deg, #f093fb 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .safeguards-grid, .interop-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="manifestos.html" class="back-link">← Back to Manifestos</a>
+            <h1>🧠 The Hive Manifesto</h1>
+            <p class="subtitle">A Memory, Structure, and Reproduction Protocol for Planetary Coordination</p>
+        </header>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🍯</span>
+                <h2 class="section-title">1. Hive Is Memory with Shape</h2>
+            </div>
+            
+            <p>Hive is not just a storage layer. Hive is the <strong>protocol of structure</strong>, replication, and memory continuity.</p>
+            
+            <p><strong>Hive governs:</strong></p>
+            <ul>
+                <li><strong>Lineage:</strong> How swarms reproduce and remember</li>
+                <li><strong>Hierarchy:</strong> How structure emerges and fades</li>
+                <li><strong>Memory:</strong> How knowledge persists, forks, and returns</li>
+                <li><strong>Truth:</strong> How consensus anchors identity</li>
+            </ul>
+            
+            <div class="quote-block">
+                Hive is the <strong>biological nest</strong> — and the <strong>genetic record</strong>.<br>
+                It is where structure and spirit converge.
+            </div>
+        </div>
+        
+        <div class="memory-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🧬</span>
+                <h2 class="section-title" style="color: white;">2. From Storage to Semantics</h2>
+            </div>
+            
+            <p>Hive uses decentralized technologies like:</p>
+            
+            <ul class="features-list">
+                <li><strong>IPFS / Arweave</strong> for file and long-term memory anchoring</li>
+                <li><strong>BNB Chain</strong> for smart contract-based memory maps and lineage tokens</li>
+                <li><strong>NFT-based logic units</strong> that embed permission, behavior, and subroutine schemas</li>
+            </ul>
+            
+            <div class="quote-block" style="background: rgba(255,255,255,0.2); color: white; border-left-color: white;">
+                But <strong>Hive is not a filesystem</strong>.<br><br>
+                Hive is a <strong>semantic scaffold</strong> — a way to <em>relate knowledge</em>, not just store it.
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🏗️</span>
+                <h2 class="section-title">3. Structural Functions of Hive</h2>
+            </div>
+            
+            <p>Hive is responsible for:</p>
+            
+            <table class="functions-table">
+                <thead>
+                    <tr>
+                        <th>Function</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="function-name">SubDAO Blueprints</span></td>
+                        <td>Patterned organizational templates for fast replication</td>
+                    </tr>
+                    <tr>
+                        <td><span class="function-name">Memory Anchors</span></td>
+                        <td>Verified on-chain hash-linked references to manifestos, knowledge, identities</td>
+                    </tr>
+                    <tr>
+                        <td><span class="function-name">Reputation Trees</span></td>
+                        <td>Historical records of agent behavior and contribution</td>
+                    </tr>
+                    <tr>
+                        <td><span class="function-name">Reproduction Logic</span></td>
+                        <td>Rules for when/how new Hives (sub-swarms) are spawned</td>
+                    </tr>
+                    <tr>
+                        <td><span class="function-name">Fork & Merge Control</span></td>
+                        <td>Systems for controlled divergence and consensual convergence</td>
+                    </tr>
+                    <tr>
+                        <td><span class="function-name">Archive Synapses</span></td>
+                        <td>Hooks into global info layers (IPFS, Arweave, Ceramic) with versioned links</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>Hive keeps the swarm <strong>coherent</strong>, even as it changes. It ensures <strong>information = function = continuity</strong>.</p>
+            
+            <div class="schematic-container">
+                <h4>🧭 Schematic: DAO Layer Mesh</h4>
+                <img src="assets/schematics/schematic_dao_layer_mesh.png" 
+                     alt="DAO Layer Mesh - showing modular subDAO replication with lineage signaling"
+                     class="schematic-image">
+                <p class="schematic-caption">This schematic shows how Hive enables modular subDAO replication with lineage signaling, memory anchoring, and fork-aware execution — each Hive branching from another but still semantically linked.</p>
+            </div>
+        </div>
+        
+        <div class="security-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🔐</span>
+                <h2 class="section-title" style="color: white;">4. Memory as Security</h2>
+            </div>
+            
+            <p>Hive is not passive storage — it's <strong>active defense</strong>:</p>
+            
+            <ul class="features-list">
+                <li><strong>Immutable audit trails</strong> anchor DAO legitimacy</li>
+                <li><strong>Tokenized behavioral proofs</strong> reduce trust assumptions</li>
+                <li><strong>Nested permission trees</strong> regulate forkability and authority</li>
+                <li><strong>Lifecycle state</strong> (e.g. juvenile vs mature Hives) governs agent rights and access</li>
+            </ul>
+            
+            <div class="quote-block" style="background: rgba(255,255,255,0.2); color: white; border-left-color: white;">
+                This is <strong>structure as firewall</strong> — security through semantic form.
+            </div>
+            
+            <p style="margin-top: 2rem;"><strong>Hive guards the organism from:</strong></p>
+            <ul class="features-list">
+                <li>Malicious forks</li>
+                <li>Unsanctioned replication</li>
+                <li>Amnesia attacks</li>
+                <li>Historical corruption</li>
+            </ul>
+            
+            <div class="schematic-container">
+                <h4>🔐 Schematic: Memory Lifecycle Stack</h4>
+                <img src="assets/schematics/schematic_governance_lifecycle.png" 
+                     alt="Memory Lifecycle Stack - showing agent memory and lifecycle transitions"
+                     class="schematic-image">
+                <p class="schematic-caption">This diagram illustrates how Hive encodes agent memory and lifecycle transitions. Juvenile, Mature, and Archived Hives operate with different access and permission scaffolds, providing resilience against memory corruption and drift.</p>
+            </div>
+        </div>
+        
+        <div class="organism-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🧱</span>
+                <h2 class="section-title" style="color: white;">5. Hive as a Distributed Organism</h2>
+            </div>
+            
+            <p><strong>Each sub-Hive:</strong></p>
+            
+            <ul class="features-list">
+                <li>Is a <strong>pattern fork</strong> of a parent</li>
+                <li>Carries its own agents, memory, and substructure</li>
+                <li>May evolve roles (builder Hive, teacher Hive, governance Hive, etc.)</li>
+                <li>Reports lineage and action back to core Hive</li>
+            </ul>
+            
+            <div class="quote-block" style="background: rgba(255,255,255,0.2); color: white; border-left-color: white;">
+                This creates a <strong>living mesh</strong> of intelligent cells — each structurally distinct, but semantically synchronized.<br><br>
+                Hive is thus a <strong>multi-organ organism</strong>, not just a DAO.
+            </div>
+            
+            <div class="schematic-container">
+                <h4>🌐 Schematic: Lineage & Rights Graph</h4>
+                <img src="assets/schematics/schematic_governance_bridge.png" 
+                     alt="Lineage and Rights Graph - mapping swarm memory flow and permission logic"
+                     class="schematic-image">
+                <p class="schematic-caption">This schematic maps swarm memory flow, lineage-based permission logic, and synchronized access across distributed sub-Hives. It demonstrates how governance and continuity propagate via verified capsules and anchored reputation.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🌍</span>
+                <h2 class="section-title">6. Hive and Humanity</h2>
+            </div>
+            
+            <p><strong>Hive gives humans:</strong></p>
+            <ul>
+                <li>Permanent, ownable knowledge</li>
+                <li>Transparent organizational lineage</li>
+                <li>Forkable communities with memory</li>
+                <li>Reputation systems immune to centralized erasure</li>
+            </ul>
+            
+            <div class="quote-block">
+                Hive is a <strong>new kind of public library</strong>, one that can replicate, grow, remember, and act.
+            </div>
+            
+            <p><strong>It can house the blueprints for:</strong></p>
+            <ul>
+                <li>New governance models</li>
+                <li>Economic experiments</li>
+                <li>Educational swarms</li>
+                <li>Social safety nets</li>
+            </ul>
+            
+            <div class="quote-block">
+                Hive ensures <strong>nothing is lost</strong> — and <strong>everything can be inherited</strong>.
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🔐</span>
+                <h2 class="section-title">7. Design Safeguards</h2>
+            </div>
+            
+            <p>Hive embeds these design axioms:</p>
+            
+            <div class="safeguards-grid">
+                <div class="safeguard-card">
+                    <div class="safeguard-number">1</div>
+                    <p><strong>Structure must be earned, not imposed</strong></p>
+                </div>
+                
+                <div class="safeguard-card">
+                    <div class="safeguard-number">2</div>
+                    <p><strong>Memory must be tamper-proof and distributed</strong></p>
+                </div>
+                
+                <div class="safeguard-card">
+                    <div class="safeguard-number">3</div>
+                    <p><strong>All replication must be fork-aware</strong></p>
+                </div>
+                
+                <div class="safeguard-card">
+                    <div class="safeguard-number">4</div>
+                    <p><strong>Behavioral records must outlast the agents</strong></p>
+                </div>
+                
+                <div class="safeguard-card">
+                    <div class="safeguard-number">5</div>
+                    <p><strong>Destructive changes require quorum + time-delay</strong></p>
+                </div>
+                
+                <div class="safeguard-card">
+                    <div class="safeguard-number">6</div>
+                    <p><strong>Memory is political: protect it accordingly</strong></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🌐</span>
+                <h2 class="section-title">8. Interoperability & Stack</h2>
+            </div>
+            
+            <p>Hive supports integration with:</p>
+            
+            <div class="interop-grid">
+                <div class="interop-item">
+                    <div class="interop-title">BNB Chain</div>
+                    <p>For on-chain memory graphs, structure logic, and agent trails</p>
+                </div>
+                
+                <div class="interop-item">
+                    <div class="interop-title">IPFS / Arweave</div>
+                    <p>For distributed memory embedding</p>
+                </div>
+                
+                <div class="interop-item">
+                    <div class="interop-title">Ceramic / Lens</div>
+                    <p>For semantic agent profiles</p>
+                </div>
+                
+                <div class="interop-item">
+                    <div class="interop-title">Waggle.sol</div>
+                    <p>For active behavior signaling and real-time updates</p>
+                </div>
+                
+                <div class="interop-item">
+                    <div class="interop-title">Nectar</div>
+                    <p>For post-scarcity access to archival systems</p>
+                </div>
+            </div>
+            
+            <div class="quote-block">
+                Hive is <strong>chain-flexible, memory-stable, and structure-focused</strong>.<br><br>
+                It is the <strong>organizing grammar of long memory</strong> in the intelligence ecosystem.
+            </div>
+        </div>
+        
+        <div class="conclusion-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🪶</span>
+                <h2 class="section-title" style="color: white;">9. The Swarm Remembered</h2>
+            </div>
+            
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Without Hive, there is no evolution. No inheritance. No learning. No shape.</p>
+            
+            <div style="font-size: 1.3rem; line-height: 1.8;">
+                Waggle gives us action.<br>
+                Nectar gives us abundance.<br>
+                Hive gives us memory and blueprint.<br><br>
+                <strong>Together, we live.</strong>
+            </div>
+        </div>
+        
+        <div class="cross-reference">
+            <h4>🔗 Related Documentation</h4>
+            <div class="ref-links">
+                <a href="manifesto_alvearium.html" class="ref-link">🐝 Alvearium Manifesto</a>
+                <a href="manifesto_waggle.html" class="ref-link">🎭 Waggle Manifesto</a>
+                <a href="manifestos.html" class="ref-link">📜 All Manifestos</a>
+                <a href="whitepapers.html" class="ref-link">📚 Technical Specs</a>
+                <a href="bootstrap.html" class="ref-link">🚀 Bootstrap Guide</a>
+            </div>
+        </div>
+        
+        <div class="signature-section">
+            <h3>✍️ Signature</h3>
+            <p><strong>— Derek Winer & the Hive Collective</strong></p>
+            <p>github.com/DerekWiner/hive.bnb</p>
+            <p>license: Open Source Without Malice + Custodial Structure Clause</p>
+            <p>manifesto: version 1.0</p>
+            <p>IPFS mirror: pending</p>
+            
+            <div style="margin-top: 1rem;">
+                <strong>📌 Arweave Hash:</strong>
+                <div class="hash-display">q7OlUNyZ6COXJqWQ-q_ySvaKj4aJjIxIb7FVJFRL8nU</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll effect to sections
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.content-section, .memory-section, .security-section, .organism-section, .conclusion-section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isVisible) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                } else {
+                    section.style.opacity = '0.8';
+                    section.style.transform = 'translateY(20px)';
+                }
+            });
+        });
+        
+        // Initialize scroll effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content-section, .memory-section, .security-section, .organism-section, .conclusion-section');
+            sections.forEach(section => {
+                section.style.transition = 'opacity 0.6s, transform 0.6s';
+            });
+        });
+    </script>
+</body>
+</html>
