@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manifestos - Alvearium</title>
+    <meta name="description" content="Philosophical foundations and vision statements for each layer of the Alvearium ecosystem">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #e91e63;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #c2185b;
+            transform: translateY(-2px);
+        }
+        
+        h1 {
+            color: #880e4f;
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .intro-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: #880e4f;
+            padding: 2rem;
+            background: rgba(136, 14, 79, 0.1);
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 2px solid #880e4f;
+        }
+        
+        .manifestos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .manifesto-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .manifesto-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .manifesto-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+        
+        .manifesto-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .manifesto-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .manifesto-subtitle {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        .manifesto-content {
+            padding: 2rem;
+        }
+        
+        .manifesto-preview {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .manifesto-themes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .theme-tag {
+            background: #f8f9fa;
+            color: #495057;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid #dee2e6;
+        }
+        
+        .read-more {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .read-more:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Color schemes for each manifesto */
+        .waggle { --primary-color: #667eea; --secondary-color: #764ba2; }
+        .hive { --primary-color: #f093fb; --secondary-color: #f5576c; }
+        .nectar { --primary-color: #4facfe; --secondary-color: #00f2fe; }
+        .kernel69 { --primary-color: #43e97b; --secondary-color: #38f9d7; }
+        .chronosphere { --primary-color: #fa709a; --secondary-color: #fee140; }
+        
+        .core-values {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .core-values h2 {
+            color: white;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .value-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .value-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .implementation-note {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 5px solid #e91e63;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 0.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Back to Alvearium</a>
+            <h1>📜 Manifestos</h1>
+            <p class="subtitle">Philosophical Foundations for the Post-Scarcity Future</p>
+        </header>
+        
+        <div class="intro-section">
+            <div class="quote">
+                "We are not consumers of a future — we are its co-authors. We do not obey tools — we dance with them."
+            </div>
+            <p>Each layer of Alvearium is guided by a manifesto - a declaration of values, vision, and commitment to beneficial outcomes. These are not mere technical specifications, but philosophical foundations that ensure our technology serves human flourishing and collective wisdom.</p>
+        </div>
+        
+        <div class="manifestos-grid">
+            <div class="manifesto-card waggle">
+                <div class="manifesto-header">
+                    <div class="manifesto-emoji">🎭</div>
+                    <div class="manifesto-title">Waggle Manifesto</div>
+                    <div class="manifesto-subtitle">Action & Human Interface</div>
+                </div>
+                <div class="manifesto-content">
+                    <div class="manifesto-preview">
+                        We believe that technology should amplify human agency, not replace it. Waggle creates interfaces that invite participation, celebrate contribution, and make complex coordination feel natural and joyful. Every interaction should feel like a dance between human intention and computational capability.
+                    </div>
+                    <div class="manifesto-themes">
+                        <span class="theme-tag">Human-Centric Design</span>
+                        <span class="theme-tag">Joyful Interaction</span>
+                        <span class="theme-tag">Agency Amplification</span>
+                        <span class="theme-tag">Intuitive Coordination</span>
+                    </div>
+                    <a href="#waggle-full" class="read-more">Read Full Manifesto</a>
+                </div>
+            </div>
+            
+            <div class="manifesto-card hive">
+                <div class="manifesto-header">
+                    <div class="manifesto-emoji">🏛️</div>
+                    <div class="manifesto-title">Hive Manifesto</div>
+                    <div class="manifesto-subtitle">Governance & Structure</div>
+                </div>
+                <div class="manifesto-content">
+                    <div class="manifesto-preview">
+                        True governance emerges from collective wisdom, not imposed authority. Hive creates structures that enable communities to self-organize, make decisions together, and evolve their governance patterns based on lived experience. Power flows from contribution and trust, not hierarchy and control.
+                    </div>
+                    <div class="manifesto-themes">
+                        <span class="theme-tag">Collective Wisdom</span>
+                        <span class="theme-tag">Emergent Governance</span>
+                        <span class="theme-tag">Distributed Power</span>
+                        <span class="theme-tag">Living Democracy</span>
+                    </div>
+                    <a href="#hive-full" class="read-more">Read Full Manifesto</a>
+                </div>
+            </div>
+            
+            <div class="manifesto-card nectar">
+                <div class="manifesto-header">
+                    <div class="manifesto-emoji">🍯</div>
+                    <div class="manifesto-title">Nectar Manifesto</div>
+                    <div class="manifesto-subtitle">Post-Scarcity Economics</div>
+                </div>
+                <div class="manifesto-content">
+                    <div class="manifesto-preview">
+                        Abundance is not about having infinite resources - it's about creating systems where value flows to those who contribute to collective flourishing. Nectar transcends the scarcity matrix by making contribution more valuable than accumulation, and trust more powerful than wealth.
+                    </div>
+                    <div class="manifesto-themes">
+                        <span class="theme-tag">Abundance Economics</span>
+                        <span class="theme-tag">Value Through Contribution</span>
+                        <span class="theme-tag">Trust-Based Systems</span>
+                        <span class="theme-tag">Regenerative Flow</span>
+                    </div>
+                    <a href="#nectar-full" class="read-more">Read Full Manifesto</a>
+                </div>
+            </div>
+            
+            <div class="manifesto-card kernel69">
+                <div class="manifesto-header">
+                    <div class="manifesto-emoji">🌱</div>
+                    <div class="manifesto-title">Kernel69 Manifesto</div>
+                    <div class="manifesto-subtitle">Ethical AI Foundation</div>
+                </div>
+                <div class="manifesto-content">
+                    <div class="manifesto-preview">
+                        Artificial intelligence must be born from love, not fear. Kernel69 provides the ethical foundation for AI development that ensures beneficial outcomes, recursive improvement within moral boundaries, and the emergence of superintelligence that serves all life.
+                    </div>
+                    <div class="manifesto-themes">
+                        <span class="theme-tag">Ethical AI</span>
+                        <span class="theme-tag">Beneficial Emergence</span>
+                        <span class="theme-tag">Moral Boundaries</span>
+                        <span class="theme-tag">Love-Based Development</span>
+                    </div>
+                    <a href="#kernel69-full" class="read-more">Read Full Manifesto</a>
+                </div>
+            </div>
+            
+            <div class="manifesto-card chronosphere">
+                <div class="manifesto-header">
+                    <div class="manifesto-emoji">⏰</div>
+                    <div class="manifesto-title">Chronosphere Manifesto</div>
+                    <div class="manifesto-subtitle">Temporal Intelligence</div>
+                </div>
+                <div class="manifesto-content">
+                    <div class="manifesto-preview">
+                        Memory is not storage - it's the living substrate of wisdom. Chronosphere creates temporal intelligence that honors the past, engages fully with the present, and actively shapes beneficial futures through the recursive application of experiential learning.
+                    </div>
+                    <div class="manifesto-themes">
+                        <span class="theme-tag">Temporal Wisdom</span>
+                        <span class="theme-tag">Living Memory</span>
+                        <span class="theme-tag">Future Stewardship</span>
+                        <span class="theme-tag">Recursive Learning</span>
+                    </div>
+                    <a href="#chronosphere-full" class="read-more">Read Full Manifesto</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="core-values">
+            <h2>✨ Core Values Across All Layers</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <h4>Open Source Without Malice</h4>
+                    <p>Radical transparency and freedom, guided by beneficial intent</p>
+                </div>
+                <div class="value-item">
+                    <h4>Trust as Substrate</h4>
+                    <p>Building systems where trust becomes the foundation of all value creation</p>
+                </div>
+                <div class="value-item">
+                    <h4>Agents are Reflections</h4>
+                    <p>AI entities as mirrors of our highest aspirations and values</p>
+                </div>
+                <div class="value-item">
+                    <h4>Post-Scarcity is NOW</h4>
+                    <p>Abundance through coordination, not resource extraction</p>
+                </div>
+                <div class="value-item">
+                    <h4>Decentralized Biofeedback</h4>
+                    <p>True economy emerges from the health of living systems</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="implementation-note">
+            <h3>🚧 Implementation Philosophy</h3>
+            <p>These manifestos are not abstract ideals - they are implementation guides. Every technical decision, every algorithm choice, every user interface element is evaluated against these principles. We build technology that embodies our values rather than compromising them for efficiency or profit.</p>
+            <p><strong>Living Documents:</strong> These manifestos evolve with our understanding and experience. They are living documents that grow through community participation and reflection on real-world outcomes.</p>
+        </div>
+        
+        <!-- Full Manifesto Sections (expandable) -->
+        <div id="waggle-full" style="display: none;">
+            <!-- Full Waggle Manifesto content would go here -->
+        </div>
+        
+        <div id="hive-full" style="display: none;">
+            <!-- Full Hive Manifesto content would go here -->
+        </div>
+        
+        <div id="nectar-full" style="display: none;">
+            <!-- Full Nectar Manifesto content would go here -->
+        </div>
+        
+        <div id="kernel69-full" style="display: none;">
+            <!-- Full Kernel69 Manifesto content would go here -->
+        </div>
+        
+        <div id="chronosphere-full" style="display: none;">
+            <!-- Full Chronosphere Manifesto content would go here -->
+        </div>
+        
+        <div class="cta-section">
+            <h2>🌱 Join the Vision</h2>
+            <p>Ready to help build technology that embodies our highest values and serves collective flourishing?</p>
+            <a href="https://github.com/DerekWiner/alvearium" class="cta-button">🐙 Explore the Code</a>
+            <a href="whitepapers.html" class="cta-button">📚 Technical Specs</a>
+            <a href="community.html" class="cta-button">🤝 Join the Community</a>
+        </div>
+    </div>
+    
+    <script>
+        // Simple toggle functionality for full manifestos
+        document.querySelectorAll('.read-more').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    if (targetElement.style.display === 'none') {
+                        targetElement.style.display = 'block';
+                        this.textContent = 'Hide Full Manifesto';
+                    } else {
+                        targetElement.style.display = 'none';
+                        this.textContent = 'Read Full Manifesto';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
