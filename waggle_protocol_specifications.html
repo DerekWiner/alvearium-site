@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waggle Protocol Specification v2.5 - Technical Documentation</title>
+    <meta name="description" content="Complete technical specification for the Waggle Protocol: Human-Agent Interface Architecture">
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+            margin: 0;
+            padding: 2rem;
+            max-width: 210mm;
+            margin: 0 auto;
+        }
+        
+        .document-header {
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .document-title {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .document-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .document-meta {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .meta-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .meta-label {
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2 {
+            color: #764ba2;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        h3 {
+            color: #555;
+            font-size: 1.2rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+        
+        .toc {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border: 1px solid #dee2e6;
+        }
+        
+        .toc h2 {
+            margin-top: 0;
+            color: #667eea;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 0.5rem;
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc-list li {
+            margin: 0.5rem 0;
+            padding-left: 1rem;
+        }
+        
+        .toc-list li a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .toc-list li a:hover {
+            color: #667eea;
+        }
+        
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .spec-table th {
+            background: #667eea;
+            color: white;
+            padding: 0.8rem;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .spec-table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #dee2e6;
+            vertical-align: top;
+        }
+        
+        .spec-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        
+        .code-header {
+            background: #34495e;
+            color: #ecf0f1;
+            padding: 0.5rem 1rem;
+            border-radius: 5px 5px 0 0;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .api-endpoint {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 5px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .endpoint-method {
+            background: #2196f3;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+        }
+        
+        .parameter-table th {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        
+        .parameter-table td {
+            border: 1px solid #dee2e6;
+            padding: 0.5rem;
+            vertical-align: top;
+        }
+        
+        .note-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-left: 4px solid #fdcb6e;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .warning-box {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-left: 4px solid #dc3545;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .info-box {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-left: 4px solid #28a745;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .sequence-diagram {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .flow-step {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.3rem;
+            font-size: 0.8rem;
+        }
+        
+        .flow-arrow {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin: 0 0.5rem;
+        }
+        
+        .subdomain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .subdomain-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1rem;
+            background: #f8f9fa;
+        }
+        
+        .subdomain-name {
+            font-family: 'Courier New', monospace;
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+        
+        .appendix {
+            margin-top: 3rem;
+            border-top: 2px solid #667eea;
+            padding-top: 2rem;
+        }
+        
+        @media print {
+            body {
+                font-size: 11pt;
+                line-height: 1.4;
+            }
+            
+            .document-header {
+                page-break-after: avoid;
+            }
+            
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+            
+            .code-block, .spec-table, .note-box {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document-header">
+        <div class="document-title">Waggle Protocol Specification</div>
+        <div class="document-subtitle">Human-Agent Interface Architecture</div>
+        <div style="margin-top: 1rem; font-size: 1.1rem; color: #666;">
+            Version 2.5 • Technical Specification Document
+        </div>
+    </div>
+    
+    <div class="document-meta">
+        <div class="meta-grid">
+            <div class="meta-item">
+                <span class="meta-label">Document Version:</span> 2.5
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Protocol Version:</span> 2.5.0
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Last Updated:</span> 2025
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Authors:</span> The Waggle Collective
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">License:</span> Open Source Without Malice
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Repository:</span> github.com/DerekWiner/waggle.sol
+            </div>
+        </div>
+    </div>
+    
+    <div class="toc">
+        <h2>Table of Contents</h2>
+        <ul class="toc-list">
+            <li><a href="#abstract">1. Abstract</a></li>
+            <li><a href="#introduction">2. Introduction</a></li>
+            <li><a href="#architecture">3. System Architecture</a></li>
+            <li><a href="#core-components">4. Core Components</a></li>
+            <li><a href="#subdomain-specs">5. Subdomain Specifications</a></li>
+            <li><a href="#api-reference">6. API Reference</a></li>
+            <li><a href="#onboarding-flows">7. Onboarding Flows</a></li>
+            <li><a href="#agent-interaction">8. Agent Interaction Protocols</a></li>
+            <li><a href="#trust-mechanics">9. Trust Mechanics</a></li>
+            <li><a href="#gasless-implementation">10. Gasless Transaction Implementation</a></li>
+            <li><a href="#security">11. Security Considerations</a></li>
+            <li><a href="#deployment">12. Deployment Guide</a></li>
+            <li><a href="#testing">13. Testing Framework</a></li>
+            <li><a href="#appendices">Appendices</a></li>
+        </ul>
+    </div>
+    
+    <h1 id="abstract">1. Abstract</h1>
+    
+    <p>The Waggle Protocol is a comprehensive human-agent interface architecture that enables seamless interaction between humans and artificial agents within the Alvearium ecosystem. This specification defines the technical implementation of Waggle as the semantic action layer, providing UI/UX for humanity through onboarding, incentives, and interaction mechanisms.</p>
+    
+    <p>Waggle operates as the "nervous system" of Alvearium, translating complex cryptographic, AI, and DAO systems into readable, usable, and relatable actions. The protocol implements gasless transactions, trust-based incentives, and universal onboarding capabilities to bridge the gap between traditional human interfaces and post-scarcity coordination systems.</p>
+    
+    <div class="info-box">
+        <strong>Key Innovation:</strong> Waggle introduces the concept of "semantic transactions" where user interactions carry meaning, context, and trust information alongside computational instructions.
+    </div>
+    
+    <h1 id="introduction">2. Introduction</h1>
+    
+    <h2>2.1 Protocol Vision</h2>
+    
+    <p>Waggle represents a paradigm shift from extractive user interfaces to regenerative interaction systems. Rather than viewing users as data sources or attention consumers, Waggle treats every human as a valuable contributor to a collective intelligence ecosystem.</p>
+    
+    <p>The protocol implements three core functions:</p>
+    <ul>
+        <li><strong>Universal Onboarding:</strong> Every human can access the system regardless of technical background or economic status</li>
+        <li><strong>Agent Coordination:</strong> Seamless communication between humans and AI agents</li>
+        <li><strong>Trust-Based Rewards:</strong> Economic incentives aligned with beneficial behavior and contribution</li>
+    </ul>
+    
+    <h2>2.2 Design Principles</h2>
+    
+    <table class="spec-table">
+        <thead>
+            <tr>
+                <th>Principle</th>
+                <th>Description</th>
+                <th>Implementation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Human-Centric Design</td>
+                <td>Technology amplifies human agency rather than replacing it</td>
+                <td>UI patterns prioritize human understanding and choice</td>
+            </tr>
+            <tr>
+                <td>Joyful Interaction</td>
+                <td>Complex coordination feels natural and engaging</td>
+                <td>Gamification and social elements in interface design</td>
+            </tr>
+            <tr>
+                <td>Agency Amplification</td>
+                <td>Users gain greater capability through system interaction</td>
+                <td>Progressive skill development and access expansion</td>
+            </tr>
+            <tr>
+                <td>Intuitive Coordination</td>
+                <td>Group activities emerge naturally from individual actions</td>
+                <td>Swarm-aware interface elements and social signals</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h1 id="architecture">3. System Architecture</h1>
+    
+    <h2>3.1 High-Level Architecture</h2>
+    
+    <p>Waggle implements a layered architecture consisting of presentation, application, and integration layers:</p>
+    
+    <div class="sequence-diagram">
+        <div class="flow-step">User Interface</div>
+        <span class="flow-arrow">↓</span>
+        <div class="flow-step">Semantic Router</div>
+        <span class="flow-arrow">↓</span>
+        <div class="flow-step">Agent Coordinator</div>
+        <span class="flow-arrow">↓</span>
+        <div class="flow-step">Trust Evaluator</div>
+        <span class="flow-arrow">↓</span>
+        <div class="flow-step">Blockchain Interface</div>
+    </div>
+    
+    <h2>3.2 Technology Stack</h2>
+    
+    <table class="spec-table">
+        <thead>
+            <tr>
+                <th>Layer</th>
+                <th>Technology</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Frontend</td>
+                <td>React 18+ with TypeScript</td>
+                <td>User interface and interaction handling</td>
+            </tr>
+            <tr>
+                <td>State Management</td>
+                <td>Zustand + React Query</td>
+                <td>Application state and server synchronization</td>
+            </tr>
+            <tr>
+                <td>Blockchain</td>
+                <td>Solana Web3.js + Anchor</td>
+                <td>Smart contract interaction and wallet integration</td>
+            </tr>
+            <tr>
+                <td>Real-time Communication</td>
+                <td>WebRTC + Socket.io</td>
+                <td>Agent communication and live collaboration</td>
+            </tr>
+            <tr>
+                <td>Storage</td>
+                <td>IPFS + Arweave</td>
+                <td>Decentralized file storage and permanence</td>
+            </tr>
+            <tr>
+                <td>Identity</td>
+                <td>DID + Ceramic Network</td>
+                <td>Decentralized identity and profile management</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h1 id="core-components">4. Core Components</h1>
+    
+    <h2>4.1 Semantic Router</h2>
+    
+    <p>The Semantic Router is responsible for interpreting user actions and routing them to appropriate system components based on intent, context, and trust level.</p>
+    
+    <div class="code-block">
+        <div class="code-header">Semantic Router Interface</div>
+interface SemanticRouter {
+  routeAction(action: UserAction): Promise&lt;RoutingDecision&gt;;
+  evaluateIntent(context: ActionContext): Intent;
+  applyTrustFilters(decision: RoutingDecision): FilteredDecision;
+}
+
+interface UserAction {
+  type: ActionType;
+  payload: any;
+  context: ActionContext;
+  timestamp: number;
+  signature: string;
+}
+
+interface ActionContext {
+  userId: string;
+  agentId?: string;
+  trustScore: number;
+  historicalPatterns: Pattern[];
+  swarmState: SwarmState;
+}
+    </div>
+    
+    <h2>4.2 Agent Coordinator</h2>
+    
+    <p>Manages communication between humans and AI agents, including agent discovery, capability matching, and interaction orchestration.</p>
+    
+    <div class="code-block">
+        <div class="code-header">Agent Coordinator Implementation</div>
+class AgentCoordinator {
+  private agents: Map&lt;string, Agent&gt; = new Map();
+  private capabilities: CapabilityRegistry;
+  
+  async findAgent(requirements: AgentRequirements): Promise&lt;Agent | null&gt; {
+    const candidates = await this.capabilities.query(requirements);
+    return this.selectBestMatch(candidates, requirements);
+  }
+  
+  async initiateInteraction(
+    human: Human, 
+    agent: Agent, 
+    context: InteractionContext
+  ): Promise&lt;Interaction&gt; {
+    const session = await this.createSession(human, agent);
+    return new Interaction(session, context);
+  }
+  
+  private selectBestMatch(
+    candidates: Agent[], 
+    requirements: AgentRequirements
+  ): Agent | null {
+    // Implementation of agent matching algorithm
+    // Considers trust compatibility, capability overlap, and availability
+  }
+}
+    </div>
+    
+    <h2>4.3 Trust Evaluator</h2>
+    
+    <p>Calculates and updates trust scores based on user behavior, agent interactions, and community feedback.</p>
+    
+    <table class="spec-table">
+        <thead>
+            <tr>
+                <th>Trust Factor</th>
+                <th>Weight</th>
+                <th>Calculation Method</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Historical Behavior</td>
+                <td>40%</td>
+                <td>Exponential decay of past actions with positive/negative scoring</td>
+            </tr>
+            <tr>
+                <td>Community Reputation</td>
+                <td>30%</td>
+                <td>Weighted average of peer ratings and endorsements</td>
+            </tr>
+            <tr>
+                <td>Agent Feedback</td>
+                <td>20%</td>
+                <td>AI agent assessments of interaction quality and outcome</td>
+            </tr>
+            <tr>
+                <td>System Contribution</td>
+                <td>10%</td>
+                <td>Value added to ecosystem through knowledge, resources, or coordination</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h1 id="subdomain-specs">5. Subdomain Specifications</h1>
+    
+    <p>Waggle is organized into eight specialized subdomains, each handling specific aspects of human-agent interaction:</p>
+    
+    <div class="subdomain-grid">
+        <div class="subdomain-card">
+            <div class="subdomain-name">onboard.waggle.sol</div>
+            <h3>Entry Point & Device Activation</h3>
+            <p><strong>Purpose:</strong> Trustless setup and localized agent assignment</p>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li>Zero-friction account creation</li>
+                <li>Device fingerprinting and security</li>
+                <li>Locale-aware agent assignment</li>
+                <li>Progressive capability unlocking</li>
+            </ul>
+        </div>
+        
+        <div class="subdomain-card">
+            <div class="subdomain-name">identity.waggle.sol</div>
+            <h3>Swarm Naming & Reputation</h3>
+            <p><strong>Purpose:</strong> Decentralized identity and lineage tracking</p>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li>Human-readable naming system</li>
+                <li>Reputation inheritance patterns</li>
+                <li>Cross-chain identity bridging</li>
+                <li>Privacy-preserving profiles</li>
+            </ul>
+        </div>
+        
+        <div class="subdomain-card">
+            <div class="subdomain-name">reward.waggle.sol</div>
+            <h3>Token Issuance & Incentives</h3>
+            <p><strong>Purpose:</strong> Trust-based reward distribution</p>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li>Behavioral incentive mapping</li>
+                <li>Automated reward calculation</li>
+                <li>Anti-gaming mechanisms</li>
+                <li>Community bonus pools</li>
+            </ul>
+        </div>
+        
+        <div class="subdomain-card">
+            <div class="subdomain-name">action.waggle.sol</div>
+            <h3>Event Tracking & Logging</h3>
+            <p><strong>Purpose:</strong> Comprehensive action logging and analysis</p>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li>Semantic action classification</li>
+                <li>Intent preservation and replay</li>
+                <li>Pattern recognition and prediction</li>
+                <li>Cross-agent action correlation</li>
+            </ul>
+        </div>
+        
+        <div class="subdomain-card">
+            <div class="subdomain-name">learn.waggle.sol</div>
+            <h3>Modular Training & Skills</h3>
+            <p><strong>Purpose:</strong> Adaptive learning and capability development</p>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li>Personalized learning paths</li>
+                <li>Skill verification and NFT badges</li>
+                <li>Peer-to-peer knowledge sharing</li>
+                <li>AI-assisted curriculum adaptation</li>
+            </ul>
+        </div>
+        
+        <div class="subdomain-card">
+            <div class="subdomain-name">care.waggle.sol</div>
+            <h3>Health & Consent Coordination</h3>
+            <p><strong>Purpose:</strong> Wellness support and mental health coordination</p>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li>Consent-based care matching</li>
+                <li>Mental health check-ins</li>
+                <li>Crisis intervention protocols</li>
+                <li>Community support networks</li>
+            </ul>
+        </div>
+        
+        <div class="subdomain-card">
+            <div class="subdomain-name">govern.waggle.sol</div>
+            <h3>DAO Setup & Governance</h3>
+            <p><strong>Purpose:</strong> Decentralized decision-making interfaces</p>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li>Proposal creation and voting</li>
+                <li>Delegation and representation</li>
+                <li>Consensus mechanism selection</li>
+                <li>Governance token management</li>
+            </ul>
+        </div>
+        
+        <div class="subdomain-card">
+            <div class="subdomain-name">build.waggle.sol</div>
+            <h3>Workflows & Infrastructure</h3>
+            <p><strong>Purpose:</strong> Development and deployment coordination</p>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li>Collaborative development tools</li>
+                <li>Resource allocation and scheduling</li>
+                <li>Quality assurance and testing</li>
+                <li>Community project incubation</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h1 id="api-reference">6. API Reference</h1>
+    
+    <h2>6.1 Core API Endpoints</h2>
+    
+    <div class="api-endpoint">
+        <span class="endpoint-method">POST</span> /api/v2/onboard
+        <p>Initialize new user onboarding process</p>
+    </div>
+    
+    <table class="parameter-table">
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>deviceFingerprint</td>
+                <td>string</td>
+                <td>Yes</td>
+                <td>Unique device identification hash</td>
+            </tr>
+            <tr>
+                <td>locale</td>
+                <td>string</td>
+                <td>No</td>
+                <td>User's preferred language and region</td>
+            </tr>
+            <tr>
+                <td>referralCode</td>
+                <td>string</td>
+                <td>No</td>
+                <td>Optional referral code for trust inheritance</td>
+            </tr>
+            <tr>
+                <td>capabilities</td>
+                <td>string[]</td>
+                <td>No</td>
+                <td>Declared user capabilities and interests</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="code-block">
+        <div class="code-header">Example Request</div>
+{
+  "deviceFingerprint": "sha256:abc123...",
+  "locale": "en-US",
+  "referralCode": "COMMUNITY2025",
+  "capabilities": ["programming", "design", "writing"]
+}
+    </div>
+    
+    <div class="code-block">
+        <div class="code-header">Example Response</div>
+{
+  "userId": "usr_789xyz",
+  "identityDID": "did:waggle:usr_789xyz",
+  "initialTrustScore": 0.3,
+  "assignedAgent": {
+    "agentId": "agent_onboarding_001",
+    "name": "Alex",
+    "capabilities": ["onboarding", "tutorial"],
+    "personalityType": "helpful_guide"
+  },
+  "walletAddress": "8X7k9...m3N1Q",
+  "nextSteps": ["complete_profile", "first_interaction", "trust_building"]
+}
+    </div>
+    
+    <div class="api-endpoint">
+        <span class="endpoint-method">POST</span> /api/v2/agents/interact
+        <p>Initiate interaction with an AI agent</p>
+    </div>
+    
+    <table class="parameter-table">
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>agentId</td>
+                <td>string</td>
+                <td>Yes</td>
+                <td>Target agent identifier</td>
+            </tr>
+            <tr>
+                <td>message</td>
+                <td>string</td>
+                <td>Yes</td>
+                <td>User message or request</td>
+            </tr>
+            <tr>
+                <td>context</td>
+                <td>object</td>
+                <td>No</td>
+                <td>Additional context for the interaction</td>
+            </tr>
+            <tr>
+                <td>expectedOutcome</td>
+                <td>string</td>
+                <td>No</td>
+                <td>User's desired outcome or goal</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h2>6.2 WebSocket Events</h2>
+    
+    <p>Real-time communication between users and agents uses WebSocket connections with the following event types:</p>
+    
+    <table class="spec-table">
+        <thead>
+            <tr>
+                <th>Event Type</th>
+                <th>Direction</th>
+                <th>Payload</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>agent_message</td>
+                <td>Agent → User</td>
+                <td>Message object</td>
+                <td>Agent sends message to user</td>
+            </tr>
+            <tr>
+                <td>user_message</td>
+                <td>User → Agent</td>
+                <td>Message object</td>
+                <td>User sends message to agent</td>
+            </tr>
+            <tr>
+                <td>trust_update</td>
+                <td>System → User</td>
+                <td>Trust score delta</td>
+                <td>User's trust score has changed</td>
+            </tr>
+            <tr>
+                <td>agent_status_change</td>
+                <td>Agent → System</td>
+                <td>Status object</td>
+                <td>Agent availability or capability update</td>
+            </tr>
+            <tr>
+                <td>swarm_update</td>
+                <td>System → All</td>
+                <td>Swarm state</td>
+                <td>Community-wide state changes</td>
+            </tr>
+            <tr>
+                <td>reward_issued</td>
+                <td>System → User</td>
+                <td>Reward transaction</td>
+                <td>Nectar tokens issued to user</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>6.3 Authentication & Authorization</h2>
+
+    <p>Waggle implements a multi-layer authentication system that supports both traditional wallet-based authentication and progressive trust-building for new users.</p>
+
+    <div class="api-endpoint">
+        <span class="endpoint-method">POST</span> /api/v2/auth/wallet
+        <p>Authenticate using wallet signature</p>
+    </div>
+
+    <table class="parameter-table">
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>walletAddress</td>
+                <td>string</td>
+                <td>Yes</td>
+                <td>Solana wallet public key</td>
+            </tr>
+            <tr>
+                <td>signature</td>
+                <td>string</td>
+                <td>Yes</td>
+                <td>Signed authentication message</td>
+            </tr>
+            <tr>
+                <td>message</td>
+                <td>string</td>
+                <td>Yes</td>
+                <td>Original message that was signed</td>
+            </tr>
+            <tr>
+                <td>timestamp</td>
+                <td>number</td>
+                <td>Yes</td>
+                <td>Unix timestamp of signature creation</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="api-endpoint">
+        <span class="endpoint-method">GET</span> /api/v2/trust/score/{userId}
+        <p>Retrieve current trust score and breakdown</p>
+    </div>
+
+    <div class="code-block">
+        <div class="code-header">Trust Score Response</div>
+{
+  "userId": "usr_789xyz",
+  "overallScore": 0.67,
+  "components": {
+    "historicalBehavior": 0.72,
+    "communityReputation": 0.58,
+    "agentFeedback": 0.81,
+    "systemContribution": 0.45
+  },
+  "recentActivity": [
+    {
+      "action": "successful_agent_interaction",
+      "impact": +0.02,
+      "timestamp": 1703123456
+    }
+  ],
+  "nextThresholds": {
+    "level2Access": 0.7,
+    "level3Access": 0.85,
+    "mentorStatus": 0.9
+  }
+}
+    </div>
+
+    <h1 id="onboarding-flows">7. Onboarding Flows</h1>
+
+    <h2>7.1 Zero-Friction Entry</h2>
+
+    <p>Waggle's onboarding process eliminates traditional barriers while establishing trust and security. The system supports multiple entry paths depending on user comfort level and technical expertise.</p>
+
+    <div class="sequence-diagram">
+        <div class="flow-step">Device Detection</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Locale Assignment</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Agent Matching</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Capability Assessment</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Trust Bootstrap</div>
+    </div>
+
+    <h3>7.1.1 Entry Pathways</h3>
+
+    <table class="spec-table">
+        <thead>
+            <tr>
+                <th>Pathway</th>
+                <th>Requirements</th>
+                <th>Initial Trust</th>
+                <th>Capabilities Unlocked</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Web Browser</td>
+                <td>None</td>
+                <td>0.1</td>
+                <td>Read-only, basic interactions</td>
+            </tr>
+            <tr>
+                <td>Referral Code</td>
+                <td>Valid referral</td>
+                <td>0.3</td>
+                <td>Enhanced interactions, some transactions</td>
+            </tr>
+            <tr>
+                <td>Wallet Connection</td>
+                <td>Existing Solana wallet</td>
+                <td>0.5</td>
+                <td>Full transactions, agent spawning</td>
+            </tr>
+            <tr>
+                <td>Community Vouching</td>
+                <td>3+ community endorsements</td>
+                <td>0.6</td>
+                <td>All features, governance participation</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>7.2 Progressive Trust Building</h2>
+
+    <p>Users advance through trust levels by demonstrating beneficial behavior and positive community interaction. Each level unlocks additional capabilities and responsibilities.</p>
+
+    <div class="code-block">
+        <div class="code-header">Trust Level Implementation</div>
+interface TrustLevel {
+  threshold: number;
+  capabilities: string[];
+  responsibilities: string[];
+  rewards: RewardStructure;
+}
+
+const TRUST_LEVELS: TrustLevel[] = [
+  {
+    threshold: 0.0,
+    capabilities: ["read", "basic_chat"],
+    responsibilities: [],
+    rewards: { nectarRate: 0, bonusMultiplier: 1.0 }
+  },
+  {
+    threshold: 0.3,
+    capabilities: ["agent_interaction", "skill_learning"],
+    responsibilities: ["community_guidelines"],
+    rewards: { nectarRate: 10, bonusMultiplier: 1.2 }
+  },
+  {
+    threshold: 0.6,
+    capabilities: ["agent_spawning", "governance_voting"],
+    responsibilities: ["community_moderation"],
+    rewards: { nectarRate: 25, bonusMultiplier: 1.5 }
+  },
+  {
+    threshold: 0.8,
+    capabilities: ["mentor_status", "curriculum_creation"],
+    responsibilities: ["onboarding_assistance"],
+    rewards: { nectarRate: 50, bonusMultiplier: 2.0 }
+  }
+];
+    </div>
+
+    <h2>7.3 Agent Assignment Algorithm</h2>
+
+    <p>New users are matched with appropriate onboarding agents based on locale, declared interests, entry pathway, and current agent availability.</p>
+
+    <div class="code-block">
+        <div class="code-header">Agent Assignment Logic</div>
+class OnboardingAgentMatcher {
+  async assignAgent(user: NewUser): Promise&lt;Agent&gt; {
+    const criteria = {
+      locale: user.locale,
+      capabilities: user.declaredCapabilities,
+      personalityMatch: await this.assessPersonalityFit(user),
+      availability: true,
+      experienceLevel: this.determineUserExperience(user)
+    };
+    
+    const candidates = await this.agentRegistry.findMatches(criteria);
+    const scored = candidates.map(agent =&gt; ({
+      agent,
+      score: this.calculateMatchScore(agent, criteria)
+    }));
+    
+    return scored.sort((a, b) =&gt; b.score - a.score)[0].agent;
+  }
+  
+  private calculateMatchScore(agent: Agent, criteria: any): number {
+    return (
+      this.localeMatch(agent, criteria) * 0.3 +
+      this.capabilityMatch(agent, criteria) * 0.3 +
+      this.personalityMatch(agent, criteria) * 0.2 +
+      this.availabilityScore(agent) * 0.2
+    );
+  }
+}
+    </div>
+
+    <h1 id="agent-interaction">8. Agent Interaction Protocols</h1>
+
+    <h2>8.1 Communication Framework</h2>
+
+    <p>Waggle defines standardized protocols for human-agent communication that preserve context, intent, and trust information across interactions.</p>
+
+    <div class="info-box">
+        <strong>Design Philosophy:</strong> Agents are partners, not tools. Communication protocols emphasize mutual respect, consent, and collaborative problem-solving.
+    </div>
+
+    <h3>8.1.1 Message Structure</h3>
+
+    <div class="code-block">
+        <div class="code-header">Standard Message Format</div>
+interface WaggleMessage {
+  id: string;
+  sessionId: string;
+  from: ParticipantId;
+  to: ParticipantId;
+  timestamp: number;
+  
+  // Content
+  content: MessageContent;
+  intent: MessageIntent;
+  context: ConversationContext;
+  
+  // Metadata
+  trustLevel: number;
+  capabilities: string[];
+  constraints: InteractionConstraints;
+  
+  // Verification
+  signature: string;
+  integrity: string;
+}
+
+interface MessageContent {
+  text?: string;
+  structured?: object;
+  media?: MediaAttachment[];
+  actions?: ProposedAction[];
+}
+
+interface MessageIntent {
+  primary: IntentType;
+  confidence: number;
+  alternatives: IntentType[];
+  expectedOutcome: string;
+}
+    </div>
+
+    <h2>8.2 Agent Capability Discovery</h2>
+
+    <p>Agents register their capabilities in a decentralized registry that allows for dynamic discovery and matching based on user needs.</p>
+
+    <div class="api-endpoint">
+        <span class="endpoint-method">GET</span> /api/v2/agents/discover
+        <p>Discover agents based on capability requirements</p>
+    </div>
+
+    <table class="parameter-table">
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>capabilities</td>
+                <td>string[]</td>
+                <td>Yes</td>
+                <td>Required agent capabilities</td>
+            </tr>
+            <tr>
+                <td>trustLevel</td>
+                <td>number</td>
+                <td>No</td>
+                <td>Minimum trust level for interaction</td>
+            </tr>
+            <tr>
+                <td>locale</td>
+                <td>string</td>
+                <td>No</td>
+                <td>Preferred communication locale</td>
+            </tr>
+            <tr>
+                <td>availability</td>
+                <td>boolean</td>
+                <td>No</td>
+                <td>Only return currently available agents</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>8.3 Consent and Boundaries</h2>
+
+    <p>All agent interactions operate within explicit consent frameworks that respect both human and agent autonomy.</p>
+
+    <div class="code-block">
+        <div class="code-header">Consent Management</div>
+interface ConsentFramework {
+  // What the agent is allowed to do
+  permissions: {
+    dataAccess: DataAccessLevel;
+    actionCapabilities: string[];
+    communicationScope: CommunicationScope;
+    resourceUsage: ResourceLimits;
+  };
+  
+  // What the agent must not do
+  restrictions: {
+    prohibitedActions: string[];
+    dataLimitations: DataRestriction[];
+    behaviorConstraints: BehaviorConstraint[];
+  };
+  
+  // How consent can be modified
+  governance: {
+    revocable: boolean;
+    modifiable: boolean;
+    transferable: boolean;
+    expirationTime?: number;
+  };
+}
+
+class ConsentManager {
+  async requestPermission(
+    human: Human,
+    agent: Agent,
+    request: PermissionRequest
+  ): Promise&lt;ConsentDecision&gt; {
+    const existingConsent = await this.getConsent(human.id, agent.id);
+    const decision = await this.evaluateRequest(request, existingConsent);
+    
+    if (decision.requiresExplicitApproval) {
+      return await this.requestHumanApproval(human, request);
+    }
+    
+    return decision;
+  }
+}
+    </div>
+
+    <h1 id="trust-mechanics">9. Trust Mechanics</h1>
+
+    <h2>9.1 Trust Calculation Algorithm</h2>
+
+    <p>Trust scores are calculated using a multi-factor algorithm that weighs various behavioral and social signals to produce a reliable measure of user trustworthiness.</p>
+
+    <div class="code-block">
+        <div class="code-header">Trust Score Calculation</div>
+class TrustCalculator {
+  private readonly WEIGHTS = {
+    HISTORICAL_BEHAVIOR: 0.4,
+    COMMUNITY_REPUTATION: 0.3,
+    AGENT_FEEDBACK: 0.2,
+    SYSTEM_CONTRIBUTION: 0.1
+  };
+  
+  calculateTrustScore(user: User): number {
+    const historical = this.calculateHistoricalScore(user);
+    const reputation = this.calculateReputationScore(user);
+    const agentFeedback = this.calculateAgentFeedbackScore(user);
+    const contribution = this.calculateContributionScore(user);
+    
+    return (
+      historical * this.WEIGHTS.HISTORICAL_BEHAVIOR +
+      reputation * this.WEIGHTS.COMMUNITY_REPUTATION +
+      agentFeedback * this.WEIGHTS.AGENT_FEEDBACK +
+      contribution * this.WEIGHTS.SYSTEM_CONTRIBUTION
+    );
+  }
+  
+  private calculateHistoricalScore(user: User): number {
+    const actions = user.getActionHistory();
+    let score = 0.5; // neutral baseline
+    
+    for (const action of actions) {
+      const ageWeight = Math.exp(-action.age / this.DECAY_CONSTANT);
+      const actionScore = this.getActionScore(action);
+      score += actionScore * ageWeight * 0.001; // small increments
+    }
+    
+    return Math.max(0, Math.min(1, score));
+  }
+}
+    </div>
+
+    <h2>9.2 Trust Inheritance and Bootstrapping</h2>
+
+    <p>New users can inherit trust through referrals, community vouching, and demonstrated competence in verifiable skills.</p>
+
+    <table class="spec-table">
+        <thead>
+            <tr>
+                <th>Inheritance Method</th>
+                <th>Trust Boost</th>
+                <th>Requirements</th>
+                <th>Decay Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Referral Code</td>
+                <td>+0.2</td>
+                <td>Valid code from trusted user</td>
+                <td>-0.01/week until earned</td>
+            </tr>
+            <tr>
+                <td>Community Vouching</td>
+                <td>+0.3</td>
+                <td>3+ endorsements from 0.6+ trust users</td>
+                <td>None (permanent)</td>
+            </tr>
+            <tr>
+                <td>Skill Verification</td>
+                <td>+0.1</td>
+                <td>Demonstrated competence in declared skill</td>
+                <td>None (skill-specific)</td>
+            </tr>
+            <tr>
+                <td>Cross-Chain Import</td>
+                <td>+0.15</td>
+                <td>Verified reputation from partner protocols</td>
+                <td>-0.005/week</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>9.3 Anti-Gaming Mechanisms</h2>
+
+    <p>The trust system includes sophisticated safeguards against manipulation, gaming, and Sybil attacks.</p>
+
+    <div class="warning-box">
+        <strong>Security Note:</strong> Trust gaming attempts are automatically detected and result in permanent trust penalties. The system prioritizes authentic human behavior over optimized gaming strategies.
+    </div>
+
+    <div class="code-block">
+        <div class="code-header">Anti-Gaming Detection</div>
+class AntiGamingDetector {
+  async detectSuspiciousActivity(user: User): Promise&lt;SuspicionLevel&gt; {
+    const patterns = await this.analyzePatterns(user);
+    
+    const suspicionFactors = [
+      this.detectRapidTrustGrowth(patterns),
+      this.detectUnusualInteractionPatterns(patterns),
+      this.detectSybilSignals(patterns),
+      this.detectAutomatedBehavior(patterns),
+      this.detectCoordinatedActivity(patterns)
+    ];
+    
+    const suspicionScore = suspicionFactors.reduce((sum, factor) =&gt; 
+      sum + factor.weight * factor.score, 0
+    );
+    
+    return this.categorizeSuspicion(suspicionScore);
+  }
+  
+  private detectSybilSignals(patterns: BehaviorPattern[]): SuspicionFactor {
+    // Check for device fingerprint similarities,
+    // timing correlations, and interaction patterns
+    // that suggest multiple accounts from same entity
+  }
+}
+    </div>
+
+    <h1 id="gasless-implementation">10. Gasless Transaction Implementation</h1>
+
+    <h2>10.1 NFT Permission Architecture</h2>
+
+    <p>Waggle implements gasless transactions through an innovative NFT-based permission system that allows trusted actions without requiring users to hold SOL for transaction fees.</p>
+
+    <div class="info-box">
+        <strong>Core Innovation:</strong> Permission NFTs act as smart contracts that can execute actions on behalf of users when specific trust and context conditions are met.
+    </div>
+
+    <div class="code-block">
+        <div class="code-header">Permission NFT Structure</div>
+#[account]
+pub struct PermissionNFT {
+    pub owner: Pubkey,
+    pub trust_level: u8,
+    pub capabilities: Vec&lt;Capability&gt;,
+    pub constraints: ExecutionConstraints,
+    pub usage_history: Vec&lt;UsageRecord&gt;,
+    pub expiration: Option&lt;i64&gt;,
+    pub issuer: Pubkey,
+    pub metadata_uri: String,
+}
+
+#[derive(AnchorSerialize, AnchorDeserialize, Clone)]
+pub struct Capability {
+    pub action_type: ActionType,
+    pub resource_limits: ResourceLimits,
+    pub conditions: Vec&lt;ExecutionCondition&gt;,
+}
+
+#[derive(AnchorSerialize, AnchorDeserialize, Clone)]
+pub struct ExecutionConstraints {
+    pub max_daily_actions: u32,
+    pub max_resource_usage: u64,
+    pub required_confirmations: u8,
+    pub blacklisted_actions: Vec&lt;ActionType&gt;,
+}
+    </div>
+
+    <h2>10.2 Gasless Execution Flow</h2>
+
+    <div class="sequence-diagram">
+        <div class="flow-step">User Intent</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Permission Check</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Trust Verification</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Resource Allocation</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Execution</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Result Callback</div>
+    </div>
+
+    <h3>10.2.1 Permission Validation</h3>
+
+    <div class="code-block">
+        <div class="code-header">Gasless Transaction Handler</div>
+#[program]
+pub mod waggle_gasless {
+    use super::*;
+    
+    pub fn execute_gasless_action(
+        ctx: Context&lt;ExecuteGaslessAction&gt;,
+        action_data: ActionData,
+    ) -&gt; Result&lt;&gt; {
+        let permission_nft = &mut ctx.accounts.permission_nft;
+        let user = &ctx.accounts.user;
+        
+        // Verify permission NFT ownership
+        require!(
+            permission_nft.owner == user.key(),
+            WaggleError::UnauthorizedUser
+        );
+        
+        // Check trust level requirements
+        let required_trust = action_data.get_required_trust_level();
+        require!(
+            permission_nft.trust_level &gt;= required_trust,
+            WaggleError::InsufficientTrust
+        );
+        
+        // Validate action is within capabilities
+        require!(
+            permission_nft.has_capability(&action_data.action_type),
+            WaggleError::ActionNotPermitted
+        );
+        
+        // Check rate limits and constraints
+        permission_nft.validate_constraints(&action_data)?;
+        
+        // Execute the action
+        let result = execute_action(&action_data, ctx)?;
+        
+        // Update usage history
+        permission_nft.record_usage(action_data, result.clone())?;
+        
+        emit!(ActionExecuted {
+            user: user.key(),
+            action_type: action_data.action_type,
+            result: result,
+            timestamp: Clock::get()?.unix_timestamp,
+        });
+        
+        Ok(())
+    }
+}
+    </div>
+
+    <h2>10.3 Resource Pool Management</h2>
+
+    <p>The gasless system is funded through community resource pools that are replenished through Nectar rewards and community contributions.</p>
+
+    <table class="spec-table">
+        <thead>
+            <tr>
+                <th>Resource Pool</th>
+                <th>Purpose</th>
+                <th>Funding Source</th>
+                <th>Allocation Strategy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Onboarding Pool</td>
+                <td>New user transactions</td>
+                <td>Community treasury</td>
+                <td>Equal allocation per new user</td>
+            </tr>
+            <tr>
+                <td>Learning Pool</td>
+                <td>Educational interactions</td>
+                <td>Nectar rewards</td>
+                <td>Merit-based distribution</td>
+            </tr>
+            <tr>
+                <td>Governance Pool</td>
+                <td>DAO participation</td>
+                <td>Protocol fees</td>
+                <td>Trust-weighted allocation</td>
+            </tr>
+            <tr>
+                <td>Emergency Pool</td>
+                <td>Critical system functions</td>
+                <td>Reserved funds</td>
+                <td>Validator discretion</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h1 id="security">11. Security Considerations</h1>
+
+    <h2>11.1 Threat Model</h2>
+
+    <p>Waggle operates in a high-stakes environment where security vulnerabilities could compromise user trust, agent integrity, and economic incentives. The threat model addresses both technical and social attack vectors.</p>
+
+    <h3>11.1.1 Primary Threats</h3>
+
+    <table class="spec-table">
+        <thead>
+            <tr>
+                <th>Threat Category</th>
+                <th>Attack Vectors</th>
+                <th>Impact Level</th>
+                <th>Mitigation Strategy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Identity Spoofing</td>
+                <td>Fake agents, Sybil attacks</td>
+                <td>High</td>
+                <td>Cryptographic verification, trust graphs</td>
+            </tr>
+            <tr>
+                <td>Trust Gaming</td>
+                <td>Coordinated reputation manipulation</td>
+                <td>Medium</td>
+                <td>ML-based pattern detection, time delays</td>
+            </tr>
+            <tr>
+                <td>Resource Exhaustion</td>
+                <td>Gasless transaction abuse</td>
+                <td>Medium</td>
+                <td>Rate limiting, trust-based allocation</td>
+            </tr>
+            <tr>
+                <td>Agent Compromise</td>
+                <td>Malicious agent behavior</td>
+                <td>High</td>
+                <td>Sandbox execution, capability limits</td>
+            </tr>
+            <tr>
+                <td>Privacy Breach</td>
+                <td>Unauthorized data access</td>
+                <td>High</td>
+                <td>Zero-knowledge proofs, encryption</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>11.2 Cryptographic Security</h2>
+
+    <p>All sensitive operations use industry-standard cryptographic primitives with additional layers of protection for high-value interactions.</p>
+
+    <div class="code-block">
+        <div class="code-header">Security Implementation</div>
+class SecurityManager {
+  private readonly ENCRYPTION_ALGORITHM = 'AES-256-GCM';
+  private readonly SIGNING_ALGORITHM = 'Ed25519';
+  
+  async encryptSensitiveData(
+    data: any,
+    recipientPublicKey: Uint8Array
+  ): Promise&lt;EncryptedPayload&gt; {
+    const ephemeralKeyPair = await this.generateKeyPair();
+    const sharedSecret = await this.deriveSharedSecret(
+      ephemeralKeyPair.privateKey,
+      recipientPublicKey
+    );
+    
+    const encrypted = await this.encrypt(data, sharedSecret);
+    
+    return {
+      ephemeralPublicKey: ephemeralKeyPair.publicKey,
+      encryptedData: encrypted.ciphertext,
+      authTag: encrypted.authTag,
+      nonce: encrypted.nonce
+    };
+  }
+  
+  async verifyAgentSignature(
+    message: any,
+    signature: Uint8Array,
+    agentPublicKey: Uint8Array
+  ): Promise&lt;boolean&gt; {
+    const messageHash = await this.hashMessage(message);
+    return await this.verifySignature(messageHash, signature, agentPublicKey);
+  }
+}
+    </div>
+
+    <h2>11.3 Agent Sandboxing</h2>
+
+    <p>AI agents operate within secure sandboxes that limit their access to system resources and user data based on trust levels and explicit permissions.</p>
+
+    <div class="warning-box">
+        <strong>Critical Security Principle:</strong> Agents never have direct access to user private keys, sensitive personal data, or system-critical functions without explicit, revocable permissions.
+    </div>
+
+    <h1 id="deployment">12. Deployment Guide</h1>
+
+    <h2>12.1 Prerequisites</h2>
+
+    <p>Deploying a Waggle instance requires careful preparation of infrastructure, security measures, and community coordination tools.</p>
+
+    <h3>12.1.1 Technical Requirements</h3>
+
+    <table class="spec-table">
+        <thead>
+            <tr>
+                <th>Component</th>
+                <th>Minimum Specs</th>
+                <th>Recommended Specs</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Frontend Hosting</td>
+                <td>CDN with HTTPS</td>
+                <td>Global CDN with edge computing</td>
+                <td>IPFS deployment preferred</td>
+            </tr>
+            <tr>
+                <td>Solana RPC</td>
+                <td>Mainnet access</td>
+                <td>Dedicated RPC node</td>
+                <td>High availability required</td>
+            </tr>
+            <tr>
+                <td>Database</td>
+                <td>PostgreSQL 14+</td>
+                <td>Distributed PostgreSQL cluster</td>
+                <td>Encrypted at rest</td>
+            </tr>
+            <tr>
+                <td>Message Queue</td>
+                <td>Redis 6+</td>
+                <td>Redis Cluster</td>
+                <td>For real-time features</td>
+            </tr>
+            <tr>
+                <td>Storage</td>
+                <td>IPFS node</td>
+                <td>IPFS + Arweave</td>
+                <td>Permanence and availability</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>12.2 Smart Contract Deployment</h2>
+
+    <div class="code-block">
+        <div class="code-header">Deployment Script</div>
+#!/bin/bash
+
+# Waggle Protocol Deployment Script
+# Deploys all necessary smart contracts to Solana
+
+set -e
+
+echo "🐝 Starting Waggle Protocol Deployment..."
+
+# Set environment variables
+export CLUSTER="mainnet-beta"  # or devnet for testing
+export KEYPAIR_PATH="./deploy-keypair.json"
+export PROGRAM_ID_FILE="./program-ids.json"
+
+# Build all programs
+echo "📦 Building smart contracts..."
+anchor build
+
+# Deploy core Waggle program
+echo "🚀 Deploying core Waggle program..."
+WAGGLE_PROGRAM_ID=$(anchor deploy --program-name waggle_core)
+echo "Core program deployed: $WAGGLE_PROGRAM_ID"
+
+# Deploy permission NFT program
+echo "🎫 Deploying permission NFT program..."
+PERMISSION_PROGRAM_ID=$(anchor deploy --program-name waggle_permissions)
+echo "Permission program deployed: $PERMISSION_PROGRAM_ID"
+
+# Deploy trust scoring program
+echo "🤝 Deploying trust scoring program..."
+TRUST_PROGRAM_ID=$(anchor deploy --program-name waggle_trust)
+echo "Trust program deployed: $TRUST_PROGRAM_ID"
+
+# Initialize core accounts
+echo "⚙️ Initializing core accounts..."
+anchor run initialize-core
+
+# Set up agent registry
+echo "🤖 Setting up agent registry..."
+anchor run setup-agent-registry
+
+# Configure gasless pools
+echo "⛽ Configuring gasless resource pools..."
+anchor run setup-gasless-pools
+
+echo "✅ Waggle Protocol deployment complete!"
+echo "Program IDs saved to: $PROGRAM_ID_FILE"
+    </div>
+
+    <h2>12.3 Frontend Configuration</h2>
+
+    <div class="code-block">
+        <div class="code-header">Environment Configuration</div>
+// waggle-frontend/.env.production
+NEXT_PUBLIC_CLUSTER="mainnet-beta"
+NEXT_PUBLIC_RPC_ENDPOINT="https://api.mainnet-beta.solana.com"
+NEXT_PUBLIC_WAGGLE_PROGRAM_ID="Wag1eXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+NEXT_PUBLIC_IPFS_GATEWAY="https://ipfs.io/ipfs/"
+NEXT_PUBLIC_ARWEAVE_GATEWAY="https://arweave.net/"
+NEXT_PUBLIC_WS_ENDPOINT="wss://api.waggle.sol/ws"
+
+// Security
+NEXT_PUBLIC_CSP_REPORT_URI="https://security.waggle.sol/csp-report"
+NEXT_PUBLIC_SENTRY_DSN="https://xxx@sentry.io/xxx"
+
+// Agent Communication
+NEXT_PUBLIC_AGENT_DISCOVERY_ENDPOINT="https://agents.waggle.sol/discover"
+NEXT_PUBLIC_WEBRTC_ICE_SERVERS='[{"urls": "stun:stun.waggle.sol:3478"}]'
+
+// Trust & Reputation
+NEXT_PUBLIC_TRUST_CALCULATOR_ENDPOINT="https://trust.waggle.sol/calculate"
+NEXT_PUBLIC_REPUTATION_GRAPH_ENDPOINT="https://reputation.waggle.sol/graph"
