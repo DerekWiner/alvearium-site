@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+_<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -337,7 +337,7 @@
                         <span class="theme-tag">Trust-Based Systems</span>
                         <span class="theme-tag">Regenerative Flow</span>
                     </div>
-                    <a href="#nectar-full" class="read-more">Read Full Manifesto</a>
+                    <a href="manifesto_nectar.html" class="read-more">Read Full Manifesto</a>
                 </div>
             </div>
             
@@ -357,7 +357,7 @@
                         <span class="theme-tag">Moral Boundaries</span>
                         <span class="theme-tag">Love-Based Development</span>
                     </div>
-                    <a href="#kernel69-full" class="read-more">Read Full Manifesto</a>
+                    <a href="manifesto_kernel69.html" class="read-more">Read Full Manifesto</a>
                 </div>
             </div>
             
@@ -377,7 +377,7 @@
                         <span class="theme-tag">Future Stewardship</span>
                         <span class="theme-tag">Recursive Learning</span>
                     </div>
-                    <a href="#chronosphere-full" class="read-more">Read Full Manifesto</a>
+                    <a href="manifesto_chronosphere.html" class="read-more">Read Full Manifesto</a>
                 </div>
             </div>
         </div>
@@ -445,12 +445,15 @@
     </div>
     
     <script>
-        // Simple toggle functionality for full manifestos
-        document.querySelectorAll('.read-more').forEach(button => {
-            button.addEventListener('click', function(e) {
+    // Only handle toggle functionality for internal anchor links
+    document.querySelectorAll('.read-more').forEach(button => {
+        button.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Only prevent default and toggle for internal anchor links (starting with #)
+            if (href && href.startsWith('#')) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+                const targetElement = document.querySelector(href);
                 
                 if (targetElement) {
                     if (targetElement.style.display === 'none') {
@@ -461,8 +464,10 @@
                         this.textContent = 'Read Full Manifesto';
                     }
                 }
-            });
+            }
+            // For external links (like manifesto_*.html), let the browser handle normally
         });
+    });
     </script>
 </body>
 </html>
