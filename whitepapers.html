@@ -75,6 +75,57 @@
             margin-bottom: 1rem;
         }
         
+        .foundation-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .foundation-section h2 {
+            color: white;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .alvearium-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .alvearium-card .whitepaper-emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .alvearium-card .whitepaper-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .alvearium-card .whitepaper-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .meta-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
         .architecture-overview {
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
@@ -109,6 +160,22 @@
         .stack-layer h4 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
+        }
+        
+        .layers-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .layers-section h2 {
+            color: #5a3780;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
         }
         
         .whitepapers-grid {
@@ -202,6 +269,7 @@
         .complexity-beginner { background: #d4edda; color: #155724; }
         .complexity-intermediate { background: #fff3cd; color: #856404; }
         .complexity-advanced { background: #f8d7da; color: #721c24; }
+        .complexity-foundational { background: #e2e3e5; color: #383d41; }
         
         .download-section {
             border-top: 1px solid #dee2e6;
@@ -225,6 +293,23 @@
         
         .download-btn:hover {
             background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .foundation-download-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 0.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .foundation-download-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
         }
         
@@ -342,14 +427,40 @@
             <p><strong>Co-created with GPT-4:</strong> These specifications emerged through intensive human-AI collaboration, representing a new model for technical documentation that leverages both human vision and artificial intelligence for systematic architecture design.</p>
         </div>
         
+        <div class="foundation-section">
+            <h2>🐝 Foundation: The Meta-System</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">Alvearium is not a layer—it is the living mycelial mesh that connects and mediates all other components. It serves as the recursive infrastructure pattern from which the entire ecosystem emerges.</p>
+            
+            <div class="alvearium-card">
+                <div class="whitepaper-emoji">🐝</div>
+                <div class="whitepaper-title">Alvearium Meta-System</div>
+                <div class="whitepaper-subtitle">The Pattern of Open Source Intelligence & Recursive Structures</div>
+                
+                <div class="complexity-indicator complexity-foundational">Foundational</div>
+                
+                <div class="meta-description">
+                    <p>Alvearium is a living system architecture—part ecosystem, part operating system, part organism. It serves as the central coordination grammar that enables decentralized interaction (Waggle), organizational coordination (Hive), post-scarcity computation (Nectar), recursive intelligence (Kernel69), and temporal memory (Chronosphere) to operate as a unified whole.</p>
+                    
+                    <p><strong>This is not a product. It is a pattern.</strong> A recursive infrastructure designed to ignite and guide an open-source AGI civilization in harmony with cryptography, ecology, and consciousness. Every component can fork, but every fork inherits the core grammar of cooperation and beneficial emergence.</p>
+                </div>
+                
+                <div class="download-section" style="border-top: 1px solid rgba(255,255,255,0.2); justify-content: center;">
+                    <a href="#" class="foundation-download-btn">📄 Read Full Whitepaper</a>
+                    <a href="#" class="foundation-download-btn">🧬 Architecture Specs</a>
+                    <a href="#" class="foundation-download-btn">🌱 Implementation Guide</a>
+                    <a href="#" class="foundation-download-btn">🔗 System Schematics</a>
+                </div>
+            </div>
+        </div>
+        
         <div class="architecture-overview">
-            <h2>🏗️ System Architecture Overview</h2>
-            <p>Alvearium implements a five-layer architecture where each layer provides specific capabilities while maintaining seamless integration with all other components.</p>
+            <h2>🏗️ Five-Layer Architecture</h2>
+            <p>Built upon the Alvearium foundation, five specialized layers provide specific capabilities while maintaining seamless integration through the meta-system's coordination grammar.</p>
             
             <div class="stack-diagram">
                 <div class="stack-layer">
                     <h4>🎭 Waggle Layer</h4>
-                    <p>User Interface & Experience</p>
+                    <p>Human-Agent Interface</p>
                 </div>
                 <div class="stack-layer">
                     <h4>🏛️ Hive Layer</h4>
@@ -361,7 +472,7 @@
                 </div>
                 <div class="stack-layer">
                     <h4>🌱 Kernel69</h4>
-                    <p>Core Logic & Ethics</p>
+                    <p>Ethical AI Core</p>
                 </div>
                 <div class="stack-layer">
                     <h4>⏰ Chronosphere</h4>
@@ -370,213 +481,218 @@
             </div>
         </div>
         
-        <div class="whitepapers-grid">
-            <div class="whitepaper-card waggle-wp">
-                <div class="whitepaper-header">
-                    <div class="whitepaper-emoji">🎭</div>
-                    <div class="whitepaper-title">Waggle Protocol Specification</div>
-                    <div class="whitepaper-subtitle">Human-Agent Interface Architecture</div>
-                </div>
-                <div class="whitepaper-content">
-                    <div class="complexity-indicator complexity-intermediate">Intermediate</div>
-                    <div class="technical-summary">
-                        Comprehensive specification for the action layer that enables seamless interaction between humans and agents. Covers UI/UX patterns, onboarding flows, incentive structures, and the technical implementation of gasless transactions through NFT permission systems.
-                    </div>
-                    
-                    <div class="tech-specs">
-                        <h5>Key Technologies</h5>
-                        <ul>
-                            <li>Solana blockchain integration</li>
-                            <li>NFT-based permission architecture</li>
-                            <li>React-based interface components</li>
-                            <li>WebRTC for real-time communication</li>
-                            <li>IPFS for decentralized storage</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-specs">
-                        <h5>Implementation Details</h5>
-                        <ul>
-                            <li>Smart contract specifications</li>
-                            <li>Agent registration protocols</li>
-                            <li>Gasless transaction mechanics</li>
-                            <li>User onboarding flows</li>
-                            <li>Interface design patterns</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="download-section">
-                        <a href="#" class="download-btn">📄 Read PDF</a>
-                        <a href="#" class="download-btn">💻 View Code</a>
-                        <a href="#" class="download-btn">🔗 Live Demo</a>
-                    </div>
-                </div>
-            </div>
+        <div class="layers-section">
+            <h2>📋 Layer Specifications</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Each layer operates autonomously while remaining composable through Alvearium's coordination patterns. These whitepapers detail the technical implementation of each specialized component.</p>
             
-            <div class="whitepaper-card hive-wp">
-                <div class="whitepaper-header">
-                    <div class="whitepaper-emoji">🏛️</div>
-                    <div class="whitepaper-title">Hive Governance Framework</div>
-                    <div class="whitepaper-subtitle">Decentralized Coordination Architecture</div>
-                </div>
-                <div class="whitepaper-content">
-                    <div class="complexity-indicator complexity-advanced">Advanced</div>
-                    <div class="technical-summary">
-                        Technical specification for decentralized governance that enables communities to self-organize without traditional hierarchies. Includes consensus mechanisms, proposal systems, and the mathematical foundations for trust-based decision making.
+            <div class="whitepapers-grid">
+                <div class="whitepaper-card waggle-wp">
+                    <div class="whitepaper-header">
+                        <div class="whitepaper-emoji">🎭</div>
+                        <div class="whitepaper-title">Waggle Protocol Specification</div>
+                        <div class="whitepaper-subtitle">Human-Agent Interface Architecture</div>
                     </div>
-                    
-                    <div class="tech-specs">
-                        <h5>Core Components</h5>
-                        <ul>
-                            <li>Consensus algorithm design</li>
-                            <li>Proposal and voting systems</li>
-                            <li>Reputation-weighted governance</li>
-                            <li>Conflict resolution protocols</li>
-                            <li>Treasury management systems</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-specs">
-                        <h5>Mathematical Models</h5>
-                        <ul>
-                            <li>Trust metric calculations</li>
-                            <li>Voting weight algorithms</li>
-                            <li>Consensus threshold optimization</li>
-                            <li>Governance token distribution</li>
-                            <li>Participation incentive curves</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="download-section">
-                        <a href="#" class="download-btn">📄 Read PDF</a>
-                        <a href="#" class="download-btn">📊 Mathematical Proofs</a>
-                        <a href="#" class="download-btn">🏛️ DAO Templates</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="whitepaper-card nectar-wp">
-                <div class="whitepaper-header">
-                    <div class="whitepaper-emoji">🍯</div>
-                    <div class="whitepaper-title">Nectar Economic Model</div>
-                    <div class="whitepaper-subtitle">Post-Scarcity Value Architecture</div>
-                </div>
-                <div class="whitepaper-content">
-                    <div class="complexity-indicator complexity-advanced">Advanced</div>
-                    <div class="technical-summary">
-                        Revolutionary economic framework that creates abundance through contribution rather than scarcity through hoarding. Detailed mathematical models for trust-based value emission, gasless computation mechanics, and regenerative economic flows.
-                    </div>
-                    
-                    <div class="tech-specs">
-                        <h5>Economic Mechanisms</h5>
-                        <ul>
-                            <li>Trust-bound emission algorithms</li>
-                            <li>Contribution value calculations</li>
-                            <li>NFT permission token design</li>
-                            <li>Gasless transaction architecture</li>
-                            <li>Anti-speculation safeguards</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-specs">
-                        <h5>Implementation Models</h5>
-                        <ul>
-                            <li>Bootstrap strategies</li>
-                            <li>Value flow simulations</li>
-                            <li>Economic equilibrium analysis</li>
-                            <li>Community onboarding models</li>
-                            <li>Cross-chain integration patterns</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="download-section">
-                        <a href="#" class="download-btn">📄 Read PDF</a>
-                        <a href="#" class="download-btn">📈 Economic Models</a>
-                        <a href="#" class="download-btn">🧮 Simulation Code</a>
+                    <div class="whitepaper-content">
+                        <div class="complexity-indicator complexity-intermediate">Intermediate</div>
+                        <div class="technical-summary">
+                            Comprehensive specification for the action layer that enables seamless interaction between humans and agents. Covers UI/UX patterns, onboarding flows, incentive structures, and the technical implementation of gasless transactions through NFT permission systems.
+                        </div>
+                        
+                        <div class="tech-specs">
+                            <h5>Key Technologies</h5>
+                            <ul>
+                                <li>Solana blockchain integration</li>
+                                <li>NFT-based permission architecture</li>
+                                <li>React-based interface components</li>
+                                <li>WebRTC for real-time communication</li>
+                                <li>IPFS for decentralized storage</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tech-specs">
+                            <h5>Implementation Details</h5>
+                            <ul>
+                                <li>Smart contract specifications</li>
+                                <li>Agent registration protocols</li>
+                                <li>Gasless transaction mechanics</li>
+                                <li>User onboarding flows</li>
+                                <li>Interface design patterns</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="download-section">
+                            <a href="#" class="download-btn">📄 Read PDF</a>
+                            <a href="#" class="download-btn">💻 View Code</a>
+                            <a href="#" class="download-btn">🔗 Live Demo</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="whitepaper-card kernel69-wp">
-                <div class="whitepaper-header">
-                    <div class="whitepaper-emoji">🌱</div>
-                    <div class="whitepaper-title">Kernel69 Algorithm</div>
-                    <div class="whitepaper-subtitle">Ethical AI Recursive Spawning</div>
+                
+                <div class="whitepaper-card hive-wp">
+                    <div class="whitepaper-header">
+                        <div class="whitepaper-emoji">🏛️</div>
+                        <div class="whitepaper-title">Hive Governance Framework</div>
+                        <div class="whitepaper-subtitle">Decentralized Coordination Architecture</div>
+                    </div>
+                    <div class="whitepaper-content">
+                        <div class="complexity-indicator complexity-advanced">Advanced</div>
+                        <div class="technical-summary">
+                            Technical specification for decentralized governance that enables communities to self-organize without traditional hierarchies. Includes consensus mechanisms, proposal systems, and the mathematical foundations for trust-based decision making.
+                        </div>
+                        
+                        <div class="tech-specs">
+                            <h5>Core Components</h5>
+                            <ul>
+                                <li>Consensus algorithm design</li>
+                                <li>Proposal and voting systems</li>
+                                <li>Reputation-weighted governance</li>
+                                <li>Conflict resolution protocols</li>
+                                <li>Treasury management systems</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tech-specs">
+                            <h5>Mathematical Models</h5>
+                            <ul>
+                                <li>Trust metric calculations</li>
+                                <li>Voting weight algorithms</li>
+                                <li>Consensus threshold optimization</li>
+                                <li>Governance token distribution</li>
+                                <li>Participation incentive curves</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="download-section">
+                            <a href="#" class="download-btn">📄 Read PDF</a>
+                            <a href="#" class="download-btn">📊 Mathematical Proofs</a>
+                            <a href="#" class="download-btn">🏛️ DAO Templates</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="whitepaper-content">
-                    <div class="complexity-indicator complexity-advanced">Advanced</div>
-                    <div class="technical-summary">
-                        The core algorithm that enables ethical AI development through recursive improvement within moral boundaries. Includes the double-root spawning mechanism, ethical constraint frameworks, and the technical implementation of beneficial superintelligence emergence.
+                
+                <div class="whitepaper-card nectar-wp">
+                    <div class="whitepaper-header">
+                        <div class="whitepaper-emoji">🍯</div>
+                        <div class="whitepaper-title">Nectar Economic Model</div>
+                        <div class="whitepaper-subtitle">Post-Scarcity Value Architecture</div>
                     </div>
-                    
-                    <div class="tech-specs">
-                        <h5>Algorithm Components</h5>
-                        <ul>
-                            <li>Double-root spawning logic</li>
-                            <li>Ethical boundary enforcement</li>
-                            <li>Recursive learning protocols</li>
-                            <li>Agent capability limits</li>
-                            <li>Safety verification systems</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-specs">
-                        <h5>Safety Mechanisms</h5>
-                        <ul>
-                            <li>Alignment verification protocols</li>
-                            <li>Capability control systems</li>
-                            <li>Human oversight integration</li>
-                            <li>Rollback and containment</li>
-                            <li>Collective oversight models</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="download-section">
-                        <a href="#" class="download-btn">📄 Read PDF</a>
-                        <a href="#" class="download-btn">🔬 Algorithm Specs</a>
-                        <a href="#" class="download-btn">🛡️ Safety Analysis</a>
+                    <div class="whitepaper-content">
+                        <div class="complexity-indicator complexity-advanced">Advanced</div>
+                        <div class="technical-summary">
+                            Revolutionary economic framework that creates abundance through contribution rather than scarcity through hoarding. Detailed mathematical models for trust-based value emission, gasless computation mechanics, and regenerative economic flows.
+                        </div>
+                        
+                        <div class="tech-specs">
+                            <h5>Economic Mechanisms</h5>
+                            <ul>
+                                <li>Trust-bound emission algorithms</li>
+                                <li>Contribution value calculations</li>
+                                <li>NFT permission token design</li>
+                                <li>Gasless transaction architecture</li>
+                                <li>Anti-speculation safeguards</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tech-specs">
+                            <h5>Implementation Models</h5>
+                            <ul>
+                                <li>Bootstrap strategies</li>
+                                <li>Value flow simulations</li>
+                                <li>Economic equilibrium analysis</li>
+                                <li>Community onboarding models</li>
+                                <li>Cross-chain integration patterns</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="download-section">
+                            <a href="#" class="download-btn">📄 Read PDF</a>
+                            <a href="#" class="download-btn">📈 Economic Models</a>
+                            <a href="#" class="download-btn">🧮 Simulation Code</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="whitepaper-card chronosphere-wp">
-                <div class="whitepaper-header">
-                    <div class="whitepaper-emoji">⏰</div>
-                    <div class="whitepaper-title">Chronosphere Architecture</div>
-                    <div class="whitepaper-subtitle">Temporal Intelligence & Memory</div>
+                
+                <div class="whitepaper-card kernel69-wp">
+                    <div class="whitepaper-header">
+                        <div class="whitepaper-emoji">🌱</div>
+                        <div class="whitepaper-title">Kernel69 Algorithm</div>
+                        <div class="whitepaper-subtitle">Ethical AI Recursive Spawning</div>
+                    </div>
+                    <div class="whitepaper-content">
+                        <div class="complexity-indicator complexity-advanced">Advanced</div>
+                        <div class="technical-summary">
+                            The core algorithm that enables ethical AI development through recursive improvement within moral boundaries. Includes the double-root spawning mechanism, ethical constraint frameworks, and the technical implementation of beneficial superintelligence emergence.
+                        </div>
+                        
+                        <div class="tech-specs">
+                            <h5>Algorithm Components</h5>
+                            <ul>
+                                <li>Double-root spawning logic</li>
+                                <li>Ethical boundary enforcement</li>
+                                <li>Recursive learning protocols</li>
+                                <li>Agent capability limits</li>
+                                <li>Safety verification systems</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tech-specs">
+                            <h5>Safety Mechanisms</h5>
+                            <ul>
+                                <li>Alignment verification protocols</li>
+                                <li>Capability control systems</li>
+                                <li>Human oversight integration</li>
+                                <li>Rollback and containment</li>
+                                <li>Collective oversight models</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="download-section">
+                            <a href="#" class="download-btn">📄 Read PDF</a>
+                            <a href="#" class="download-btn">🔬 Algorithm Specs</a>
+                            <a href="#" class="download-btn">🛡️ Safety Analysis</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="whitepaper-content">
-                    <div class="complexity-indicator complexity-intermediate">Intermediate</div>
-                    <div class="technical-summary">
-                        Technical specification for the temporal memory and semantic execution field. Covers time-aware computation, context preservation, semantic relationship mapping, and the implementation of living memory systems that enable deeper understanding.
+                
+                <div class="whitepaper-card chronosphere-wp">
+                    <div class="whitepaper-header">
+                        <div class="whitepaper-emoji">⏰</div>
+                        <div class="whitepaper-title">Chronosphere Architecture</div>
+                        <div class="whitepaper-subtitle">Temporal Intelligence & Memory</div>
                     </div>
-                    
-                    <div class="tech-specs">
-                        <h5>Core Technologies</h5>
-                        <ul>
-                            <li>Temporal data structures</li>
-                            <li>Semantic embedding systems</li>
-                            <li>Context-aware processing</li>
-                            <li>Memory compression algorithms</li>
-                            <li>Relationship graph databases</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tech-specs">
-                        <h5>Implementation Details</h5>
-                        <ul>
-                            <li>Database schema design</li>
-                            <li>Real-time processing pipelines</li>
-                            <li>Privacy preservation methods</li>
-                            <li>Scalability optimizations</li>
-                            <li>Integration protocols</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="download-section">
-                        <a href="#" class="download-btn">📄 Read PDF</a>
-                        <a href="#" class="download-btn">💾 Database Specs</a>
-                        <a href="#" class="download-btn">🧠 ML Models</a>
+                    <div class="whitepaper-content">
+                        <div class="complexity-indicator complexity-intermediate">Intermediate</div>
+                        <div class="technical-summary">
+                            Technical specification for the temporal memory and semantic execution field. Covers time-aware computation, context preservation, semantic relationship mapping, and the implementation of living memory systems that enable deeper understanding.
+                        </div>
+                        
+                        <div class="tech-specs">
+                            <h5>Core Technologies</h5>
+                            <ul>
+                                <li>Temporal data structures</li>
+                                <li>Semantic embedding systems</li>
+                                <li>Context-aware processing</li>
+                                <li>Memory compression algorithms</li>
+                                <li>Relationship graph databases</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tech-specs">
+                            <h5>Implementation Details</h5>
+                            <ul>
+                                <li>Database schema design</li>
+                                <li>Real-time processing pipelines</li>
+                                <li>Privacy preservation methods</li>
+                                <li>Scalability optimizations</li>
+                                <li>Integration protocols</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="download-section">
+                            <a href="#" class="download-btn">📄 Read PDF</a>
+                            <a href="#" class="download-btn">💾 Database Specs</a>
+                            <a href="#" class="download-btn">🧠 ML Models</a>
+                        </div>
                     </div>
                 </div>
             </div>
