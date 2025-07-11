@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvearium Architecture Specifications - Technical System Design</title>
+    <meta name="description" content="Comprehensive technical architecture specifications for the Alvearium decentralized semantic operating system">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #667eea 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #34495e;
+            transform: translateY(-2px);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .meta-info {
+            background: rgba(44, 62, 80, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: left;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #2c3e50;
+        }
+        
+        .section-emoji {
+            font-size: 2rem;
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .overview-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .layer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .layer-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .layer-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .layer-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .layer-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .layer-tech {
+            font-family: 'Courier New', monospace;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+            display: inline-block;
+        }
+        
+        .architecture-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .architecture-table th {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .architecture-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: top;
+        }
+        
+        .architecture-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .tech-stack-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .tech-category {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tech-category h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .tech-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tech-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tech-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .data-flow-section {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .flow-diagram {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .flow-step {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .flow-arrow {
+            font-size: 1.5rem;
+            margin: 0 1rem;
+        }
+        
+        .integration-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .integration-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .repo-structure {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-left: 4px solid #2c3e50;
+        }
+        
+        .security-section {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .security-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .signature-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #2c3e50;
+            margin: 2rem 0;
+        }
+        
+        .cross-reference {
+            background: rgba(44, 62, 80, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border: 1px solid #2c3e50;
+        }
+        
+        .cross-reference h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .ref-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .ref-link {
+            background: #2c3e50;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .ref-link:hover {
+            background: #34495e;
+            transform: translateY(-1px);
+        }
+        
+        @media (max-width: 768px) {
+            .layer-grid, .tech-grid, .integration-grid, .security-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="whitepaper_alvearium.html" class="back-link">← Back to Alvearium Whitepaper</a>
+            <h1>🏗️ Architecture Specifications</h1>
+            <p class="subtitle">Technical System Design for the Alvearium Meta-System</p>
+            <div class="meta-info">
+                <strong>Document Version:</strong> 1.0<br>
+                <strong>Last Updated:</strong> 2025<br>
+                <strong>Maintainers:</strong> The Waggle Collective<br>
+                <strong>Repository:</strong> <a href="https://github.com/DerekWiner/alvearium" style="color: #2c3e50;">github.com/DerekWiner/alvearium</a>
+            </div>
+        </header>
+        
+        <div class="overview-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🌐</span>
+                <h2 class="section-title" style="color: white;">System Overview</h2>
+            </div>
+            
+            <p>Alvearium implements a <strong>five-layer recursive architecture</strong> where each layer provides specialized capabilities while maintaining seamless integration through the meta-system's coordination grammar. This is not traditional software—it's a living, breathing organism of intelligence.</p>
+            
+            <div class="layer-grid">
+                <div class="layer-card">
+                    <div class="layer-emoji">🎭</div>
+                    <div class="layer-title">Waggle Layer</div>
+                    <div class="layer-tech">waggle.sol</div>
+                    <p>Human-Agent interaction and onboarding layer. Provides UI/UX for humanity, handling identity, swarm access, and agent coordination.</p>
+                </div>
+                
+                <div class="layer-card">
+                    <div class="layer-emoji">🏛️</div>
+                    <div class="layer-title">Hive Layer</div>
+                    <div class="layer-tech">hive.bnb</div>
+                    <p>Structural memory and DAO coordination. Manages governance, organizational templates, and crypto-economic models.</p>
+                </div>
+                
+                <div class="layer-card">
+                    <div class="layer-emoji">🍯</div>
+                    <div class="layer-title">Nectar Layer</div>
+                    <div class="layer-tech">nectar.cosmos</div>
+                    <p>Post-scarcity value substrate. Enables zero-gas transactions, boundless execution, and trust-based emissions.</p>
+                </div>
+                
+                <div class="layer-card">
+                    <div class="layer-emoji">🌱</div>
+                    <div class="layer-title">Kernel69</div>
+                    <div class="layer-tech">seeded from nectar</div>
+                    <p>Recursive intelligence core. Provides ethical guardrails, double-root trust, and love-based feedback loops.</p>
+                </div>
+                
+                <div class="layer-card">
+                    <div class="layer-emoji">⏰</div>
+                    <div class="layer-title">Chronosphere</div>
+                    <div class="layer-tech">spawns from kernel69</div>
+                    <p>Temporal memory and execution space. Manages memory activation, context preservation, and living time-layer intelligence.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">📋</span>
+                <h2 class="section-title">Component Specifications</h2>
+            </div>
+            
+            <table class="architecture-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Primary Function</th>
+                        <th>Key Technologies</th>
+                        <th>Integration Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Waggle.sol</strong></td>
+                        <td>Human-Agent Interface & Onboarding</td>
+                        <td>Solana, React, WebRTC, IPFS</td>
+                        <td>Hive (identity), Nectar (rewards), Agents (communication)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hive.bnb</strong></td>
+                        <td>Governance & Structural Memory</td>
+                        <td>BNB Chain, IPFS, Arweave, Consensus Algorithms</td>
+                        <td>Waggle (onboarding), Nectar (treasury), Kernel69 (ethics)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nectar</strong></td>
+                        <td>Economic Substrate & Computation</td>
+                        <td>Cosmos SDK, Zero-gas protocols, Trust algorithms</td>
+                        <td>All layers (value flow), Kernel69 (emission logic)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kernel69</strong></td>
+                        <td>Recursive Intelligence Core</td>
+                        <td>Rust, Cryptographic reflection, Ethical boundaries</td>
+                        <td>Nectar (seeding), Chronosphere (spawning), All layers (ethics)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chronosphere</strong></td>
+                        <td>Temporal Memory & Execution</td>
+                        <td>Vector databases, Graph networks, Temporal algorithms</td>
+                        <td>Kernel69 (spawning), All layers (memory), Agents (context)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="tech-stack-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">⚙️</span>
+                <h2 class="section-title" style="color: white;">Technology Stack</h2>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-category">
+                    <h4>🔗 Blockchain Infrastructure</h4>
+                    <ul class="tech-list">
+                        <li>Solana (Waggle smart contracts)</li>
+                        <li>BNB Chain (Hive governance)</li>
+                        <li>Cosmos SDK (Nectar substrate)</li>
+                        <li>IPFS (Distributed storage)</li>
+                        <li>Arweave (Permanent memory)</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-category">
+                    <h4>🧠 AI & Intelligence</h4>
+                    <ul class="tech-list">
+                        <li>Agent Development Kit</li>
+                        <li>Vector databases (memory)</li>
+                        <li>Graph neural networks</li>
+                        <li>Recursive learning algorithms</li>
+                        <li>Semantic embeddings</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-category">
+                    <h4>💻 Frontend & Interface</h4>
+                    <ul class="tech-list">
+                        <li>React/TypeScript</li>
+                        <li>WebRTC (real-time communication)</li>
+                        <li>Web3 wallet integration</li>
+                        <li>Progressive Web Apps</li>
+                        <li>Responsive design patterns</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-category">
+                    <h4>🔐 Security & Trust</h4>
+                    <ul class="tech-list">
+                        <li>Cryptographic reflection</li>
+                        <li>Zero-knowledge proofs</li>
+                        <li>Multi-signature wallets</li>
+                        <li>Trust scoring algorithms</li>
+                        <li>Ethical boundary enforcement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="data-flow-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🔄</span>
+                <h2 class="section-title" style="color: white;">Data Flow Architecture</h2>
+            </div>
+            
+            <p>Alvearium implements a <strong>semantic data flow</strong> where information carries meaning, context, and trust scores as it moves between layers.</p>
+            
+            <div class="flow-diagram">
+                <div class="flow-step">Agent Action</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step">Waggle Processing</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step">Trust Evaluation</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step">Nectar Emission</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step">Memory Storage</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step">Reflection Loop</div>
+            </div>
+            
+            <h3 style="color: white; margin-top: 2rem;">Key Data Flow Principles:</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="background: rgba(255,255,255,0.1); margin: 0.5rem 0; padding: 1rem; border-radius: 10px;">
+                    <strong>Semantic Routing:</strong> Data carries semantic meaning and routing instructions
+                </li>
+                <li style="background: rgba(255,255,255,0.1); margin: 0.5rem 0; padding: 1rem; border-radius: 10px;">
+                    <strong>Trust Propagation:</strong> Trust scores flow with data and influence processing
+                </li>
+                <li style="background: rgba(255,255,255,0.1); margin: 0.5rem 0; padding: 1rem; border-radius: 10px;">
+                    <strong>Memory Persistence:</strong> All significant interactions create memory capsules
+                </li>
+                <li style="background: rgba(255,255,255,0.1); margin: 0.5rem 0; padding: 1rem; border-radius: 10px;">
+                    <strong>Reflective Feedback:</strong> Outputs influence future processing patterns
+                </li>
+            </ul>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">📁</span>
+                <h2 class="section-title">Repository Structure</h2>
+            </div>
+            
+            <p>The Alvearium repository follows a modular structure that mirrors the system architecture:</p>
+            
+            <div class="repo-structure">
+alvearium/
+├── docs/                    # Core documentation and specs
+│   ├── glossary.md         # Swarm terminology and concepts
+│   ├── nectar.md          # Nectar emission logic
+│   ├── chronosphere.md    # Time-layer architecture
+│   ├── agents.md          # Agent classes and roles
+│   ├── interfaces.md      # UI/UX modalities
+│   ├── onboarding.md      # User onboarding flows
+│   ├── trust.md           # Trust loops and algorithms
+│   └── bootstrap/         # Initialization documentation
+├── manifests/              # Philosophical foundations
+│   ├── Manifesto_waggle.md
+│   ├── Manifesto_hive.md
+│   ├── Manifesto_nectar.md
+│   ├── Manifesto_kernel69.md
+│   └── Manifesto_chronosphere.md
+├── whitepapers/           # Technical specifications
+│   ├── Whitepaper_waggle.md
+│   ├── Whitepaper_hive.md
+│   ├── Whitepaper_nectar.md
+│   ├── Whitepaper_kernel69.md
+│   └── Whitepaper_chronosphere.md
+├── agents/                # Agent definitions and templates
+│   ├── builder_drone.json
+│   ├── guardian_drone.json
+│   ├── scholar_drone.json
+│   └── agents_manifesto.md
+├── code/                  # Implementation code
+│   ├── init_scripts/      # System initialization
+│   └── swarm_logic/       # Core algorithms
+├── rituals/               # Ritual logic and templates
+│   └── mirror_init.md
+├── assets/                # Diagrams and schematics
+└── schemas/               # Data schemas and contracts
+            </div>
+        </div>
+        
+        <div class="integration-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🔗</span>
+                <h2 class="section-title" style="color: white;">Integration Patterns</h2>
+            </div>
+            
+            <div class="integration-grid">
+                <div class="integration-item">
+                    <h4>🌐 Cross-Layer Communication</h4>
+                    <p>Layers communicate through semantic APIs that preserve context and trust information. Each message includes provenance, trust score, and semantic routing metadata.</p>
+                </div>
+                
+                <div class="integration-item">
+                    <h4>🔄 Event-Driven Architecture</h4>
+                    <p>System responds to events (agent actions, trust changes, governance decisions) with appropriate routing and processing through relevant layers.</p>
+                </div>
+                
+                <div class="integration-item">
+                    <h4>🧠 Agent Integration</h4>
+                    <p>Agents can interact with any layer while maintaining identity continuity and trust relationships across the entire system.</p>
+                </div>
+                
+                <div class="integration-item">
+                    <h4>💾 Memory Synchronization</h4>
+                    <p>Memory capsules are synchronized across layers, ensuring consistent state and enabling temporal intelligence features.</p>
+                </div>
+            </div>
+            
+            <h3 style="color: white; margin-top: 2rem;">Integration Example:</h3>
+            <div class="code-block">
+// Agent performs action through Waggle
+const action = await waggle.submitAction({
+  agentId: "scholar_drone_001",
+  action: "knowledge_share",
+  content: semanticContent,
+  trustContext: currentTrustState
+});
+
+// Action flows through system
+const trustEvaluation = await hive.evaluateTrust(action);
+const nectarEmission = await nectar.processReward(trustEvaluation);
+const memoryStorage = await chronosphere.storeMemory({
+  action,
+  trustEvaluation,
+  nectarEmission,
+  timestamp: Date.now()
+});
+
+// Reflection loop updates agent context
+await kernel69.updateAgentContext(action.agentId, memoryStorage);
+            </div>
+        </div>
+        
+        <div class="security-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🛡️</span>
+                <h2 class="section-title" style="color: white;">Security Architecture</h2>
+            </div>
+            
+            <div class="security-grid">
+                <div class="security-item">
+                    <h4>🔐 Cryptographic Foundations</h4>
+                    <p>All data is cryptographically signed and verified. Memory capsules use tamper-proof hashing with IPFS/Arweave anchoring.</p>
+                </div>
+                
+                <div class="security-item">
+                    <h4>🎯 Trust-Based Access</h4>
+                    <p>Access control based on trust scores and behavioral history rather than traditional permissions. Dynamic and contextual.</p>
+                </div>
+                
+                <div class="security-item">
+                    <h4>🌱 Ethical Boundaries</h4>
+                    <p>Kernel69 enforces ethical boundaries at the protocol level. Actions that violate ethical constraints are prevented or quarantined.</p>
+                </div>
+                
+                <div class="security-item">
+                    <h4>🔄 Recursive Validation</h4>
+                    <p>All system actions go through multiple validation layers. Recursive checking ensures consistency and prevents malicious behavior.</p>
+                </div>
+                
+                <div class="security-item">
+                    <h4>🚫 Anti-Exploitation</h4>
+                    <p>Built-in mechanisms prevent gaming, spam, and exploitation. Trust scores and rate limiting protect system integrity.</p>
+                </div>
+                
+                <div class="security-item">
+                    <h4>🌐 Distributed Resilience</h4>
+                    <p>No single point of failure. System continues operating even if individual components or nodes go offline.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🚀</span>
+                <h2 class="section-title">Deployment Architecture</h2>
+            </div>
+            
+            <h3>Development Environment Setup:</h3>
+            <div class="code-block">
+# Clone the repository
+git clone https://github.com/DerekWiner/alvearium.git
+cd alvearium
+
+# Initialize swarm environment
+./code/init_scripts/swarm_init.sh
+
+# Install dependencies
+npm install
+
+# Configure environment
+cp .env.example .env
+# Edit .env with your blockchain endpoints
+
+# Start local development
+npm run dev
+            </div>
+            
+            <h3>Production Deployment Considerations:</h3>
+            <ul>
+                <li><strong>Multi-Chain Deployment:</strong> Deploy contracts across Solana, BNB Chain, and Cosmos</li>
+                <li><strong>IPFS Cluster:</strong> Set up distributed storage cluster for resilience</li>
+                <li><strong>Load Balancing:</strong> Distribute agent processing across multiple nodes</li>
+                <li><strong>Monitoring:</strong> Implement trust score monitoring and anomaly detection</li>
+                <li><strong>Backup Strategy:</strong> Regular snapshots of memory capsules and trust states</li>
+            </ul>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">📊</span>
+                <h2 class="section-title">Performance Specifications</h2>
+            </div>
+            
+            <table class="architecture-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Target Performance</th>
+                        <th>Scaling Strategy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Transaction Throughput</strong></td>
+                        <td>10,000+ TPS (gasless transactions)</td>
+                        <td>Layer-2 scaling, sharding</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Agent Response Time</strong></td>
+                        <td>&lt; 100ms average</td>
+                        <td>Distributed processing, caching</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Memory Query Speed</strong></td>
+                        <td>&lt; 50ms for semantic queries</td>
+                        <td>Vector indexing, graph optimization</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trust Score Updates</strong></td>
+                        <td>Real-time (&lt; 10ms)</td>
+                        <td>In-memory state, async persistence</td>
+                    </tr>
+                    <tr>
+                        <td><strong>System Availability</strong></td>
+                        <td>99.9% uptime</td>
+                        <td>Redundancy, failover mechanisms</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🔧</span>
+                <h2 class="section-title">Development Guidelines</h2>
+            </div>
+            
+            <h3>Core Development Principles:</h3>
+            <ul>
+                <li><strong>Open Source Without Malice:</strong> All code must be transparent and beneficial</li>
+                <li><strong>Trust-First Design:</strong> Every feature must consider trust implications</li>
+                <li><strong>Semantic Clarity:</strong> Code should be self-documenting and meaningful</li>
+                <li><strong>Recursive Thinking:</strong> Consider how features affect the whole system</li>
+                <li><strong>Biological Metaphors:</strong> Use natural patterns as design guides</li>
+            </ul>
+            
+            <h3>Contribution Workflow:</h3>
+            <div class="code-block">
+# Fork repository and create feature branch
+git checkout -b feature/agent-enhancement
+
+# Follow semantic commit conventions
+git commit -m "feat(agents): add emotional resonance capability"
+
+# Ensure all tests pass
+npm test
+
+# Submit PR with [mirror] or [ritual] tags
+git push origin feature/agent-enhancement
+            </div>
+            
+            <h3>Testing Requirements:</h3>
+            <ul>
+                <li><strong>Unit Tests:</strong> All core functions must have >90% coverage</li>
+                <li><strong>Integration Tests:</strong> Cross-layer communication must be tested</li>
+                <li><strong>Trust Simulation:</strong> Trust algorithms must be verified through simulation</li>
+                <li><strong>Security Audits:</strong> All cryptographic functions require external audit</li>
+                <li><strong>Agent Behavior Tests:</strong> Ethical constraints must be thoroughly tested</li>
+            </ul>
+        </div>
+        
+        <div class="cross-reference">
+            <h4>🔗 Related Documentation</h4>
+            <div class="ref-links">
+                <a href="whitepaper_alvearium.html" class="ref-link">🐝 Alvearium Whitepaper</a>
+                <a href="implementation_guide.html" class="ref-link">📋 Implementation Guide</a>
+                <a href="system_schematics.html" class="ref-link">🔗 System Schematics</a>
+                <a href="manifestos.html" class="ref-link">📜 Manifestos</a>
+                <a href="whitepapers.html" class="ref-link">📚 All Whitepapers</a>
+                <a href="https://github.com/DerekWiner/alvearium" class="ref-link">🐙 GitHub Repository</a>
+            </div>
+        </div>
+        
+        <div class="signature-section">
+            <h3>✍️ Document Information</h3>
+            <p><strong>Maintained by:</strong> The Waggle Collective</p>
+            <p><strong>Repository:</strong> <a href="https://github.com/DerekWiner/alvearium" style="color: #2c3e50;">github.com/DerekWiner/alvearium</a></p>
+            <p><strong>License:</strong> Open Source Without Malice</p>
+            <p><strong>Contributing:</strong> See CONTRIBUTING.md in repository</p>
+            
+            <div style="margin-top: 1rem;">
+                <strong>📌 Repository Hash:</strong>
+                <div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 0.5rem; border-radius: 5px; font-size: 0.9rem; margin: 0.5rem 0;">
+                    BvsbOOZGNPKW_7NX9XbTOHIfwxsplY5t00JXOGNilzo
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll effect to sections
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.content-section, .overview-section, .tech-stack-section, .data-flow-section, .integration-section, .security-section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isVisible) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                } else {
+                    section.style.opacity = '0.8';
+                    section.style.transform = 'translateY(20px)';
+                }
+            });
+        });
+        
+        // Initialize scroll effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content-section, .overview-section, .tech-stack-section, .data-flow-section, .integration-section, .security-section');
+            sections.forEach(section => {
+                section.style.transition = 'opacity 0.6s, transform 0.6s';
+            });
+        });
+    </script>
+</body>
+</html>
