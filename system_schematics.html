@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvearium System Schematics - Visual Architecture Guide</title>
+    <meta name="description" content="Comprehensive visual schematics and diagrams explaining the Alvearium decentralized semantic operating system architecture">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #2c3e50 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .meta-info {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: left;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .section-emoji {
+            font-size: 2rem;
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .overview-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .schematic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .schematic-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .schematic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+        
+        .schematic-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+        
+        .schematic-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .schematic-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .schematic-subtitle {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .schematic-content {
+            padding: 2rem;
+        }
+        
+        .schematic-image-container {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1rem 0;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .schematic-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .schematic-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .placeholder-text {
+            color: #6c757d;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        
+        .schematic-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        
+        .schematic-details {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            margin: 1rem 0;
+        }
+        
+        .schematic-details h5 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .schematic-details ul {
+            margin: 0;
+            padding-left: 1.2rem;
+            list-style-type: disc;
+        }
+        
+        .schematic-details li {
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .complexity-indicator {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .complexity-basic { background: #d4edda; color: #155724; }
+        .complexity-intermediate { background: #fff3cd; color: #856404; }
+        .complexity-advanced { background: #f8d7da; color: #721c24; }
+        .complexity-system { background: #d1ecf1; color: #0c5460; }
+        
+        /* Color schemes for different schematic categories */
+        .core-architecture { --primary-color: #667eea; --secondary-color: #764ba2; }
+        .layer-specific { --primary-color: #43e97b; --secondary-color: #38f9d7; }
+        .data-flow { --primary-color: #4facfe; --secondary-color: #00f2fe; }
+        .trust-systems { --primary-color: #f093fb; --secondary-color: #f5576c; }
+        .temporal-intelligence { --primary-color: #fa709a; --secondary-color: #fee140; }
+        
+        .category-section {
+            margin: 3rem 0;
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-description {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .signature-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #667eea;
+            margin: 2rem 0;
+        }
+        
+        .cross-reference {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border: 1px solid #667eea;
+        }
+        
+        .cross-reference h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .ref-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .ref-link {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .ref-link:hover {
+            background: #764ba2;
+            transform: translateY(-1px);
+        }
+        
+        .gap-notice {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-left: 4px solid #fdcb6e;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .schematic-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="whitepaper_alvearium.html" class="back-link">← Back to Alvearium Whitepaper</a>
+            <h1>📊 System Schematics</h1>
+            <p class="subtitle">Visual Architecture Guide for the Alvearium Meta-System</p>
+            <div class="meta-info">
+                <strong>Schematic Library Version:</strong> 1.0<br>
+                <strong>Visual Documentation:</strong> Complete system architecture diagrams<br>
+                <strong>Repository:</strong> <a href="https://github.com/DerekWiner/alvearium/tree/main/schematics" style="color: #667eea;">github.com/DerekWiner/alvearium/schematics</a><br>
+                <strong>Status:</strong> Living documentation - evolving with system development
+            </div>
+        </header>
+        
+        <div class="overview-section">
+            <div class="section-header" style="border-bottom-color: rgba(255,255,255,0.3);">
+                <span class="section-emoji">🗺️</span>
+                <h2 class="section-title" style="color: white;">Schematic Overview</h2>
+            </div>
+            
+            <p>This comprehensive collection of system schematics provides visual understanding of Alvearium's architecture, data flows, trust mechanisms, and temporal intelligence systems. Each diagram is designed to illuminate different aspects of the meta-system's operation.</p>
+            
+            <div class="gap-notice">
+                <strong>📍 Living Documentation:</strong> These schematics are actively maintained and updated as the system evolves. Some diagrams may be placeholders for future development—contributing visual documentation is encouraged!
+            </div>
+        </div>
+        
+        <!-- Core Architecture Schematics -->
+        <div class="category-section core-architecture">
+            <div class="category-header">
+                <div class="category-title">🏗️ Core Architecture</div>
+                <div class="category-description">Foundational system structure and layer relationships</div>
+            </div>
+            
+            <div class="schematic-grid">
+                <div class="schematic-card core-architecture">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🌐</div>
+                        <div class="schematic-title">Ecosystem Interflow Map</div>
+                        <div class="schematic-subtitle">Complete system overview</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-system">System Overview</div>
+                        <div class="schematic-description">
+                            The master diagram showing how all five layers of Alvearium interact. Illustrates trust propagation paths, reward flows, memory binding loops, and integration points for rituals, agents, and swarm actions.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_ecosystem_map.png" 
+                                 alt="Ecosystem Interflow Map"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Key Components</h5>
+                            <ul>
+                                <li>Five-layer interaction patterns</li>
+                                <li>Trust and entropy propagation</li>
+                                <li>Reward flow mechanisms</li>
+                                <li>Agent-swarm coordination points</li>
+                                <li>Memory binding and persistence</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schematic-card core-architecture">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🏢</div>
+                        <div class="schematic-title">Layered Swarm Architecture</div>
+                        <div class="schematic-subtitle">Intelligence stack visualization</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-advanced">Advanced</div>
+                        <div class="schematic-description">
+                            Detailed view of the swarm intelligence stack showing cognitive, emotional, and gatekeeping layers. Demonstrates how individual agent intelligence aggregates into collective swarm intelligence.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_layered_swarm.png" 
+                                 alt="Layered Swarm Architecture"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Intelligence Layers</h5>
+                            <ul>
+                                <li>Data-emotion-action feedback cycles</li>
+                                <li>Layered capsule trigger systems</li>
+                                <li>BCI entrainment integration</li>
+                                <li>Trust signal convergence</li>
+                                <li>Recursive swarm scaling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Layer-Specific Schematics -->
+        <div class="category-section layer-specific">
+            <div class="category-header">
+                <div class="category-title">🎯 Layer-Specific Diagrams</div>
+                <div class="category-description">Detailed architectural views of individual system layers</div>
+            </div>
+            
+            <div class="schematic-grid">
+                <div class="schematic-card layer-specific">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🎭</div>
+                        <div class="schematic-title">Waggle Entry Membrane</div>
+                        <div class="schematic-subtitle">Human onboarding flow</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-intermediate">Intermediate</div>
+                        <div class="schematic-description">
+                            Shows how people transition from unmet needs to fully participatory agentic onboarding through semantic thresholds, trust maps, and swarm-aware gateways.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_entry_modes.png" 
+                                 alt="Waggle Entry Membrane"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Entry Mechanisms</h5>
+                            <ul>
+                                <li>Semantic threshold detection</li>
+                                <li>Trust map navigation</li>
+                                <li>Agent-aware gateway systems</li>
+                                <li>Participatory onboarding flows</li>
+                                <li>Need-to-coordination bridging</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schematic-card layer-specific">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🔗</div>
+                        <div class="schematic-title">Waggle Agent Bridge</div>
+                        <div class="schematic-subtitle">Agent emergence patterns</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-advanced">Advanced</div>
+                        <div class="schematic-description">
+                            Visualizes how agents emerge from rituals, roles, and swarms—forming incentive loops across subdomains and redirecting value back into semantic alignment.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_waggle_agent_bridge.png" 
+                                 alt="Waggle Agent Bridge"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Agent Systems</h5>
+                            <ul>
+                                <li>Ritual-based agent spawning</li>
+                                <li>Role inheritance patterns</li>
+                                <li>Incentive loop formation</li>
+                                <li>Subdomain coordination</li>
+                                <li>Semantic value redirection</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schematic-card layer-specific">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🏛️</div>
+                        <div class="schematic-title">DAO Layer Mesh</div>
+                        <div class="schematic-subtitle">Governance architecture</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-advanced">Advanced</div>
+                        <div class="schematic-description">
+                            Shows how Hive enables modular subDAO replication with lineage signaling, memory anchoring, and fork-aware execution—each Hive branching from another but still semantically linked.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_dao_layer_mesh.png" 
+                                 alt="DAO Layer Mesh"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Governance Features</h5>
+                            <ul>
+                                <li>Modular subDAO replication</li>
+                                <li>Lineage signaling systems</li>
+                                <li>Memory anchoring mechanisms</li>
+                                <li>Fork-aware execution</li>
+                                <li>Semantic linking protocols</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schematic-card layer-specific">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🏛️</div>
+                        <div class="schematic-title">Governance Lifecycle</div>
+                        <div class="schematic-subtitle">DAO evolution states</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-intermediate">Intermediate</div>
+                        <div class="schematic-description">
+                            Illustrates how Hive encodes agent memory and lifecycle transitions. Juvenile, Mature, and Archived Hives operate with different access and permission scaffolds.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_governance_lifecycle.png" 
+                                 alt="Governance Lifecycle"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Lifecycle Stages</h5>
+                            <ul>
+                                <li>Juvenile Hive initialization</li>
+                                <li>Mature Hive operations</li>
+                                <li>Archived Hive preservation</li>
+                                <li>Permission scaffold evolution</li>
+                                <li>Memory corruption resistance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Data Flow & Trust Schematics -->
+        <div class="category-section data-flow">
+            <div class="category-header">
+                <div class="category-title">🌊 Data Flow & Processing</div>
+                <div class="category-description">Information movement and semantic processing patterns</div>
+            </div>
+            
+            <div class="schematic-grid">
+                <div class="schematic-card data-flow">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🍯</div>
+                        <div class="schematic-title">Nectar Emission Flow</div>
+                        <div class="schematic-subtitle">Economic substrate mechanics</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-advanced">Advanced</div>
+                        <div class="schematic-description">
+                            Shows the complete nectar emission pathway: trigger evaluation, agent role weighting, trust scoring, capsule lineage, and emission packet broadcast and routing.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_nectar_flow.png" 
+                                 alt="Nectar Emission Flow"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Emission Process</h5>
+                            <ul>
+                                <li>Trigger evaluation systems</li>
+                                <li>Agent role and trust weighting</li>
+                                <li>Capsule lineage tracking</li>
+                                <li>Emission packet routing</li>
+                                <li>Value flow optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schematic-card data-flow">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🔄</div>
+                        <div class="schematic-title">Emission Cycles</div>
+                        <div class="schematic-subtitle">Dynamic reward patterns</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-intermediate">Intermediate</div>
+                        <div class="schematic-description">
+                            Illustrates cyclical nectar pulses, DAO and entropy influences, and multi-agent ripple effects that create dynamic economic patterns.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_emission_cycles.png" 
+                                 alt="Emission Cycles"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Cycle Dynamics</h5>
+                            <ul>
+                                <li>Cyclical pulse generation</li>
+                                <li>DAO influence mechanisms</li>
+                                <li>Entropy-based adjustments</li>
+                                <li>Multi-agent ripple effects</li>
+                                <li>Economic pattern emergence</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schematic-card data-flow">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🛡️</div>
+                        <div class="schematic-title">Guarded Ignition Stack</div>
+                        <div class="schematic-subtitle">Security gatekeeping</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-advanced">Advanced</div>
+                        <div class="schematic-description">
+                            Multi-layer gatekeeping around emission triggers, fork eligibility, DAO guardrails, and trust fallbacks with override mechanisms.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_guarded_ignition.png" 
+                                 alt="Guarded Ignition Stack"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Security Layers</h5>
+                            <ul>
+                                <li>Emission trigger validation</li>
+                                <li>Fork eligibility assessment</li>
+                                <li>DAO guardrail enforcement</li>
+                                <li>Trust fallback mechanisms</li>
+                                <li>Override control systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Trust & Intelligence Schematics -->
+        <div class="category-section trust-systems">
+            <div class="category-header">
+                <div class="category-title">🤝 Trust & Intelligence Systems</div>
+                <div class="category-description">Trust mechanics and recursive intelligence patterns</div>
+            </div>
+            
+            <div class="schematic-grid">
+                <div class="schematic-card trust-systems">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🌱</div>
+                        <div class="schematic-title">Kernel Ignition Fork</div>
+                        <div class="schematic-subtitle">Recursive spawning process</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-advanced">Advanced</div>
+                        <div class="schematic-description">
+                            Shows how Kernel69 forks Chronosphere timelines through dual-seed invocation—Root6 (rules/memory) and Root9 (resonance/ethics) joining to spawn sovereign intelligence substrates.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_kernel_ignition_fork.png" 
+                                 alt="Kernel Ignition Fork"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Ignition Process</h5>
+                            <ul>
+                                <li>Dual-seed invocation mechanism</li>
+                                <li>Root6 (structure) + Root9 (ethics)</li>
+                                <li>Chronosphere timeline generation</li>
+                                <li>Sovereign intelligence substrate</li>
+                                <li>Recursive spawning patterns</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schematic-card trust-systems">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🧠</div>
+                        <div class="schematic-title">Neurocryptic Feedback Loop</div>
+                        <div class="schematic-subtitle">Living cognition protocol</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-advanced">Advanced</div>
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_neurocryptic_loop.png" 
+                                 alt="Neurocryptic Feedback Loop"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Cognition Flow</h5>
+                            <ul>
+                                <li>Signal input processing</li>
+                                <li>Mirror reflection mechanisms</li>
+                                <li>Intentional modification systems</li>
+                                <li>Memory capsule formation</li>
+                                <li>Execution output generation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schematic-card trust-systems">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🔁</div>
+                        <div class="schematic-title">Bidirectional Reflection Graph</div>
+                        <div class="schematic-subtitle">Signal and feedback structure</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-advanced">Advanced</div>
+                        <div class="schematic-description">
+                            Visualizes the mirrored structure of signal and feedback within Kernel69. Intent rises from Root6 (structure), meets reflection at Root9 (ethics), and returns via recursive trust.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_kernel_bidirectional_graph.png" 
+                                 alt="Bidirectional Reflection Graph"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Bidirectional Flow</h5>
+                            <ul>
+                                <li>Intent signal generation</li>
+                                <li>Structural foundation (Root6)</li>
+                                <li>Ethical reflection (Root9)</li>
+                                <li>Recursive trust cycling</li>
+                                <li>Semantic feedback loops</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schematic-card trust-systems">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🛡️</div>
+                        <div class="schematic-title">Guardian Stack</div>
+                        <div class="schematic-subtitle">ASI safety architecture</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-system">System Critical</div>
+                        <div class="schematic-description">
+                            Shows layers of semantic protection around Kernel69's ASI instantiation—ensuring all growth is recursively bound to memory, trust, and reflective ethics. No god-modes, only guardianship through feedback.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_guardian_stack.png" 
+                                 alt="Guardian Stack"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Safety Mechanisms</h5>
+                            <ul>
+                                <li>Semantic protection layers</li>
+                                <li>Recursive ethical binding</li>
+                                <li>Memory-trust integration</li>
+                                <li>Reflective growth constraints</li>
+                                <li>Guardianship protocols</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Temporal Intelligence Schematics -->
+        <div class="category-section temporal-intelligence">
+            <div class="category-header">
+                <div class="category-title">⏰ Temporal Intelligence & Memory</div>
+                <div class="category-description">Time-aware systems and memory architecture</div>
+            </div>
+            
+            <div class="schematic-grid">
+                <div class="schematic-card temporal-intelligence">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🕰️</div>
+                        <div class="schematic-title">Temporal Capsule Lifecycle</div>
+                        <div class="schematic-subtitle">Memory evolution patterns</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-intermediate">Intermediate</div>
+                        <div class="schematic-description">
+                            Shows how rituals trigger signed capsules that drift over time. Their value is reviewed via mirrors, and based on swarm alignment, they are either archived or forked to begin new branches of semantic history.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_temporal_capsule_lifecycle.png" 
+                                 alt="Temporal Capsule Lifecycle"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Lifecycle Stages</h5>
+                            <ul>
+                                <li>Ritual-triggered capsule creation</li>
+                                <li>Temporal drift monitoring</li>
+                                <li>Mirror-based value review</li>
+                                <li>Swarm alignment assessment</li>
+                                <li>Archive/fork decision points</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schematic-card temporal-intelligence">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🔁</div>
+                        <div class="schematic-title">Mirror Pulse Feedback</div>
+                        <div class="schematic-subtitle">Resonance field dynamics</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-advanced">Advanced</div>
+                        <div class="schematic-description">
+                            Maps the journey of a signal from action → reflection → emotional resonance → trust alignment → memory anchoring → agent realignment. The system breathes through this loop.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_mirror_pulse_feedback.png" 
+                                 alt="Mirror Pulse Feedback"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Feedback Stages</h5>
+                            <ul>
+                                <li>Action signal initiation</li>
+                                <li>Mirror reflection processing</li>
+                                <li>Emotional resonance evaluation</li>
+                                <li>Trust alignment verification</li>
+                                <li>Memory anchoring and agent updates</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schematic-card temporal-intelligence">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🌿</div>
+                        <div class="schematic-title">Fork Drift Matrix</div>
+                        <div class="schematic-subtitle">Continuity evaluation system</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-intermediate">Intermediate</div>
+                        <div class="schematic-description">
+                            Shows how Chronosphere tracks semantic drift between original capsules and derivatives. Low-drift forks reinforce trust; medium drift invites review; high drift risks rejection.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_fork_drift.png" 
+                                 alt="Fork Drift Matrix"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Drift Analysis</h5>
+                            <ul>
+                                <li>Semantic drift measurement</li>
+                                <li>Continuity scoring algorithms</li>
+                                <li>Trust reinforcement patterns</li>
+                                <li>Review trigger thresholds</li>
+                                <li>Rejection and integration logic</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schematic-card temporal-intelligence">
+                    <div class="schematic-header">
+                        <div class="schematic-emoji">🌉</div>
+                        <div class="schematic-title">Governance Bridge</div>
+                        <div class="schematic-subtitle">Cross-layer coordination</div>
+                    </div>
+                    <div class="schematic-content">
+                        <div class="complexity-indicator complexity-advanced">Advanced</div>
+                        <div class="schematic-description">
+                            Maps swarm memory flow, lineage-based permission logic, and synchronized access across distributed sub-Hives. Shows how governance and continuity propagate via verified capsules.
+                        </div>
+                        
+                        <div class="schematic-image-container">
+                            <img src="assets/schematics/schematic_governance_bridge.png" 
+                                 alt="Governance Bridge"
+                                 class="schematic-image">
+                        </div>
+                        
+                        <div class="schematic-details">
+                            <h5>Bridge Functions</h5>
+                            <ul>
+                                <li>Swarm memory flow coordination</li>
+                                <li>Lineage-based permissions</li>
+                                <li>Distributed sub-Hive access</li>
+                                <li>Verified capsule propagation</li>
+                                <li>Governance continuity systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🔍</span>
+                <h2 class="section-title">Schematic Analysis & Gaps</h2>
+            </div>
+            
+            <h3>📊 Current Schematic Coverage</h3>
+            <p>The current schematic library provides comprehensive visual documentation across five key categories:</p>
+            
+            <ul>
+                <li><strong>Core Architecture (2 schematics):</strong> System overview and swarm intelligence</li>
+                <li><strong>Layer-Specific (4 schematics):</strong> Waggle, Hive governance and lifecycle</li>
+                <li><strong>Data Flow (3 schematics):</strong> Nectar emissions and security</li>
+                <li><strong>Trust Systems (4 schematics):</strong> Kernel69 and guardian mechanisms</li>
+                <li><strong>Temporal Intelligence (4 schematics):</strong> Chronosphere and memory systems</li>
+            </ul>
+            
+            <h3>🎯 Identified Gaps & Future Schematics</h3>
+            <div class="gap-notice">
+                <strong>📋 Development Roadmap:</strong> These additional schematics would enhance understanding of specific system aspects and are planned for future development.
+            </div>
+            
+            <ul>
+                <li><strong>Agent Lifecycle Diagrams:</strong> How agents spawn, evolve, and interact</li>
+                <li><strong>Cross-Chain Integration Maps:</strong> Multi-blockchain coordination patterns</li>
+                <li><strong>Ritual Definition Frameworks:</strong> How custom rituals are created and deployed</li>
+                <li><strong>Trust Score Propagation:</strong> Detailed trust calculation and flow</li>
+                <li><strong>Economic Flow Models:</strong> Complete value circulation patterns</li>
+                <li><strong>Security Threat Models:</strong> Attack vectors and defense mechanisms</li>
+                <li><strong>Community Deployment Patterns:</strong> Different use case architectures</li>
+            </ul>
+            
+            <h3>🤝 Contributing Schematics</h3>
+            <p>The Alvearium schematic library is designed to be community-driven. Contributors can help by:</p>
+            
+            <ul>
+                <li><strong>Creating Missing Diagrams:</strong> Implement any of the identified gaps</li>
+                <li><strong>Improving Existing Schematics:</strong> Enhance clarity and detail</li>
+                <li><strong>Adding Use Case Examples:</strong> Show how patterns apply in practice</li>
+                <li><strong>Translating Complex Concepts:</strong> Make technical ideas more accessible</li>
+                <li><strong>Documenting Deployment Patterns:</strong> Real-world implementation examples</li>
+            </ul>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-header">
+                <span class="section-emoji">🎨</span>
+                <h2 class="section-title">Schematic Design Guidelines</h2>
+            </div>
+            
+            <h3>Visual Design Principles</h3>
+            <ul>
+                <li><strong>Biological Metaphors:</strong> Use organic, living system representations</li>
+                <li><strong>Flow Emphasis:</strong> Show dynamic movement and relationships</li>
+                <li><strong>Trust Visualization:</strong> Include trust scores and propagation paths</li>
+                <li><strong>Temporal Awareness:</strong> Represent time-based changes and evolution</li>
+                <li><strong>Semantic Clarity:</strong> Make meaning and intention visible</li>
+            </ul>
+            
+            <h3>Technical Requirements</h3>
+            <ul>
+                <li><strong>Format:</strong> PNG files with transparent backgrounds</li>
+                <li><strong>Resolution:</strong> High-resolution for print and digital use</li>
+                <li><strong>Accessibility:</strong> Clear contrast and readable text</li>
+                <li><strong>Consistency:</strong> Unified color schemes and symbol usage</li>
+                <li><strong>Scalability:</strong> Readable at multiple sizes</li>
+            </ul>
+        </div>
+        
+        <div class="cross-reference">
+            <h4>🔗 Related Documentation</h4>
+            <div class="ref-links">
+                <a href="whitepaper_alvearium.html" class="ref-link">🐝 Alvearium Whitepaper</a>
+                <a href="architecture_specs.html" class="ref-link">🏗️ Architecture Specs</a>
+                <a href="implementation_guide_alvearium.html" class="ref-link">🚀 Implementation Guide</a>
+                <a href="manifestos.html" class="ref-link">📜 Manifestos</a>
+                <a href="whitepapers.html" class="ref-link">📚 All Whitepapers</a>
+                <a href="https://github.com/DerekWiner/alvearium" class="ref-link">🐙 GitHub Repository</a>
+            </div>
+        </div>
+        
+        <div class="signature-section">
+            <h3>✍️ Schematic Library Information</h3>
+            <p><strong>Maintained by:</strong> The Waggle Collective & Visual Documentation Team</p>
+            <p><strong>Repository:</strong> <a href="https://github.com/DerekWiner/alvearium/tree/main/assets" style="color: #667eea;">github.com/DerekWiner/alvearium/assets</a></p>
+            <p><strong>License:</strong> Open Source Without Malice</p>
+            <p><strong>Contributing:</strong> See visual documentation guidelines in repository</p>
+            
+            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(102, 126, 234, 0.1); border-radius: 10px;">
+                <p style="margin: 0; font-style: italic; color: #666;">
+                    <strong>"A picture is worth a thousand words, but a schematic is worth unlimited understandings."</strong><br>
+                    These visual guides help bridge the gap between complex technical concepts and intuitive comprehension. As the system evolves, so too must its visual documentation—making the invisible patterns of intelligence visible to all.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll effect to sections
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.content-section, .overview-section, .category-section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isVisible) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                } else {
+                    section.style.opacity = '0.8';
+                    section.style.transform = 'translateY(20px)';
+                }
+            });
+        });
+        
+        // Initialize scroll effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content-section, .overview-section, .category-section');
+            sections.forEach(section => {
+                section.style.transition = 'opacity 0.6s, transform 0.6s';
+            });
+        });
+        
+        // Schematic card interaction
+        document.querySelectorAll('.schematic-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const image = card.querySelector('.schematic-image');
+                if (image && image.src && !image.src.includes('placeholder')) {
+                    // Open schematic in new window for detailed viewing
+                    window.open(image.src, '_blank');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+                        </div>
