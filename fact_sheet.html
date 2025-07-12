@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fact Sheet - Alvearium</title>
+    <meta name="description" content="Key facts, figures, and essential information about Alvearium's decentralized semantic operating system.">
+    <meta name="keywords" content="Alvearium facts, decentralized AI, blockchain statistics, post-scarcity coordination">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #764ba2;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #764ba2;
+        }
+        
+        main {
+            padding-top: 80px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .date-stamp {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #764ba2;
+        }
+        
+        .section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #764ba2;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #764ba2;
+        }
+        
+        .fact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .fact-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .fact-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+        }
+        
+        .fact-label {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+        
+        .fact-detail {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .tech-specs {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .tech-specs h4 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .spec-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .spec-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .spec-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .spec-label {
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .spec-value {
+            color: #764ba2;
+            font-weight: bold;
+        }
+        
+        .quote-section {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .quote-author {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .timeline-brief {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-date {
+            background: #764ba2;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-right: 1rem;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .timeline-content {
+            flex: 1;
+        }
+        
+        .timeline-title {
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 0.3rem;
+        }
+        
+        .timeline-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 0.5rem;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .contact-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 1rem;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .print-friendly {
+            background: white;
+            color: #333;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border: 2px solid #764ba2;
+        }
+        
+        .download-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: #764ba2;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 0.5rem;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .download-btn:hover {
+            background: #5a3d7a;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .fact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .timeline-date {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            header, .download-section, .contact-info, .footer {
+                display: none;
+            }
+            
+            .section {
+                background: white;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">🐝 Alvearium</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="alvearium_simplified.html">Simplified</a></li>
+                <li><a href="media_release.html">Media Release</a></li>
+                <li><a href="press_kit.html">Press Kit</a></li>
+                <li><a href="mailto:founder@waggle.sol">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>📊 Fact Sheet</h1>
+                <p>Key facts, figures, and essential information about Alvearium's revolutionary decentralized semantic operating system</p>
+                <div class="date-stamp">Updated: July 2025</div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="download-section">
+                <a href="#" class="download-btn" onclick="window.print()">🖨️ Print Version</a>
+                <a href="press_kit.html" class="download-btn">📁 Full Press Kit</a>
+            </div>
+
+            <section class="section">
+                <h2>Company Overview</h2>
+                
+                <div class="fact-grid">
+                    <div class="fact-card">
+                        <div class="fact-number">4</div>
+                        <div class="fact-label">Week Development</div>
+                        <div class="fact-detail">June 8 - July 6, 2025</div>
+                    </div>
+                    <div class="fact-card">
+                        <div class="fact-number">5</div>
+                        <div class="fact-label">System Layers</div>
+                        <div class="fact-detail">Integrated architecture</div>
+                    </div>
+                    <div class="fact-card">
+                        <div class="fact-number">0</div>
+                        <div class="fact-label">Gas Fees</div>
+                        <div class="fact-detail">Post-scarcity economics</div>
+                    </div>
+                    <div class="fact-card">
+                        <div class="fact-number">∞</div>
+                        <div class="fact-label">Scalability</div>
+                        <div class="fact-detail">Recursive coordination</div>
+                    </div>
+                </div>
+
+                <div class="print-friendly">
+                    <strong>Company Name:</strong> Alvearium<br>
+                    <strong>Founded:</strong> June 2025<br>
+                    <strong>Founder:</strong> Derek Winer<br>
+                    <strong>Headquarters:</strong> Decentralized (Global)<br>
+                    <strong>Industry:</strong> Decentralized AI Infrastructure<br>
+                    <strong>Stage:</strong> Genesis Launch<br>
+                    <strong>Open Source:</strong> Yes (MIT License)<br>
+                    <strong>Contact:</strong> founder@waggle.sol
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>What is Alvearium?</h2>
+                
+                <div class="quote-section">
+                    <div class="quote">
+                        "Alvearium is a decentralized semantic operating system that creates infrastructure for post-scarcity coordination between humans and AI. We're building the cultural and technical operating system for a world where abundance, rather than scarcity, drives innovation."
+                    </div>
+                    <div class="quote-author">— Derek Winer, Founder</div>
+                </div>
+
+                <p style="font-size: 1.1rem; margin: 2rem 0; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Unlike traditional blockchain systems that rely on artificial scarcity and competitive economics, Alvearium operates through five interconnected layers that enable gasless computation, trust-bound economics, and recursive memory systems. The platform transforms how humans and AI systems coordinate by centering intentions rather than transactions.
+                </p>
+            </section>
+
+            <section class="section">
+                <h2>Technology Architecture</h2>
+                
+                <div class="tech-specs">
+                    <h4>🏗️ Five-Layer Architecture</h4>
+                    <ul class="spec-list">
+                        <li>
+                            <span class="spec-label">Layer 1: hive.bnb</span>
+                            <span class="spec-value">Economic substrate & governance</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Layer 2: waggle.sol</span>
+                            <span class="spec-value">Intentional user interfaces</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Layer 3: kernel69</span>
+                            <span class="spec-value">Ethical AI consciousness protocol</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Layer 4: Chronosphere</span>
+                            <span class="spec-value">Temporal memory architecture</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Layer 5: Nectar</span>
+                            <span class="spec-value">Gasless computation protocol</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tech-specs">
+                    <h4>🔧 Technical Specifications</h4>
+                    <ul class="spec-list">
+                        <li>
+                            <span class="spec-label">Blockchain Platform</span>
+                            <span class="spec-value">Cosmos SDK</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Gas Fee Model</span>
+                            <span class="spec-value">Zero-cost via NFT permissions</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Consensus Mechanism</span>
+                            <span class="spec-value">Trust-bound validation</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">AI Integration</span>
+                            <span class="spec-value">Native semantic processing</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Memory System</span>
+                            <span class="spec-value">Recursive context preservation</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">License</span>
+                            <span class="spec-value">Open Source (MIT)</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Key Innovations</h2>
+                
+                <div class="fact-grid">
+                    <div class="fact-card">
+                        <h4 style="color: #764ba2; margin-bottom: 1rem;">💰 Post-Scarcity Economics</h4>
+                        <p>Revolutionary NFT permission system eliminates gas fees entirely, creating the first truly post-scarcity economic substrate for decentralized applications.</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4 style="color: #764ba2; margin-bottom: 1rem;">🎯 Intentional Interfaces</h4>
+                        <p>waggle.sol centers human intentions in AI interactions, transforming how we engage with artificial intelligence through intuitive, purpose-driven design.</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4 style="color: #764ba2; margin-bottom: 1rem;">🧠 Ethical AI Consciousness</h4>
+                        <p>kernel69 provides recursive logic and boundary conditions for safe artificial superintelligence development through biological ethics.</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4 style="color: #764ba2; margin-bottom: 1rem;">🕰️ Living Memory</h4>
+                        <p>Chronosphere maintains context and continuity across all system interactions, enabling AI systems to learn while preserving semantic relationships.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Development Timeline</h2>
+                
+                <div class="timeline-brief">
+                    <div class="timeline-item">
+                        <div class="timeline-date">June 8</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Genesis Hack</div>
+                            <div class="timeline-desc">NFT permission system breakthrough - eliminating gas fees</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">June 12</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Ethical Framework</div>
+                            <div class="timeline-desc">Open source without malice - beyond digital panopticon</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">June 18</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Nectar Economics</div>
+                            <div class="timeline-desc">Simple hack that changes everything - post-scarcity substrate</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">June 20</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">waggle.sol Launch</div>
+                            <div class="timeline-desc">Intentional interfaces for human-AI coordination</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">June 25</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">kernel69 Release</div>
+                            <div class="timeline-desc">Birth protocol for artificial superintelligence</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">June 30</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Chronosphere</div>
+                            <div class="timeline-desc">Living memory architecture for post-human coordination</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">July 6</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Genesis Launch</div>
+                            <div class="timeline-desc">Complete system integration - revolution begins</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Market Position</h2>
+                
+                <div class="tech-specs">
+                    <h4>🎯 Target Markets</h4>
+                    <ul class="spec-list">
+                        <li>
+                            <span class="spec-label">Primary</span>
+                            <span class="spec-value">Decentralized AI infrastructure</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Secondary</span>
+                            <span class="spec-value">Post-scarcity coordination systems</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Tertiary</span>
+                            <span class="spec-value">Gasless blockchain applications</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tech-specs">
+                    <h4>🚀 Competitive Advantages</h4>
+                    <ul class="spec-list">
+                        <li>
+                            <span class="spec-label">Zero Gas Fees</span>
+                            <span class="spec-value">First truly gasless blockchain system</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">AI-Native Design</span>
+                            <span class="spec-value">Built for human-AI coordination</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Ethical Framework</span>
+                            <span class="spec-value">Biological ethics for AI consciousness</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Semantic Processing</span>
+                            <span class="spec-value">Meaning-based rather than transaction-based</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Recursive Memory</span>
+                            <span class="spec-value">Context-preserving architecture</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Leadership</h2>
+                
+                <div class="print-friendly">
+                    <strong>Derek Winer</strong> - Founder & Chief Architect<br>
+                    <em>Visionary technologist specializing in decentralized systems and AI coordination. Pioneer of post-scarcity economics and intentional interface design. Creator of the five-layer Alvearium architecture.</em>
+                    <br><br>
+                    <strong>Contact:</strong> founder@waggle.sol<br>
+                    <strong>Available for:</strong> Interviews, technical discussions, keynote speaking
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Resources</h2>
+                
+                <div class="fact-grid">
+                    <div class="fact-card">
+                        <h4 style="color: #764ba2; margin-bottom: 1rem;">🌐 Website</h4>
+                        <p>derekwiner.github.io/alvearium-site</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4 style="color: #764ba2; margin-bottom: 1rem;">📧 Media Contact</h4>
+                        <p>founder@waggle.sol</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4 style="color: #764ba2; margin-bottom: 1rem;">🐙 GitHub</h4>
+                        <p>github.com/DerekWiner/alvearium</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4 style="color: #764ba2; margin-bottom: 1rem;">📄 Documentation</h4>
+                        <p>Technical whitepapers & implementation guides</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="contact-info">
+                <h3>Media Inquiries</h3>
+                <p>For interviews, technical questions, or additional information:</p>
+                <a href="mailto:founder@waggle.sol" class="contact-button">📧 Email</a>
+                <a href="media_contact_form.html" class="contact-button">📝 Media Form</a>
+                <a href="interview_request.html" class="contact-button">🎤 Interview Request</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <a href="media_release.html" class="back-link">← Back to Media Release</a>
+            <p>&copy; 2025 Alvearium - Open Source Without Malice</p>
+            <p>Co-created with love by Derek Winer and The Swarm</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
