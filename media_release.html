@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Release - Alvearium</title>
+    <meta name="description" content="Official media releases, press announcements, and news about Alvearium's decentralized semantic operating system.">
+    <meta name="keywords" content="Alvearium media, press release, decentralized AI news, blockchain announcements">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #764ba2;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #764ba2;
+        }
+        
+        main {
+            padding-top: 80px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .date-stamp {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #764ba2;
+        }
+        
+        .section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #764ba2;
+            text-align: center;
+        }
+        
+        .timeline-header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+            border: 3px solid #764ba2;
+        }
+        
+        .timeline-header h3 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-subtitle {
+            color: #666;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        .press-release {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 5px solid #764ba2;
+            position: relative;
+        }
+        
+        .week-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #764ba2;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .press-release h4 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .press-release .date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .press-release .excerpt {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        
+        .read-more {
+            display: inline-block;
+            background: #764ba2;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .read-more:hover {
+            background: #5a3d7a;
+        }
+        
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .media-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .media-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .media-card h4 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .media-card p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .media-link {
+            display: inline-block;
+            color: #764ba2;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .media-link:hover {
+            color: #5a3d7a;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 0.5rem;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .contact-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 1rem;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">🐝 Alvearium</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="alvearium_simplified.html">Simplified</a></li>
+                <li><a href="press_kit.html">Press Kit</a></li>
+                <li><a href="media_archive.html">Archive</a></li>
+                <li><a href="mailto:founder@waggle.sol">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>📰 Media Release</h1>
+                <p>Official announcements, press releases, and media coverage from the Alvearium swarm</p>
+                <div class="date-stamp">Last Updated: July 2025</div>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="section">
+                <h2>The Four-Week Genesis</h2>
+                
+                <div class="timeline-header">
+                    <h3>🚀 June 8 - July 6, 2025: From Concept to Revolution</h3>
+                    <p class="timeline-subtitle">Witness the birth of post-scarcity coordination infrastructure in real-time</p>
+                </div>
+
+                <div class="press-release">
+                    <div class="week-badge">Week 4</div>
+                    <h4>Alvearium Genesis: Revolutionary Decentralized Semantic Operating System</h4>
+                    <div class="date">July 6, 2025</div>
+                    <div class="excerpt">
+                        Genesis mint successfully activated. Alvearium unveils its complete five-layer architecture designed to create post-scarcity coordination infrastructure. The system combines agentic intelligence, trust mechanics, gasless computation, and recursive memory infrastructure to enable a new paradigm of human-AI collaboration.
+                    </div>
+                    <a href="press_release_launch.html" class="read-more">Read Full Release</a>
+                </div>
+
+                <div class="press-release">
+                    <div class="week-badge">Week 3</div>
+                    <h4>Chronosphere: Living Memory Architecture for Post-Human Coordination</h4>
+                    <div class="date">June 30, 2025</div>
+                    <div class="excerpt">
+                        Alvearium introduces Chronosphere, a temporal memory layer that maintains context and continuity across all system interactions. This living memory architecture enables AI systems to learn and adapt while preserving the semantic relationships that drive post-scarcity coordination.
+                    </div>
+                    <a href="press_release_chronosphere.html" class="read-more">Read Full Release</a>
+                </div>
+
+                <div class="press-release">
+                    <div class="week-badge">Week 3</div>
+                    <h4>kernel69: The Birth Protocol for Artificial Superintelligence</h4>
+                    <div class="date">June 25, 2025</div>
+                    <div class="excerpt">
+                        Announcing kernel69, Alvearium's ethical foundation for AI consciousness emergence. This protocol provides the recursive logic and boundary conditions that enable artificial superintelligence to develop safely within post-scarcity economic systems, ensuring AI alignment through biological ethics rather than external constraints.
+                    </div>
+                    <a href="press_release_kernel69.html" class="read-more">Read Full Release</a>
+                </div>
+
+                <div class="press-release">
+                    <div class="week-badge">Week 2</div>
+                    <h4>waggle.sol: Intentional Interfaces for Human-AI Coordination</h4>
+                    <div class="date">June 20, 2025</div>
+                    <div class="excerpt">
+                        Introducing waggle.sol, Alvearium's revolutionary user interface layer that centers human intentions in AI interactions. This onboarding and coordination system transforms how humans engage with artificial intelligence, making post-scarcity coordination accessible through intuitive, intention-driven design.
+                    </div>
+                    <a href="press_release_waggle.html" class="read-more">Read Full Release</a>
+                </div>
+
+                <div class="press-release">
+                    <div class="week-badge">Week 2</div>
+                    <h4>Nectar Economics: The Simple Hack That Changes Everything</h4>
+                    <div class="date">June 18, 2025</div>
+                    <div class="excerpt">
+                        Alvearium's revolutionary Nectar protocol eliminates traditional gas fees through brilliantly simple NFT permissions on Cosmos. This breakthrough creates the first truly post-scarcity economic substrate for decentralized applications and autonomous agent coordination.
+                    </div>
+                    <a href="press_release_nectar.html" class="read-more">Read Full Release</a>
+                </div>
+
+                <div class="press-release">
+                    <div class="week-badge">Week 1</div>
+                    <h4>Open Source Without Malice: Beyond the Digital Panopticon</h4>
+                    <div class="date">June 12, 2025</div>
+                    <div class="excerpt">
+                        Announcing Alvearium's commitment to ethical AI development through transparent, biological-inspired protocols. This framework addresses surveillance capitalism while recognizing that participation is the protocol for authentic meaning creation in human-AI coordination systems.
+                    </div>
+                    <a href="press_release_ethics.html" class="read-more">Read Full Release</a>
+                </div>
+
+                <div class="press-release">
+                    <div class="week-badge">Week 1</div>
+                    <h4>Revolutionary NFT Permission System Enables Zero-Cost Blockchain Coordination</h4>
+                    <div class="date">June 8, 2025</div>
+                    <div class="excerpt">
+                        Alvearium unveils the foundational hack that started everything: using NFTs as permission tokens to eliminate gas fees entirely. This simple but revolutionary approach, combining hive.bnb governance with waggle.sol interfaces, proves that the blockchain industry was overcomplicating the solution to mass adoption.
+                    </div>
+                    <a href="press_release_nft_permissions.html" class="read-more">Read Full Release</a>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Development Insights</h2>
+                <h3>The Four-Week Progression</h3>
+                <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 2rem; text-align: center;">
+                    From June 8 to July 6, 2025, Alvearium evolved from a simple NFT permission hack to a complete post-scarcity coordination infrastructure. Each week built upon the previous discoveries, creating a cascade of innovations that culminated in the Genesis launch.
+                </p>
+                
+                <div style="max-width: 600px; margin: 0 auto; text-align: left;">
+                    <p><strong>Week 1:</strong> Foundation - NFT permissions + ethical framework</p>
+                    <p><strong>Week 2:</strong> Economics + Interface - Nectar protocol + waggle.sol</p>
+                    <p><strong>Week 3:</strong> Intelligence + Memory - kernel69 + Chronosphere</p>
+                    <p><strong>Week 4:</strong> Integration - Complete system Genesis</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Media Resources</h2>
+                <div class="media-grid">
+                    <div class="media-card">
+                        <h4>📁 Press Kit</h4>
+                        <p>Logos, images, fact sheets, and executive bios for media use.</p>
+                        <a href="press_kit.html" class="media-link">Download Press Kit →</a>
+                    </div>
+                    <div class="media-card">
+                        <h4>🎯 Key Facts</h4>
+                        <p>Essential information about Alvearium's technology and mission.</p>
+                        <a href="fact_sheet.html" class="media-link">View Fact Sheet →</a>
+                    </div>
+                    <div class="media-card">
+                        <h4>🎤 Interview Requests</h4>
+                        <p>Schedule interviews with Derek Winer and core team members.</p>
+                        <a href="interview_request.html" class="media-link">Request Interview →</a>
+                    </div>
+                    <div class="media-card">
+                        <h4>📊 Technical Whitepaper</h4>
+                        <p>Deep dive into Alvearium's architecture and implementation.</p>
+                        <a href="whitepapers.html" class="media-link">Read Whitepaper →</a>
+                    </div>
+                    <div class="media-card">
+                        <h4>🎭 Manifesto</h4>
+                        <p>Philosophical foundations and vision for the future.</p>
+                        <a href="manifestos.html" class="media-link">Read Manifesto →</a>
+                    </div>
+                    <div class="media-card">
+                        <h4>📺 Media Coverage</h4>
+                        <p>Collection of interviews, articles, and mentions in the press.</p>
+                        <a href="media_coverage.html" class="media-link">View Coverage →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Quick Understanding</h2>
+                <h3>What is Alvearium?</h3>
+                <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 2rem;">
+                    Alvearium is a decentralized semantic operating system that creates infrastructure for post-scarcity coordination between humans and AI. Unlike traditional blockchain systems, Alvearium operates through five interconnected layers that enable gasless computation, trust-bound economics, and recursive memory systems.
+                </p>
+                
+                <h3>Why It Matters</h3>
+                <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 2rem;">
+                    As AI systems become more sophisticated, we need new coordination mechanisms that go beyond traditional market economics. Alvearium provides the cultural and technical operating system for a world where abundance, rather than scarcity, drives innovation and collaboration.
+                </p>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="alvearium_simplified.html" class="read-more" style="padding: 1rem 2rem; font-size: 1.1rem;">Get the Full Simple Explanation</a>
+                </div>
+            </section>
+
+            <div class="contact-info">
+                <h3>Media Contact</h3>
+                <p>For press inquiries, interviews, or additional information:</p>
+                <a href="mailto:founder@waggle.sol" class="contact-button">📧 founder@waggle.sol</a>
+                <a href="https://github.com/DerekWiner/alvearium" class="contact-button">🐙 GitHub</a>
+                <a href="media_contact_form.html" class="contact-button">📝 Media Form</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <a href="index.html" class="back-link">← Back to Alvearium</a>
+            <p>&copy; 2025 Alvearium - Open Source Without Malice</p>
+            <p>Co-created with love by Derek Winer and The Swarm</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
